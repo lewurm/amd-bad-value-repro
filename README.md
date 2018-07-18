@@ -75,8 +75,8 @@ the included binary `mono-sgen_NOCRASH` is compiled with that patch. The disasm 
 * mono-sgen.disasm.mini_method_compile for the crashing version
 * mono-sgen_NOCRASH.disasm.mini_method_compile for the non crashing version
 
-a
-
+asm diff:
+![assembler diff](/asmdiff.png?raw=true "Optional Title")
 
 
 System info
