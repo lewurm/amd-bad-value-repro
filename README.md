@@ -72,8 +72,8 @@ index 456568d4521..d95cc2b0d36 100644
 ```
 
 the included binary `mono-sgen_NOCRASH` is compiled with that patch. The disasm for `mini_method_compile ()` (this method inlines `mono_bb_ordering`) is included in 
-* mono-sgen.disasm.mini_method_compile for the crashing version
-* mono-sgen_NOCRASH.disasm.mini_method_compile for the non crashing version
+* `mono-sgen.disasm.mini_method_compile` for the crashing version
+* `mono-sgen_NOCRASH.disasm.mini_method_compile` for the non crashing version
 
 asm diff:
 ![assembler diff](/asmdiff.png?raw=true "Optional Title")
@@ -105,3 +105,7 @@ Copyright (C) 2017 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 ```
+
+Related
+=======
+https://github.com/mono/mono/issues/9298#issuecomment-400467839
