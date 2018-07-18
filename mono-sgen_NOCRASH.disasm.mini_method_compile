@@ -1,0 +1,2780 @@
+000000000012b900 <mini_method_compile>:
+  12b900:	41 57                	push   %r15
+  12b902:	41 56                	push   %r14
+  12b904:	89 c8                	mov    %ecx,%eax
+  12b906:	41 55                	push   %r13
+  12b908:	41 54                	push   %r12
+  12b90a:	55                   	push   %rbp
+  12b90b:	53                   	push   %rbx
+  12b90c:	48 81 ec 68 01 00 00 	sub    $0x168,%rsp
+  12b913:	89 4c 24 20          	mov    %ecx,0x20(%rsp)
+  12b917:	d1 e9                	shr    %ecx
+  12b919:	48 89 7c 24 08       	mov    %rdi,0x8(%rsp)
+  12b91e:	89 4c 24 54          	mov    %ecx,0x54(%rsp)
+  12b922:	83 e1 01             	and    $0x1,%ecx
+  12b925:	89 74 24 24          	mov    %esi,0x24(%rsp)
+  12b929:	89 4c 24 4c          	mov    %ecx,0x4c(%rsp)
+  12b92d:	89 c1                	mov    %eax,%ecx
+  12b92f:	48 89 54 24 40       	mov    %rdx,0x40(%rsp)
+  12b934:	c1 e9 02             	shr    $0x2,%ecx
+  12b937:	44 89 44 24 6c       	mov    %r8d,0x6c(%rsp)
+  12b93c:	44 89 4c 24 64       	mov    %r9d,0x64(%rsp)
+  12b941:	89 4c 24 58          	mov    %ecx,0x58(%rsp)
+  12b945:	89 c1                	mov    %eax,%ecx
+  12b947:	c1 e8 03             	shr    $0x3,%eax
+  12b94a:	64 48 8b 1c 25 28 00 	mov    %fs:0x28,%rbx
+  12b951:	00 00 
+  12b953:	48 89 9c 24 58 01 00 	mov    %rbx,0x158(%rsp)
+  12b95a:	00 
+  12b95b:	31 db                	xor    %ebx,%ebx
+  12b95d:	89 c3                	mov    %eax,%ebx
+  12b95f:	48 8d 05 da 78 51 00 	lea    0x5178da(%rip),%rax        # 643240 <mono_jit_stats>
+  12b966:	c1 e9 04             	shr    $0x4,%ecx
+  12b969:	83 e3 01             	and    $0x1,%ebx
+  12b96c:	c7 84 24 80 00 00 00 	movl   $0x0,0x80(%rsp)
+  12b973:	00 00 00 00 
+  12b977:	89 4c 24 5c          	mov    %ecx,0x5c(%rsp)
+  12b97b:	f0 83 00 01          	lock addl $0x1,(%rax)
+  12b97f:	48 8d 05 3a dc 52 00 	lea    0x52dc3a(%rip),%rax        # 6595c0 <mono_profiler_state>
+  12b986:	8b 80 e0 00 00 00    	mov    0xe0(%rax),%eax
+  12b98c:	85 c0                	test   %eax,%eax
+  12b98e:	0f 85 cc 1f 00 00    	jne    12d960 <mini_method_compile+0x2060>
+  12b994:	8b 6c 24 24          	mov    0x24(%rsp),%ebp
+  12b998:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+  12b99d:	81 e5 00 00 00 02    	and    $0x2000000,%ebp
+  12b9a3:	f6 40 21 10          	testb  $0x10,0x21(%rax)
+  12b9a7:	0f 85 ab 04 00 00    	jne    12be58 <mini_method_compile+0x558>
+  12b9ad:	8b 44 24 4c          	mov    0x4c(%rsp),%eax
+  12b9b1:	c7 44 24 68 00 00 00 	movl   $0x0,0x68(%rsp)
+  12b9b8:	00 
+  12b9b9:	85 c0                	test   %eax,%eax
+  12b9bb:	0f 84 04 05 00 00    	je     12bec5 <mini_method_compile+0x5c5>
+  12b9c1:	85 ed                	test   %ebp,%ebp
+  12b9c3:	0f 84 55 25 00 00    	je     12df1e <mini_method_compile+0x261e>
+  12b9c9:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
+  12b9ce:	e8 6d 08 fa ff       	callq  cc240 <mono_method_is_generic_impl>
+  12b9d3:	85 c0                	test   %eax,%eax
+  12b9d5:	89 44 24 1c          	mov    %eax,0x1c(%rsp)
+  12b9d9:	c7 44 24 50 00 00 00 	movl   $0x0,0x50(%rsp)
+  12b9e0:	00 
+  12b9e1:	0f 85 79 1b 00 00    	jne    12d560 <mini_method_compile+0x1c60>
+  12b9e7:	48 8d 05 26 7a 51 00 	lea    0x517a26(%rip),%rax        # 643414 <mono_use_llvm>
+  12b9ee:	31 ed                	xor    %ebp,%ebp
+  12b9f0:	44 8b 5c 24 50       	mov    0x50(%rsp),%r11d
+  12b9f5:	0b 18                	or     (%rax),%ebx
+  12b9f7:	0f b6 44 24 20       	movzbl 0x20(%rsp),%eax
+  12b9fc:	40 0f 95 c5          	setne  %bpl
+  12ba00:	c0 e8 07             	shr    $0x7,%al
+  12ba03:	c1 e0 02             	shl    $0x2,%eax
+  12ba06:	45 85 db             	test   %r11d,%r11d
+  12ba09:	88 44 24 62          	mov    %al,0x62(%rsp)
+  12ba0d:	0f 85 32 04 00 00    	jne    12be45 <mini_method_compile+0x545>
+  12ba13:	44 8b 54 24 1c       	mov    0x1c(%rsp),%r10d
+  12ba18:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
+  12ba1d:	45 85 d2             	test   %r10d,%r10d
+  12ba20:	48 89 7c 24 10       	mov    %rdi,0x10(%rsp)
+  12ba25:	0f 85 d5 0e 00 00    	jne    12c900 <mini_method_compile+0x1000>
+  12ba2b:	8b 4c 24 20          	mov    0x20(%rsp),%ecx
+  12ba2f:	0f b6 44 24 54       	movzbl 0x54(%rsp),%eax
+  12ba34:	0f b6 5c 24 58       	movzbl 0x58(%rsp),%ebx
+  12ba39:	4c 8d 25 e0 d7 52 00 	lea    0x52d7e0(%rip),%r12        # 659220 <mini_debug_options>
+  12ba40:	89 ca                	mov    %ecx,%edx
+  12ba42:	c1 e9 06             	shr    $0x6,%ecx
+  12ba45:	83 e1 01             	and    $0x1,%ecx
+  12ba48:	83 e2 01             	and    $0x1,%edx
+  12ba4b:	83 e0 01             	and    $0x1,%eax
+  12ba4e:	88 4c 24 30          	mov    %cl,0x30(%rsp)
+  12ba52:	0f b6 4c 24 5c       	movzbl 0x5c(%rsp),%ecx
+  12ba57:	83 e3 01             	and    $0x1,%ebx
+  12ba5a:	c1 e2 04             	shl    $0x4,%edx
+  12ba5d:	c1 e0 06             	shl    $0x6,%eax
+  12ba60:	88 5c 24 49          	mov    %bl,0x49(%rsp)
+  12ba64:	88 54 24 4a          	mov    %dl,0x4a(%rsp)
+  12ba68:	88 44 24 4b          	mov    %al,0x4b(%rsp)
+  12ba6c:	83 e1 01             	and    $0x1,%ecx
+  12ba6f:	88 4c 24 48          	mov    %cl,0x48(%rsp)
+  12ba73:	89 e9                	mov    %ebp,%ecx
+  12ba75:	83 e1 01             	and    $0x1,%ecx
+  12ba78:	88 4c 24 38          	mov    %cl,0x38(%rsp)
+  12ba7c:	bf 70 05 00 00       	mov    $0x570,%edi
+  12ba81:	e8 ca c2 1d 00       	callq  307d50 <monoeg_malloc0>
+  12ba86:	49 89 c6             	mov    %rax,%r14
+  12ba89:	48 8b 44 24 10       	mov    0x10(%rsp),%rax
+  12ba8e:	49 89 06             	mov    %rax,(%r14)
+  12ba91:	e8 5a 42 0c 00       	callq  1efcf0 <mono_mempool_new>
+  12ba96:	49 89 46 10          	mov    %rax,0x10(%r14)
+  12ba9a:	8b 44 24 24          	mov    0x24(%rsp),%eax
+  12ba9e:	48 8b 4c 24 40       	mov    0x40(%rsp),%rcx
+  12baa3:	41 89 86 a0 02 00 00 	mov    %eax,0x2a0(%r14)
+  12baaa:	41 0f b6 86 c0 02 00 	movzbl 0x2c0(%r14),%eax
+  12bab1:	00 
+  12bab2:	49 89 8e 08 02 00 00 	mov    %rcx,0x208(%r14)
+  12bab9:	48 8d 0d 58 79 51 00 	lea    0x517958(%rip),%rcx        # 643418 <mini_verbose>
+  12bac0:	83 e0 ef             	and    $0xffffffef,%eax
+  12bac3:	8b 11                	mov    (%rcx),%edx
+  12bac5:	0a 44 24 4a          	or     0x4a(%rsp),%al
+  12bac9:	41 89 96 ac 02 00 00 	mov    %edx,0x2ac(%r14)
+  12bad0:	0f b6 54 24 49       	movzbl 0x49(%rsp),%edx
+  12bad5:	83 e0 3f             	and    $0x3f,%eax
+  12bad8:	0a 44 24 4b          	or     0x4b(%rsp),%al
+  12badc:	c1 e2 07             	shl    $0x7,%edx
+  12badf:	09 d0                	or     %edx,%eax
+  12bae1:	41 88 86 c0 02 00 00 	mov    %al,0x2c0(%r14)
+  12bae8:	41 0f b6 44 24 64    	movzbl 0x64(%r12),%eax
+  12baee:	83 e0 01             	and    $0x1,%eax
+  12baf1:	c1 e0 04             	shl    $0x4,%eax
+  12baf4:	89 c2                	mov    %eax,%edx
+  12baf6:	41 0f b6 86 c2 02 00 	movzbl 0x2c2(%r14),%eax
+  12bafd:	00 
+  12bafe:	83 e0 ef             	and    $0xffffffef,%eax
+  12bb01:	09 d0                	or     %edx,%eax
+  12bb03:	41 88 86 c2 02 00 00 	mov    %al,0x2c2(%r14)
+  12bb0a:	48 8b 4c 24 08       	mov    0x8(%rsp),%rcx
+  12bb0f:	0f b6 41 21          	movzbl 0x21(%rcx),%eax
+  12bb13:	49 89 8e e8 03 00 00 	mov    %rcx,0x3e8(%r14)
+  12bb1a:	88 44 24 28          	mov    %al,0x28(%rsp)
+  12bb1e:	89 c2                	mov    %eax,%edx
+  12bb20:	41 0f b6 86 c1 02 00 	movzbl 0x2c1(%r14),%eax
+  12bb27:	00 
+  12bb28:	83 e2 20             	and    $0x20,%edx
+  12bb2b:	83 e0 df             	and    $0xffffffdf,%eax
+  12bb2e:	09 d0                	or     %edx,%eax
+  12bb30:	41 88 86 c1 02 00 00 	mov    %al,0x2c1(%r14)
+  12bb37:	45 8b 4c 24 40       	mov    0x40(%r12),%r9d
+  12bb3c:	b8 01 00 00 00       	mov    $0x1,%eax
+  12bb41:	41 8b 54 24 3c       	mov    0x3c(%r12),%edx
+  12bb46:	45 85 c9             	test   %r9d,%r9d
+  12bb49:	74 05                	je     12bb50 <mini_method_compile+0x250>
+  12bb4b:	85 d2                	test   %edx,%edx
+  12bb4d:	0f 95 c0             	setne  %al
+  12bb50:	c1 e0 06             	shl    $0x6,%eax
+  12bb53:	c1 e2 07             	shl    $0x7,%edx
+  12bb56:	89 c1                	mov    %eax,%ecx
+  12bb58:	41 0f b6 86 c4 02 00 	movzbl 0x2c4(%r14),%eax
+  12bb5f:	00 
+  12bb60:	83 e0 3f             	and    $0x3f,%eax
+  12bb63:	09 c8                	or     %ecx,%eax
+  12bb65:	09 d0                	or     %edx,%eax
+  12bb67:	41 0f b6 96 c7 02 00 	movzbl 0x2c7(%r14),%edx
+  12bb6e:	00 
+  12bb6f:	41 88 86 c4 02 00 00 	mov    %al,0x2c4(%r14)
+  12bb76:	83 e2 fe             	and    $0xfffffffe,%edx
+  12bb79:	0a 54 24 30          	or     0x30(%rsp),%dl
+  12bb7d:	41 88 96 c7 02 00 00 	mov    %dl,0x2c7(%r14)
+  12bb84:	48 8b 15 ad 86 51 00 	mov    0x5186ad(%rip),%rdx        # 644238 <current_backend>
+  12bb8b:	49 89 96 d0 01 00 00 	mov    %rdx,0x1d0(%r14)
+  12bb92:	49 8b 16             	mov    (%r14),%rdx
+  12bb95:	0f b6 52 20          	movzbl 0x20(%rdx),%edx
+  12bb99:	83 e2 7c             	and    $0x7c,%edx
+  12bb9c:	80 fa 64             	cmp    $0x64,%dl
+  12bb9f:	75 0a                	jne    12bbab <mini_method_compile+0x2ab>
+  12bba1:	83 e0 3f             	and    $0x3f,%eax
+  12bba4:	41 88 86 c4 02 00 00 	mov    %al,0x2c4(%r14)
+  12bbab:	e8 10 52 1d 00       	callq  300dc0 <mono_threads_is_cooperative_suspension_enabled>
+  12bbb0:	85 c0                	test   %eax,%eax
+  12bbb2:	0f 84 98 0c 00 00    	je     12c850 <mini_method_compile+0xf50>
+  12bbb8:	41 81 8e a0 02 00 00 	orl    $0x2000,0x2a0(%r14)
+  12bbbf:	00 20 00 00 
+  12bbc3:	49 8b 86 d0 01 00 00 	mov    0x1d0(%r14),%rax
+  12bbca:	f6 40 02 02          	testb  $0x2,0x2(%rax)
+  12bbce:	0f 84 0c 0c 00 00    	je     12c7e0 <mini_method_compile+0xee0>
+  12bbd4:	41 0f b6 86 c5 02 00 	movzbl 0x2c5(%r14),%eax
+  12bbdb:	00 
+  12bbdc:	83 c8 01             	or     $0x1,%eax
+  12bbdf:	41 88 86 c5 02 00 00 	mov    %al,0x2c5(%r14)
+  12bbe6:	41 0f b6 54 24 50    	movzbl 0x50(%r12),%edx
+  12bbec:	83 e0 fb             	and    $0xfffffffb,%eax
+  12bbef:	83 e2 01             	and    $0x1,%edx
+  12bbf2:	c1 e2 02             	shl    $0x2,%edx
+  12bbf5:	09 d0                	or     %edx,%eax
+  12bbf7:	41 88 86 c5 02 00 00 	mov    %al,0x2c5(%r14)
+  12bbfe:	41 0f b6 54 24 5c    	movzbl 0x5c(%r12),%edx
+  12bc04:	83 e2 01             	and    $0x1,%edx
+  12bc07:	8d 04 12             	lea    (%rdx,%rdx,1),%eax
+  12bc0a:	41 0f b6 96 c6 02 00 	movzbl 0x2c6(%r14),%edx
+  12bc11:	00 
+  12bc12:	83 e2 fd             	and    $0xfffffffd,%edx
+  12bc15:	09 c2                	or     %eax,%edx
+  12bc17:	41 0f b6 86 c3 02 00 	movzbl 0x2c3(%r14),%eax
+  12bc1e:	00 
+  12bc1f:	41 88 96 c6 02 00 00 	mov    %dl,0x2c6(%r14)
+  12bc26:	83 e0 fa             	and    $0xfffffffa,%eax
+  12bc29:	0a 44 24 48          	or     0x48(%rsp),%al
+  12bc2d:	0a 44 24 62          	or     0x62(%rsp),%al
+  12bc31:	41 88 86 c3 02 00 00 	mov    %al,0x2c3(%r14)
+  12bc38:	8b 7c 24 1c          	mov    0x1c(%rsp),%edi
+  12bc3c:	85 ff                	test   %edi,%edi
+  12bc3e:	74 0a                	je     12bc4a <mini_method_compile+0x34a>
+  12bc40:	83 ca 20             	or     $0x20,%edx
+  12bc43:	41 88 96 c6 02 00 00 	mov    %dl,0x2c6(%r14)
+  12bc4a:	41 0f b6 86 c1 02 00 	movzbl 0x2c1(%r14),%eax
+  12bc51:	00 
+  12bc52:	31 f6                	xor    %esi,%esi
+  12bc54:	31 ff                	xor    %edi,%edi
+  12bc56:	83 e0 fe             	and    $0xfffffffe,%eax
+  12bc59:	0a 44 24 38          	or     0x38(%rsp),%al
+  12bc5d:	41 88 86 c1 02 00 00 	mov    %al,0x2c1(%r14)
+  12bc64:	e8 17 91 1d 00       	callq  304d80 <monoeg_g_hash_table_new>
+  12bc69:	41 0f b6 8e c0 02 00 	movzbl 0x2c0(%r14),%ecx
+  12bc70:	00 
+  12bc71:	49 89 86 f0 02 00 00 	mov    %rax,0x2f0(%r14)
+  12bc78:	83 e1 40             	and    $0x40,%ecx
+  12bc7b:	74 0b                	je     12bc88 <mini_method_compile+0x388>
+  12bc7d:	8b 44 24 64          	mov    0x64(%rsp),%eax
+  12bc81:	41 89 86 3c 04 00 00 	mov    %eax,0x43c(%r14)
+  12bc88:	41 f6 86 c7 02 00 00 	testb  $0x1,0x2c7(%r14)
+  12bc8f:	01 
+  12bc90:	41 8b 86 a0 02 00 00 	mov    0x2a0(%r14),%eax
+  12bc97:	74 0c                	je     12bca5 <mini_method_compile+0x3a5>
+  12bc99:	25 ff ff ff fb       	and    $0xfbffffff,%eax
+  12bc9e:	41 89 86 a0 02 00 00 	mov    %eax,0x2a0(%r14)
+  12bca5:	c1 e8 16             	shr    $0x16,%eax
+  12bca8:	89 c2                	mov    %eax,%edx
+  12bcaa:	41 0f b6 86 c6 02 00 	movzbl 0x2c6(%r14),%eax
+  12bcb1:	00 
+  12bcb2:	c1 e2 07             	shl    $0x7,%edx
+  12bcb5:	83 e0 7f             	and    $0x7f,%eax
+  12bcb8:	09 d0                	or     %edx,%eax
+  12bcba:	41 88 86 c6 02 00 00 	mov    %al,0x2c6(%r14)
+  12bcc1:	c1 e8 05             	shr    $0x5,%eax
+  12bcc4:	83 e0 04             	and    $0x4,%eax
+  12bcc7:	83 c0 04             	add    $0x4,%eax
+  12bcca:	41 f6 86 c4 02 00 00 	testb  $0x40,0x2c4(%r14)
+  12bcd1:	40 
+  12bcd2:	41 89 86 c8 02 00 00 	mov    %eax,0x2c8(%r14)
+  12bcd9:	0f 85 89 0b 00 00    	jne    12c868 <mini_method_compile+0xf68>
+  12bcdf:	f6 44 24 1c 01       	testb  $0x1,0x1c(%rsp)
+  12bce4:	41 c7 86 d0 04 00 00 	movl   $0x0,0x4d0(%r14)
+  12bceb:	00 00 00 00 
+  12bcef:	75 08                	jne    12bcf9 <mini_method_compile+0x3f9>
+  12bcf1:	84 c9                	test   %cl,%cl
+  12bcf3:	0f 85 9f 0b 00 00    	jne    12c898 <mini_method_compile+0xf98>
+  12bcf9:	41 f6 86 c6 02 00 00 	testb  $0x20,0x2c6(%r14)
+  12bd00:	20 
+  12bd01:	0f 84 e9 05 00 00    	je     12c2f0 <mini_method_compile+0x9f0>
+  12bd07:	8b 4c 24 68          	mov    0x68(%rsp),%ecx
+  12bd0b:	85 c9                	test   %ecx,%ecx
+  12bd0d:	0f 84 cd 10 00 00    	je     12cde0 <mini_method_compile+0x14e0>
+  12bd13:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+  12bd18:	f6 40 21 10          	testb  $0x10,0x21(%rax)
+  12bd1c:	0f 84 a3 26 00 00    	je     12e3c5 <mini_method_compile+0x2ac5>
+  12bd22:	8b 54 24 4c          	mov    0x4c(%rsp),%edx
+  12bd26:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+  12bd2b:	85 d2                	test   %edx,%edx
+  12bd2d:	48 8d 58 40          	lea    0x40(%rax),%rbx
+  12bd31:	0f 84 d0 26 00 00    	je     12e407 <mini_method_compile+0x2b07>
+  12bd37:	49 8b 76 10          	mov    0x10(%r14),%rsi
+  12bd3b:	49 8d 8e 24 02 00 00 	lea    0x224(%r14),%rcx
+  12bd42:	31 ff                	xor    %edi,%edi
+  12bd44:	48 89 da             	mov    %rbx,%rdx
+  12bd47:	e8 d4 1b f1 ff       	callq  3d920 <mini_init_gsctx>
+  12bd4c:	41 80 8e c6 02 00 00 	orb    $0x40,0x2c6(%r14)
+  12bd53:	40 
+  12bd54:	41 f6 86 c7 02 00 00 	testb  $0x1,0x2c7(%r14)
+  12bd5b:	01 
+  12bd5c:	49 89 9e 28 02 00 00 	mov    %rbx,0x228(%r14)
+  12bd63:	0f 84 57 13 00 00    	je     12d0c0 <mini_method_compile+0x17c0>
+  12bd69:	41 f6 86 c6 02 00 00 	testb  $0x20,0x2c6(%r14)
+  12bd70:	20 
+  12bd71:	0f 84 79 05 00 00    	je     12c2f0 <mini_method_compile+0x9f0>
+  12bd77:	48 8b 44 24 10       	mov    0x10(%rsp),%rax
+  12bd7c:	c7 84 24 80 00 00 00 	movl   $0x0,0x80(%rsp)
+  12bd83:	00 00 00 00 
+  12bd87:	48 8d 9c 24 80 00 00 	lea    0x80(%rsp),%rbx
+  12bd8e:	00 
+  12bd8f:	49 8b 3e             	mov    (%r14),%rdi
+  12bd92:	48 89 de             	mov    %rbx,%rsi
+  12bd95:	49 89 86 b8 01 00 00 	mov    %rax,0x1b8(%r14)
+  12bd9c:	e8 0f 4f 0b 00       	callq  1e0cb0 <mono_method_signature_checked>
+  12bda1:	48 85 c0             	test   %rax,%rax
+  12bda4:	0f 84 8e 26 00 00    	je     12e438 <mini_method_compile+0x2b38>
+  12bdaa:	49 8b 3e             	mov    (%r14),%rdi
+  12bdad:	49 8d b6 d0 04 00 00 	lea    0x4d0(%r14),%rsi
+  12bdb4:	e8 07 6b 0b 00       	callq  1e28c0 <mono_method_get_header_checked>
+  12bdb9:	48 85 c0             	test   %rax,%rax
+  12bdbc:	48 89 44 24 28       	mov    %rax,0x28(%rsp)
+  12bdc1:	49 89 46 08          	mov    %rax,0x8(%r14)
+  12bdc5:	0f 84 5d 26 00 00    	je     12e428 <mini_method_compile+0x2b28>
+  12bdcb:	8b 05 9b 83 51 00    	mov    0x51839b(%rip),%eax        # 64416c <inited.30706>
+  12bdd1:	85 c0                	test   %eax,%eax
+  12bdd3:	75 0a                	jne    12bddf <mini_method_compile+0x4df>
+  12bdd5:	c7 05 8d 83 51 00 01 	movl   $0x1,0x51838d(%rip)        # 64416c <inited.30706>
+  12bddc:	00 00 00 
+  12bddf:	41 f6 86 c1 02 00 00 	testb  $0x1,0x2c1(%r14)
+  12bde6:	01 
+  12bde7:	0f 84 43 01 00 00    	je     12bf30 <mini_method_compile+0x630>
+  12bded:	4c 89 f7             	mov    %r14,%rdi
+  12bdf0:	e8 2b f4 fc ff       	callq  fb220 <mono_llvm_check_method_supported>
+  12bdf5:	41 f6 86 c0 02 00 00 	testb  $0x4,0x2c0(%r14)
+  12bdfc:	04 
+  12bdfd:	0f 84 2d 01 00 00    	je     12bf30 <mini_method_compile+0x630>
+  12be03:	41 0f b6 86 c7 02 00 	movzbl 0x2c7(%r14),%eax
+  12be0a:	00 
+  12be0b:	4d 89 f7             	mov    %r14,%r15
+  12be0e:	89 c2                	mov    %eax,%edx
+  12be10:	f7 d2                	not    %edx
+  12be12:	83 e2 01             	and    $0x1,%edx
+  12be15:	41 39 96 ac 02 00 00 	cmp    %edx,0x2ac(%r14)
+  12be1c:	0f 83 66 1a 00 00    	jae    12d888 <mini_method_compile+0x1f88>
+  12be22:	83 e0 01             	and    $0x1,%eax
+  12be25:	84 c0                	test   %al,%al
+  12be27:	0f 85 53 27 00 00    	jne    12e580 <mini_method_compile+0x2c80>
+  12be2d:	4c 89 ff             	mov    %r15,%rdi
+  12be30:	31 ed                	xor    %ebp,%ebp
+  12be32:	e8 09 e5 ff ff       	callq  12a340 <mono_destroy_compile>
+  12be37:	44 8b 5c 24 50       	mov    0x50(%rsp),%r11d
+  12be3c:	45 85 db             	test   %r11d,%r11d
+  12be3f:	0f 84 ce fb ff ff    	je     12ba13 <mini_method_compile+0x113>
+  12be45:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+  12be4a:	48 89 44 24 10       	mov    %rax,0x10(%rsp)
+  12be4f:	e9 d7 fb ff ff       	jmpq   12ba2b <mini_method_compile+0x12b>
+  12be54:	0f 1f 40 00          	nopl   0x0(%rax)
+  12be58:	48 89 c7             	mov    %rax,%rdi
+  12be5b:	e8 70 86 07 00       	callq  1a44d0 <mono_method_get_context>
+  12be60:	4c 8b 30             	mov    (%rax),%r14
+  12be63:	49 89 c4             	mov    %rax,%r12
+  12be66:	4d 85 f6             	test   %r14,%r14
+  12be69:	0f 84 b9 11 00 00    	je     12d028 <mini_method_compile+0x1728>
+  12be6f:	41 f7 46 04 ff ff 3f 	testl  $0x3fffff,0x4(%r14)
+  12be76:	00 
+  12be77:	0f 84 ab 11 00 00    	je     12d028 <mini_method_compile+0x1728>
+  12be7d:	45 31 ed             	xor    %r13d,%r13d
+  12be80:	eb 1c                	jmp    12be9e <mini_method_compile+0x59e>
+  12be82:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  12be88:	41 8b 46 04          	mov    0x4(%r14),%eax
+  12be8c:	41 83 c5 01          	add    $0x1,%r13d
+  12be90:	25 ff ff 3f 00       	and    $0x3fffff,%eax
+  12be95:	41 39 c5             	cmp    %eax,%r13d
+  12be98:	0f 8d 8a 11 00 00    	jge    12d028 <mini_method_compile+0x1728>
+  12be9e:	49 63 c5             	movslq %r13d,%rax
+  12bea1:	49 8b 7c c6 08       	mov    0x8(%r14,%rax,8),%rdi
+  12bea6:	e8 75 0d fa ff       	callq  ccc20 <mini_is_gsharedvt_gparam>
+  12beab:	85 c0                	test   %eax,%eax
+  12bead:	74 d9                	je     12be88 <mini_method_compile+0x588>
+  12beaf:	c7 44 24 68 01 00 00 	movl   $0x1,0x68(%rsp)
+  12beb6:	00 
+  12beb7:	44 8b 64 24 4c       	mov    0x4c(%rsp),%r12d
+  12bebc:	45 85 e4             	test   %r12d,%r12d
+  12bebf:	0f 85 93 12 00 00    	jne    12d158 <mini_method_compile+0x1858>
+  12bec5:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+  12beca:	48 8b 78 08          	mov    0x8(%rax),%rdi
+  12bece:	e8 bd 04 fa ff       	callq  cc390 <mono_class_generic_sharing_enabled>
+  12bed3:	85 c0                	test   %eax,%eax
+  12bed5:	74 29                	je     12bf00 <mini_method_compile+0x600>
+  12bed7:	85 ed                	test   %ebp,%ebp
+  12bed9:	0f 85 11 13 00 00    	jne    12d1f0 <mini_method_compile+0x18f0>
+  12bedf:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
+  12bee4:	e8 f7 1f fa ff       	callq  cdee0 <mini_is_gsharedvt_sharable_method>
+  12bee9:	c7 44 24 50 00 00 00 	movl   $0x0,0x50(%rsp)
+  12bef0:	00 
+  12bef1:	c7 44 24 1c 00 00 00 	movl   $0x0,0x1c(%rsp)
+  12bef8:	00 
+  12bef9:	e9 e9 fa ff ff       	jmpq   12b9e7 <mini_method_compile+0xe7>
+  12befe:	66 90                	xchg   %ax,%ax
+  12bf00:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
+  12bf05:	e8 d6 1f fa ff       	callq  cdee0 <mini_is_gsharedvt_sharable_method>
+  12bf0a:	85 ed                	test   %ebp,%ebp
+  12bf0c:	0f 85 b7 fa ff ff    	jne    12b9c9 <mini_method_compile+0xc9>
+  12bf12:	c7 44 24 50 00 00 00 	movl   $0x0,0x50(%rsp)
+  12bf19:	00 
+  12bf1a:	c7 44 24 1c 00 00 00 	movl   $0x0,0x1c(%rsp)
+  12bf21:	00 
+  12bf22:	e9 c0 fa ff ff       	jmpq   12b9e7 <mini_method_compile+0xe7>
+  12bf27:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+  12bf2e:	00 00 
+  12bf30:	49 8b 3e             	mov    (%r14),%rdi
+  12bf33:	e8 38 94 0f 00       	callq  225370 <mono_profiler_get_call_instrumentation_flags>
+  12bf38:	49 8b 3e             	mov    (%r14),%rdi
+  12bf3b:	41 89 86 60 05 00 00 	mov    %eax,0x560(%r14)
+  12bf42:	e8 69 8f 0f 00       	callq  224eb0 <mono_profiler_coverage_instrumentation_enabled>
+  12bf47:	41 89 86 64 05 00 00 	mov    %eax,0x564(%r14)
+  12bf4e:	41 8b 44 24 18       	mov    0x18(%r12),%eax
+  12bf53:	85 c0                	test   %eax,%eax
+  12bf55:	0f 85 bd 08 00 00    	jne    12c818 <mini_method_compile+0xf18>
+  12bf5b:	41 f6 86 60 05 00 00 	testb  $0x14,0x560(%r14)
+  12bf62:	14 
+  12bf63:	0f 85 af 08 00 00    	jne    12c818 <mini_method_compile+0xf18>
+  12bf69:	8b 05 a1 d3 52 00    	mov    0x52d3a1(%rip),%eax        # 659310 <mono_using_xdebug>
+  12bf6f:	85 c0                	test   %eax,%eax
+  12bf71:	74 18                	je     12bf8b <mini_method_compile+0x68b>
+  12bf73:	41 80 8e c1 02 00 00 	orb    $0xc0,0x2c1(%r14)
+  12bf7a:	c0 
+  12bf7b:	41 80 8e c3 02 00 00 	orb    $0x80,0x2c3(%r14)
+  12bf82:	80 
+  12bf83:	41 80 8e c4 02 00 00 	orb    $0x1,0x2c4(%r14)
+  12bf8a:	01 
+  12bf8b:	4c 89 f7             	mov    %r14,%rdi
+  12bf8e:	e8 4d 4c fb ff       	callq  e0be0 <mini_gc_init_cfg>
+  12bf93:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+  12bf98:	0f b6 40 20          	movzbl 0x20(%rax),%eax
+  12bf9c:	88 44 24 63          	mov    %al,0x63(%rsp)
+  12bfa0:	83 e0 7c             	and    $0x7c,%eax
+  12bfa3:	3c 58                	cmp    $0x58,%al
+  12bfa5:	0f 84 d5 10 00 00    	je     12d080 <mini_method_compile+0x1780>
+  12bfab:	41 f6 86 c1 02 00 00 	testb  $0x1,0x2c1(%r14)
+  12bfb2:	01 
+  12bfb3:	74 0b                	je     12bfc0 <mini_method_compile+0x6c0>
+  12bfb5:	41 81 8e a0 02 00 00 	orl    $0x40000,0x2a0(%r14)
+  12bfbc:	00 00 04 00 
+  12bfc0:	8b 05 a2 81 51 00    	mov    0x5181a2(%rip),%eax        # 644168 <verbose_method_inited.30698>
+  12bfc6:	85 c0                	test   %eax,%eax
+  12bfc8:	0f 84 52 0a 00 00    	je     12ca20 <mini_method_compile+0x1120>
+  12bfce:	48 8b 05 8b 81 51 00 	mov    0x51818b(%rip),%rax        # 644160 <verbose_method_names.30699>
+  12bfd5:	48 85 c0             	test   %rax,%rax
+  12bfd8:	0f 84 a2 00 00 00    	je     12c080 <mini_method_compile+0x780>
+  12bfde:	48 8b 28             	mov    (%rax),%rbp
+  12bfe1:	48 85 ed             	test   %rbp,%rbp
+  12bfe4:	0f 84 96 00 00 00    	je     12c080 <mini_method_compile+0x780>
+  12bfea:	31 db                	xor    %ebx,%ebx
+  12bfec:	eb 4a                	jmp    12c038 <mini_method_compile+0x738>
+  12bfee:	66 90                	xchg   %ax,%ax
+  12bff0:	48 89 ef             	mov    %rbp,%rdi
+  12bff3:	be 01 00 00 00       	mov    $0x1,%esi
+  12bff8:	e8 d3 3e 09 00       	callq  1bfed0 <mono_method_desc_new>
+  12bffd:	49 8b 36             	mov    (%r14),%rsi
+  12c000:	48 89 c7             	mov    %rax,%rdi
+  12c003:	48 89 c5             	mov    %rax,%rbp
+  12c006:	e8 55 42 09 00       	callq  1c0260 <mono_method_desc_full_match>
+  12c00b:	85 c0                	test   %eax,%eax
+  12c00d:	74 0b                	je     12c01a <mini_method_compile+0x71a>
+  12c00f:	41 c7 86 ac 02 00 00 	movl   $0x4,0x2ac(%r14)
+  12c016:	04 00 00 00 
+  12c01a:	48 89 ef             	mov    %rbp,%rdi
+  12c01d:	e8 4e 41 09 00       	callq  1c0170 <mono_method_desc_free>
+  12c022:	48 8b 05 37 81 51 00 	mov    0x518137(%rip),%rax        # 644160 <verbose_method_names.30699>
+  12c029:	83 c3 01             	add    $0x1,%ebx
+  12c02c:	48 63 d3             	movslq %ebx,%rdx
+  12c02f:	48 8b 2c d0          	mov    (%rax,%rdx,8),%rbp
+  12c033:	48 85 ed             	test   %rbp,%rbp
+  12c036:	74 48                	je     12c080 <mini_method_compile+0x780>
+  12c038:	be 2e 00 00 00       	mov    $0x2e,%esi
+  12c03d:	48 89 ef             	mov    %rbp,%rdi
+  12c040:	e8 9b f1 ef ff       	callq  2b1e0 <strchr@plt>
+  12c045:	48 39 e8             	cmp    %rbp,%rax
+  12c048:	77 a6                	ja     12bff0 <mini_method_compile+0x6f0>
+  12c04a:	be 3a 00 00 00       	mov    $0x3a,%esi
+  12c04f:	48 89 ef             	mov    %rbp,%rdi
+  12c052:	e8 89 f1 ef ff       	callq  2b1e0 <strchr@plt>
+  12c057:	48 85 c0             	test   %rax,%rax
+  12c05a:	75 94                	jne    12bff0 <mini_method_compile+0x6f0>
+  12c05c:	49 8b 06             	mov    (%r14),%rax
+  12c05f:	48 89 ee             	mov    %rbp,%rsi
+  12c062:	48 8b 78 18          	mov    0x18(%rax),%rdi
+  12c066:	e8 0d f9 ef ff       	callq  2b978 <strcmp@plt>
+  12c06b:	85 c0                	test   %eax,%eax
+  12c06d:	75 b3                	jne    12c022 <mini_method_compile+0x722>
+  12c06f:	41 c7 86 ac 02 00 00 	movl   $0x4,0x2ac(%r14)
+  12c076:	04 00 00 00 
+  12c07a:	eb a6                	jmp    12c022 <mini_method_compile+0x722>
+  12c07c:	0f 1f 40 00          	nopl   0x0(%rax)
+  12c080:	48 8b 44 24 28       	mov    0x28(%rsp),%rax
+  12c085:	49 8b 7e 10          	mov    0x10(%r14),%rdi
+  12c089:	0f b7 40 0c          	movzwl 0xc(%rax),%eax
+  12c08d:	25 ff 7f 00 00       	and    $0x7fff,%eax
+  12c092:	8d 34 c0             	lea    (%rax,%rax,8),%esi
+  12c095:	01 f6                	add    %esi,%esi
+  12c097:	e8 94 3e 0c 00       	callq  1eff30 <mono_mempool_alloc0>
+  12c09c:	49 89 86 e0 02 00 00 	mov    %rax,0x2e0(%r14)
+  12c0a3:	41 8b 86 ac 02 00 00 	mov    0x2ac(%r14),%eax
+  12c0aa:	85 c0                	test   %eax,%eax
+  12c0ac:	0f 85 fe 08 00 00    	jne    12c9b0 <mini_method_compile+0x10b0>
+  12c0b2:	41 8b 86 a0 02 00 00 	mov    0x2a0(%r14),%eax
+  12c0b9:	a9 00 00 04 00       	test   $0x40000,%eax
+  12c0be:	74 0c                	je     12c0cc <mini_method_compile+0x7cc>
+  12c0c0:	0d 00 00 20 00       	or     $0x200000,%eax
+  12c0c5:	41 89 86 a0 02 00 00 	mov    %eax,0x2a0(%r14)
+  12c0cc:	e8 9f ec f8 ff       	callq  bad70 <mono_regstate_new>
+  12c0d1:	41 f6 86 a2 02 00 00 	testb  $0x20,0x2a2(%r14)
+  12c0d8:	20 
+  12c0d9:	49 89 86 a8 00 00 00 	mov    %rax,0xa8(%r14)
+  12c0e0:	8b 00                	mov    (%rax),%eax
+  12c0e2:	41 89 86 20 02 00 00 	mov    %eax,0x220(%r14)
+  12c0e9:	74 08                	je     12c0f3 <mini_method_compile+0x7f3>
+  12c0eb:	41 80 a6 c0 02 00 00 	andb   $0xf7,0x2c0(%r14)
+  12c0f2:	f7 
+  12c0f3:	49 8b 36             	mov    (%r14),%rsi
+  12c0f6:	ba 01 00 00 00       	mov    $0x1,%edx
+  12c0fb:	4c 89 f7             	mov    %r14,%rdi
+  12c0fe:	e8 9d d8 ff ff       	callq  1299a0 <mono_compile_is_broken>
+  12c103:	85 c0                	test   %eax,%eax
+  12c105:	0f 85 73 23 00 00    	jne    12e47e <mini_method_compile+0x2b7e>
+  12c10b:	49 8b 3e             	mov    (%r14),%rdi
+  12c10e:	49 8b 6e 08          	mov    0x8(%r14),%rbp
+  12c112:	e8 a9 4a 0b 00       	callq  1e0bc0 <mono_method_signature>
+  12c117:	48 8b 38             	mov    (%rax),%rdi
+  12c11a:	49 89 c5             	mov    %rax,%r13
+  12c11d:	e8 ee f9 0c 00       	callq  1fbb10 <mono_type_is_void>
+  12c122:	85 c0                	test   %eax,%eax
+  12c124:	0f 84 4e 09 00 00    	je     12ca78 <mini_method_compile+0x1178>
+  12c12a:	41 83 be ac 02 00 00 	cmpl   $0x2,0x2ac(%r14)
+  12c131:	02 
+  12c132:	0f 87 28 09 00 00    	ja     12ca60 <mini_method_compile+0x1160>
+  12c138:	41 0f b6 75 0e       	movzbl 0xe(%r13),%esi
+  12c13d:	41 0f b7 45 08       	movzwl 0x8(%r13),%eax
+  12c142:	49 8b 7e 10          	mov    0x10(%r14),%rdi
+  12c146:	40 c0 ee 06          	shr    $0x6,%sil
+  12c14a:	83 e6 01             	and    $0x1,%esi
+  12c14d:	01 c6                	add    %eax,%esi
+  12c14f:	c1 e6 03             	shl    $0x3,%esi
+  12c152:	e8 d9 3d 0c 00       	callq  1eff30 <mono_mempool_alloc0>
+  12c157:	49 89 86 a0 01 00 00 	mov    %rax,0x1a0(%r14)
+  12c15e:	41 f6 45 0e 40       	testb  $0x40,0xe(%r13)
+  12c163:	48 89 c3             	mov    %rax,%rbx
+  12c166:	0f 85 34 09 00 00    	jne    12caa0 <mini_method_compile+0x11a0>
+  12c16c:	31 db                	xor    %ebx,%ebx
+  12c16e:	66 41 83 7d 08 00    	cmpw   $0x0,0x8(%r13)
+  12c174:	74 48                	je     12c1be <mini_method_compile+0x8be>
+  12c176:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+  12c17d:	00 00 00 
+  12c180:	41 0f b6 45 0e       	movzbl 0xe(%r13),%eax
+  12c185:	49 8b 96 a0 01 00 00 	mov    0x1a0(%r14),%rdx
+  12c18c:	4c 89 f7             	mov    %r14,%rdi
+  12c18f:	c0 e8 06             	shr    $0x6,%al
+  12c192:	83 e0 01             	and    $0x1,%eax
+  12c195:	01 d8                	add    %ebx,%eax
+  12c197:	48 98                	cltq   
+  12c199:	4c 8d 3c c2          	lea    (%rdx,%rax,8),%r15
+  12c19d:	48 63 c3             	movslq %ebx,%rax
+  12c1a0:	ba 56 01 00 00       	mov    $0x156,%edx
+  12c1a5:	49 8b 74 c5 10       	mov    0x10(%r13,%rax,8),%rsi
+  12c1aa:	83 c3 01             	add    $0x1,%ebx
+  12c1ad:	e8 de f6 ff ff       	callq  12b890 <mono_compile_create_var>
+  12c1b2:	49 89 07             	mov    %rax,(%r15)
+  12c1b5:	41 0f b7 45 08       	movzwl 0x8(%r13),%eax
+  12c1ba:	39 c3                	cmp    %eax,%ebx
+  12c1bc:	7c c2                	jl     12c180 <mini_method_compile+0x880>
+  12c1be:	41 83 be ac 02 00 00 	cmpl   $0x2,0x2ac(%r14)
+  12c1c5:	02 
+  12c1c6:	0f 86 80 00 00 00    	jbe    12c24c <mini_method_compile+0x94c>
+  12c1cc:	49 83 7e 28 00       	cmpq   $0x0,0x28(%r14)
+  12c1d1:	74 1c                	je     12c1ef <mini_method_compile+0x8ef>
+  12c1d3:	48 8d 35 bd 0b 20 00 	lea    0x200bbd(%rip),%rsi        # 32cd97 <__func__.29097+0x857>
+  12c1da:	bf 01 00 00 00       	mov    $0x1,%edi
+  12c1df:	31 c0                	xor    %eax,%eax
+  12c1e1:	e8 3a e8 ef ff       	callq  2aa20 <__printf_chk@plt>
+  12c1e6:	49 8b 7e 28          	mov    0x28(%r14),%rdi
+  12c1ea:	e8 91 bc f8 ff       	callq  b7e80 <mono_print_ins>
+  12c1ef:	41 f6 45 0e 40       	testb  $0x40,0xe(%r13)
+  12c1f4:	0f 85 76 14 00 00    	jne    12d670 <mini_method_compile+0x1d70>
+  12c1fa:	31 db                	xor    %ebx,%ebx
+  12c1fc:	66 41 83 7d 08 00    	cmpw   $0x0,0x8(%r13)
+  12c202:	4c 8d 3d a1 0b 20 00 	lea    0x200ba1(%rip),%r15        # 32cdaa <__func__.29097+0x86a>
+  12c209:	74 41                	je     12c24c <mini_method_compile+0x94c>
+  12c20b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+  12c210:	89 da                	mov    %ebx,%edx
+  12c212:	4c 89 fe             	mov    %r15,%rsi
+  12c215:	bf 01 00 00 00       	mov    $0x1,%edi
+  12c21a:	31 c0                	xor    %eax,%eax
+  12c21c:	e8 ff e7 ef ff       	callq  2aa20 <__printf_chk@plt>
+  12c221:	41 0f b6 45 0e       	movzbl 0xe(%r13),%eax
+  12c226:	49 8b 96 a0 01 00 00 	mov    0x1a0(%r14),%rdx
+  12c22d:	c0 e8 06             	shr    $0x6,%al
+  12c230:	83 e0 01             	and    $0x1,%eax
+  12c233:	01 d8                	add    %ebx,%eax
+  12c235:	83 c3 01             	add    $0x1,%ebx
+  12c238:	48 98                	cltq   
+  12c23a:	48 8b 3c c2          	mov    (%rdx,%rax,8),%rdi
+  12c23e:	e8 3d bc f8 ff       	callq  b7e80 <mono_print_ins>
+  12c243:	41 0f b7 45 08       	movzwl 0x8(%r13),%eax
+  12c248:	39 c3                	cmp    %eax,%ebx
+  12c24a:	7c c4                	jl     12c210 <mini_method_compile+0x910>
+  12c24c:	41 8b 86 94 00 00 00 	mov    0x94(%r14),%eax
+  12c253:	49 8b 7e 10          	mov    0x10(%r14),%rdi
+  12c257:	41 89 86 90 00 00 00 	mov    %eax,0x90(%r14)
+  12c25e:	0f b7 75 10          	movzwl 0x10(%rbp),%esi
+  12c262:	c1 e6 03             	shl    $0x3,%esi
+  12c265:	e8 c6 3c 0c 00       	callq  1eff30 <mono_mempool_alloc0>
+  12c26a:	49 89 86 90 01 00 00 	mov    %rax,0x190(%r14)
+  12c271:	41 8b 86 ac 02 00 00 	mov    0x2ac(%r14),%eax
+  12c278:	83 f8 02             	cmp    $0x2,%eax
+  12c27b:	0f 87 a7 00 00 00    	ja     12c328 <mini_method_compile+0xa28>
+  12c281:	66 83 7d 10 00       	cmpw   $0x0,0x10(%rbp)
+  12c286:	0f 84 d7 00 00 00    	je     12c363 <mini_method_compile+0xa63>
+  12c28c:	31 db                	xor    %ebx,%ebx
+  12c28e:	45 31 ff             	xor    %r15d,%r15d
+  12c291:	eb 40                	jmp    12c2d3 <mini_method_compile+0x9d3>
+  12c293:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+  12c298:	49 63 c7             	movslq %r15d,%rax
+  12c29b:	4d 8b ae 90 01 00 00 	mov    0x190(%r14),%r13
+  12c2a2:	ba 55 01 00 00       	mov    $0x155,%edx
+  12c2a7:	48 8b 74 c5 20       	mov    0x20(%rbp,%rax,8),%rsi
+  12c2ac:	4c 89 f7             	mov    %r14,%rdi
+  12c2af:	41 83 c7 01          	add    $0x1,%r15d
+  12c2b3:	49 01 dd             	add    %rbx,%r13
+  12c2b6:	48 83 c3 08          	add    $0x8,%rbx
+  12c2ba:	e8 d1 f5 ff ff       	callq  12b890 <mono_compile_create_var>
+  12c2bf:	49 89 45 00          	mov    %rax,0x0(%r13)
+  12c2c3:	0f b7 45 10          	movzwl 0x10(%rbp),%eax
+  12c2c7:	41 39 c7             	cmp    %eax,%r15d
+  12c2ca:	41 8b 86 ac 02 00 00 	mov    0x2ac(%r14),%eax
+  12c2d1:	7d 7d                	jge    12c350 <mini_method_compile+0xa50>
+  12c2d3:	83 f8 02             	cmp    $0x2,%eax
+  12c2d6:	76 c0                	jbe    12c298 <mini_method_compile+0x998>
+  12c2d8:	48 8d 3d e8 0a 20 00 	lea    0x200ae8(%rip),%rdi        # 32cdc7 <__func__.29097+0x887>
+  12c2df:	44 89 fe             	mov    %r15d,%esi
+  12c2e2:	31 c0                	xor    %eax,%eax
+  12c2e4:	e8 67 bc 1d 00       	callq  307f50 <monoeg_g_print>
+  12c2e9:	eb ad                	jmp    12c298 <mini_method_compile+0x998>
+  12c2eb:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+  12c2f0:	48 8b 4c 24 08       	mov    0x8(%rsp),%rcx
+  12c2f5:	48 39 4c 24 10       	cmp    %rcx,0x10(%rsp)
+  12c2fa:	0f 84 77 fa ff ff    	je     12bd77 <mini_method_compile+0x477>
+  12c300:	48 8d 0d 18 0a 20 00 	lea    0x200a18(%rip),%rcx        # 32cd1f <__func__.29097+0x7df>
+  12c307:	48 8d 35 3e 08 1f 00 	lea    0x1f083e(%rip),%rsi        # 31cb4c <opstr+0x4ac>
+  12c30e:	48 8d 3d a3 51 1e 00 	lea    0x1e51a3(%rip),%rdi        # 3114b8 <_IO_stdin_used+0xb8>
+  12c315:	ba c1 0c 00 00       	mov    $0xcc1,%edx
+  12c31a:	31 c0                	xor    %eax,%eax
+  12c31c:	e8 ef be 1d 00       	callq  308210 <monoeg_assertion_message>
+  12c321:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+  12c328:	48 8d 3d 87 0a 20 00 	lea    0x200a87(%rip),%rdi        # 32cdb6 <__func__.29097+0x876>
+  12c32f:	31 c0                	xor    %eax,%eax
+  12c331:	e8 1a bc 1d 00       	callq  307f50 <monoeg_g_print>
+  12c336:	66 83 7d 10 00       	cmpw   $0x0,0x10(%rbp)
+  12c33b:	41 8b 86 ac 02 00 00 	mov    0x2ac(%r14),%eax
+  12c342:	0f 85 44 ff ff ff    	jne    12c28c <mini_method_compile+0x98c>
+  12c348:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+  12c34f:	00 
+  12c350:	83 f8 02             	cmp    $0x2,%eax
+  12c353:	76 0e                	jbe    12c363 <mini_method_compile+0xa63>
+  12c355:	48 8d 3d 79 0a 20 00 	lea    0x200a79(%rip),%rdi        # 32cdd5 <__func__.29097+0x895>
+  12c35c:	31 c0                	xor    %eax,%eax
+  12c35e:	e8 ed bb 1d 00       	callq  307f50 <monoeg_g_print>
+  12c363:	41 f6 86 c1 02 00 00 	testb  $0x1,0x2c1(%r14)
+  12c36a:	01 
+  12c36b:	4c 89 f7             	mov    %r14,%rdi
+  12c36e:	0f 84 14 05 00 00    	je     12c888 <mini_method_compile+0xf88>
+  12c374:	e8 f7 ee fc ff       	callq  fb270 <mono_llvm_create_vars>
+  12c379:	49 8b 06             	mov    (%r14),%rax
+  12c37c:	f6 40 21 01          	testb  $0x1,0x21(%rax)
+  12c380:	74 3e                	je     12c3c0 <mini_method_compile+0xac0>
+  12c382:	41 f6 86 c3 02 00 00 	testb  $0x8,0x2c3(%r14)
+  12c389:	08 
+  12c38a:	74 34                	je     12c3c0 <mini_method_compile+0xac0>
+  12c38c:	48 8d 05 2d d0 52 00 	lea    0x52d02d(%rip),%rax        # 6593c0 <mono_defaults>
+  12c393:	ba 55 01 00 00       	mov    $0x155,%edx
+  12c398:	4c 89 f7             	mov    %r14,%rdi
+  12c39b:	48 8b 70 50          	mov    0x50(%rax),%rsi
+  12c39f:	48 81 c6 b0 00 00 00 	add    $0xb0,%rsi
+  12c3a6:	e8 e5 f4 ff ff       	callq  12b890 <mono_compile_create_var>
+  12c3ab:	80 48 03 24          	orb    $0x24,0x3(%rax)
+  12c3af:	49 89 86 58 02 00 00 	mov    %rax,0x258(%r14)
+  12c3b6:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+  12c3bd:	00 00 00 
+  12c3c0:	4c 89 f7             	mov    %r14,%rdi
+  12c3c3:	e8 78 53 00 00       	callq  131740 <mono_cfg_dump_create_context>
+  12c3c8:	4c 89 f7             	mov    %r14,%rdi
+  12c3cb:	e8 e0 51 00 00       	callq  1315b0 <mono_cfg_dump_begin_group>
+  12c3d0:	e8 5b 44 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12c3d5:	6a 00                	pushq  $0x0
+  12c3d7:	6a 00                	pushq  $0x0
+  12c3d9:	45 31 c9             	xor    %r9d,%r9d
+  12c3dc:	48 8b 74 24 20       	mov    0x20(%rsp),%rsi
+  12c3e1:	45 31 c0             	xor    %r8d,%r8d
+  12c3e4:	31 c9                	xor    %ecx,%ecx
+  12c3e6:	31 d2                	xor    %edx,%edx
+  12c3e8:	4c 89 f7             	mov    %r14,%rdi
+  12c3eb:	48 89 c5             	mov    %rax,%rbp
+  12c3ee:	e8 0d 46 f2 ff       	callq  50a00 <mono_method_to_ir>
+  12c3f3:	89 c3                	mov    %eax,%ebx
+  12c3f5:	48 8d 05 44 6e 51 00 	lea    0x516e44(%rip),%rax        # 643240 <mono_jit_stats>
+  12c3fc:	48 89 ee             	mov    %rbp,%rsi
+  12c3ff:	48 8d 78 78          	lea    0x78(%rax),%rdi
+  12c403:	e8 58 ed ff ff       	callq  12b160 <mono_time_track_end>
+  12c408:	48 8d 35 d3 09 20 00 	lea    0x2009d3(%rip),%rsi        # 32cde2 <__func__.29097+0x8a2>
+  12c40f:	4c 89 f7             	mov    %r14,%rdi
+  12c412:	e8 79 55 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12c417:	49 83 be 38 05 00 00 	cmpq   $0x0,0x538(%r14)
+  12c41e:	00 
+  12c41f:	41 5d                	pop    %r13
+  12c421:	41 5f                	pop    %r15
+  12c423:	74 17                	je     12c43c <mini_method_compile+0xb3c>
+  12c425:	4c 89 f7             	mov    %r14,%rdi
+  12c428:	e8 13 b8 ff ff       	callq  127c40 <mono_insert_nop_in_empty_bb>
+  12c42d:	48 8d 35 bb 09 20 00 	lea    0x2009bb(%rip),%rsi        # 32cdef <__func__.29097+0x8af>
+  12c434:	4c 89 f7             	mov    %r14,%rdi
+  12c437:	e8 54 55 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12c43c:	85 db                	test   %ebx,%ebx
+  12c43e:	0f 88 24 05 00 00    	js     12c968 <mini_method_compile+0x1068>
+  12c444:	41 8b 86 88 00 00 00 	mov    0x88(%r14),%eax
+  12c44b:	41 01 86 48 05 00 00 	add    %eax,0x548(%r14)
+  12c452:	4d 89 f7             	mov    %r14,%r15
+  12c455:	41 f6 86 c1 02 00 00 	testb  $0x1,0x2c1(%r14)
+  12c45c:	01 
+  12c45d:	0f 84 b8 00 00 00    	je     12c51b <mini_method_compile+0xc1b>
+  12c463:	41 8b 86 a0 02 00 00 	mov    0x2a0(%r14),%eax
+  12c46a:	49 8b 56 28          	mov    0x28(%r14),%rdx
+  12c46e:	0d 00 00 20 00       	or     $0x200000,%eax
+  12c473:	48 85 d2             	test   %rdx,%rdx
+  12c476:	41 89 86 a0 02 00 00 	mov    %eax,0x2a0(%r14)
+  12c47d:	0f 84 8f 00 00 00    	je     12c512 <mini_method_compile+0xc12>
+  12c483:	80 62 03 fb          	andb   $0xfb,0x3(%rdx)
+  12c487:	be 50 00 00 00       	mov    $0x50,%esi
+  12c48c:	49 8b 7e 10          	mov    0x10(%r14),%rdi
+  12c490:	e8 5b 39 0c 00       	callq  1efdf0 <mono_mempool_alloc>
+  12c495:	48 c7 c2 ff ff ff ff 	mov    $0xffffffffffffffff,%rdx
+  12c49c:	48 b9 5b 01 00 00 ff 	movabs $0xffffffff0000015b,%rcx
+  12c4a3:	ff ff ff 
+  12c4a6:	48 c7 40 30 00 00 00 	movq   $0x0,0x30(%rax)
+  12c4ad:	00 
+  12c4ae:	48 89 50 08          	mov    %rdx,0x8(%rax)
+  12c4b2:	48 c7 40 28 00 00 00 	movq   $0x0,0x28(%rax)
+  12c4b9:	00 
+  12c4ba:	48 c7 40 20 00 00 00 	movq   $0x0,0x20(%rax)
+  12c4c1:	00 
+  12c4c2:	48 c7 40 18 00 00 00 	movq   $0x0,0x18(%rax)
+  12c4c9:	00 
+  12c4ca:	48 89 08             	mov    %rcx,(%rax)
+  12c4cd:	89 50 10             	mov    %edx,0x10(%rax)
+  12c4d0:	49 8b 96 e0 01 00 00 	mov    0x1e0(%r14),%rdx
+  12c4d7:	48 89 50 38          	mov    %rdx,0x38(%rax)
+  12c4db:	49 8b 56 28          	mov    0x28(%r14),%rdx
+  12c4df:	8b 52 04             	mov    0x4(%rdx),%edx
+  12c4e2:	89 50 08             	mov    %edx,0x8(%rax)
+  12c4e5:	49 8b 4e 38          	mov    0x38(%r14),%rcx
+  12c4e9:	48 8b 11             	mov    (%rcx),%rdx
+  12c4ec:	48 85 d2             	test   %rdx,%rdx
+  12c4ef:	0f 84 0a 1a 00 00    	je     12deff <mini_method_compile+0x25ff>
+  12c4f5:	48 89 42 18          	mov    %rax,0x18(%rdx)
+  12c4f9:	49 8b 56 38          	mov    0x38(%r14),%rdx
+  12c4fd:	48 8b 12             	mov    (%rdx),%rdx
+  12c500:	48 89 50 20          	mov    %rdx,0x20(%rax)
+  12c504:	49 8b 56 38          	mov    0x38(%r14),%rdx
+  12c508:	48 89 02             	mov    %rax,(%rdx)
+  12c50b:	41 8b 86 a0 02 00 00 	mov    0x2a0(%r14),%eax
+  12c512:	24 7d                	and    $0x7d,%al
+  12c514:	41 89 87 a0 02 00 00 	mov    %eax,0x2a0(%r15)
+  12c51b:	e8 10 43 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12c520:	4c 89 ff             	mov    %r15,%rdi
+  12c523:	48 89 c3             	mov    %rax,%rbx
+  12c526:	49 be db 01 00 00 ff 	movabs $0xffffffff000001db,%r14
+  12c52d:	ff ff ff 
+  12c530:	e8 eb 83 00 00       	callq  134920 <mono_liveness_handle_exception_clauses>
+  12c535:	48 8d 05 04 6d 51 00 	lea    0x516d04(%rip),%rax        # 643240 <mono_jit_stats>
+  12c53c:	48 89 de             	mov    %rbx,%rsi
+  12c53f:	49 c7 c4 ff ff ff ff 	mov    $0xffffffffffffffff,%r12
+  12c546:	48 8d b8 80 00 00 00 	lea    0x80(%rax),%rdi
+  12c54d:	e8 0e ec ff ff       	callq  12b160 <mono_time_track_end>
+  12c552:	48 8d 35 07 04 20 00 	lea    0x200407(%rip),%rsi        # 32c960 <__func__.29097+0x420>
+  12c559:	4c 89 ff             	mov    %r15,%rdi
+  12c55c:	e8 2f 54 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12c561:	e8 ca 42 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12c566:	49 8b 5f 30          	mov    0x30(%r15),%rbx
+  12c56a:	48 89 c5             	mov    %rax,%rbp
+  12c56d:	48 85 db             	test   %rbx,%rbx
+  12c570:	74 6a                	je     12c5dc <mini_method_compile+0xcdc>
+  12c572:	48 8b 43 08          	mov    0x8(%rbx),%rax
+  12c576:	48 85 c0             	test   %rax,%rax
+  12c579:	74 61                	je     12c5dc <mini_method_compile+0xcdc>
+  12c57b:	f6 80 ba 00 00 00 01 	testb  $0x1,0xba(%rax)
+  12c582:	74 4c                	je     12c5d0 <mini_method_compile+0xcd0>
+  12c584:	48 8b 13             	mov    (%rbx),%rdx
+  12c587:	48 85 d2             	test   %rdx,%rdx
+  12c58a:	74 44                	je     12c5d0 <mini_method_compile+0xcd0>
+  12c58c:	0f b7 12             	movzwl (%rdx),%edx
+  12c58f:	8d 8a b6 fd ff ff    	lea    -0x24a(%rdx),%ecx
+  12c595:	66 83 f9 09          	cmp    $0x9,%cx
+  12c599:	76 35                	jbe    12c5d0 <mini_method_compile+0xcd0>
+  12c59b:	8d 8a 55 fd ff ff    	lea    -0x2ab(%rdx),%ecx
+  12c5a1:	66 83 f9 13          	cmp    $0x13,%cx
+  12c5a5:	0f 97 c1             	seta   %cl
+  12c5a8:	66 81 fa db 01       	cmp    $0x1db,%dx
+  12c5ad:	40 0f 95 c6          	setne  %sil
+  12c5b1:	21 f1                	and    %esi,%ecx
+  12c5b3:	66 81 fa 5d 03       	cmp    $0x35d,%dx
+  12c5b8:	40 0f 95 c6          	setne  %sil
+  12c5bc:	40 84 f1             	test   %sil,%cl
+  12c5bf:	74 0f                	je     12c5d0 <mini_method_compile+0xcd0>
+  12c5c1:	66 81 fa 8a 01       	cmp    $0x18a,%dx
+  12c5c6:	0f 85 14 1a 00 00    	jne    12dfe0 <mini_method_compile+0x26e0>
+  12c5cc:	0f 1f 40 00          	nopl   0x0(%rax)
+  12c5d0:	48 89 c3             	mov    %rax,%rbx
+  12c5d3:	48 8b 43 08          	mov    0x8(%rbx),%rax
+  12c5d7:	48 85 c0             	test   %rax,%rax
+  12c5da:	75 9f                	jne    12c57b <mini_method_compile+0xc7b>
+  12c5dc:	48 8d 05 5d 6c 51 00 	lea    0x516c5d(%rip),%rax        # 643240 <mono_jit_stats>
+  12c5e3:	48 89 ee             	mov    %rbp,%rsi
+  12c5e6:	48 8d b8 88 00 00 00 	lea    0x88(%rax),%rdi
+  12c5ed:	e8 6e eb ff ff       	callq  12b160 <mono_time_track_end>
+  12c5f2:	48 8d 35 12 08 20 00 	lea    0x200812(%rip),%rsi        # 32ce0b <__func__.29097+0x8cb>
+  12c5f9:	4c 89 ff             	mov    %r15,%rdi
+  12c5fc:	e8 8f 53 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12c601:	41 f6 87 c1 02 00 00 	testb  $0x1,0x2c1(%r15)
+  12c608:	01 
+  12c609:	0f 84 11 09 00 00    	je     12cf20 <mini_method_compile+0x1620>
+  12c60f:	41 f6 87 a0 02 00 00 	testb  $0x30,0x2a0(%r15)
+  12c616:	30 
+  12c617:	0f 85 c3 08 00 00    	jne    12cee0 <mini_method_compile+0x15e0>
+  12c61d:	41 f6 87 a5 02 00 00 	testb  $0x2,0x2a5(%r15)
+  12c624:	02 
+  12c625:	0f 85 65 08 00 00    	jne    12ce90 <mini_method_compile+0x1590>
+  12c62b:	41 f6 87 c5 02 00 00 	testb  $0x10,0x2c5(%r15)
+  12c632:	10 
+  12c633:	0f 85 d7 07 00 00    	jne    12ce10 <mini_method_compile+0x1510>
+  12c639:	41 f6 87 a0 02 00 00 	testb  $0x2,0x2a0(%r15)
+  12c640:	02 
+  12c641:	0f 85 0c 08 00 00    	jne    12ce53 <mini_method_compile+0x1553>
+  12c647:	e8 e4 41 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12c64c:	4c 89 ff             	mov    %r15,%rdi
+  12c64f:	48 89 c3             	mov    %rax,%rbx
+  12c652:	e8 99 c4 f4 ff       	callq  78af0 <mono_handle_global_vregs>
+  12c657:	48 8d 05 e2 6b 51 00 	lea    0x516be2(%rip),%rax        # 643240 <mono_jit_stats>
+  12c65e:	48 89 de             	mov    %rbx,%rsi
+  12c661:	48 8d b8 b8 00 00 00 	lea    0xb8(%rax),%rdi
+  12c668:	e8 f3 ea ff ff       	callq  12b160 <mono_time_track_end>
+  12c66d:	48 8d 35 0a 08 20 00 	lea    0x20080a(%rip),%rsi        # 32ce7e <__func__.29097+0x93e>
+  12c674:	4c 89 ff             	mov    %r15,%rdi
+  12c677:	e8 14 53 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12c67c:	41 8b 87 a0 02 00 00 	mov    0x2a0(%r15),%eax
+  12c683:	a8 40                	test   $0x40,%al
+  12c685:	0f 85 55 09 00 00    	jne    12cfe0 <mini_method_compile+0x16e0>
+  12c68b:	a9 00 00 00 10       	test   $0x10000000,%eax
+  12c690:	0f 85 0a 09 00 00    	jne    12cfa0 <mini_method_compile+0x16a0>
+  12c696:	41 f6 87 c1 02 00 00 	testb  $0x1,0x2c1(%r15)
+  12c69d:	01 
+  12c69e:	0f 84 bc 08 00 00    	je     12cf60 <mini_method_compile+0x1660>
+  12c6a4:	48 8d 05 5d d5 52 00 	lea    0x52d55d(%rip),%rax        # 659c08 <mono_polling_required>
+  12c6ab:	48 8b 00             	mov    (%rax),%rax
+  12c6ae:	48 85 c0             	test   %rax,%rax
+  12c6b1:	0f 85 39 15 00 00    	jne    12dbf0 <mini_method_compile+0x22f0>
+  12c6b7:	e8 74 41 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12c6bc:	c7 44 24 7c 00 00 00 	movl   $0x0,0x7c(%rsp)
+  12c6c3:	00 
+  12c6c4:	49 89 c4             	mov    %rax,%r12
+  12c6c7:	49 8b 07             	mov    (%r15),%rax
+  12c6ca:	48 8d 3d f1 07 20 00 	lea    0x2007f1(%rip),%rdi        # 32cec2 <__func__.29097+0x982>
+  12c6d1:	b9 0f 00 00 00       	mov    $0xf,%ecx
+  12c6d6:	48 8b 40 18          	mov    0x18(%rax),%rax
+  12c6da:	48 89 c6             	mov    %rax,%rsi
+  12c6dd:	f3 a6                	repz cmpsb %es:(%rdi),%ds:(%rsi)
+  12c6df:	0f 84 f3 03 00 00    	je     12cad8 <mini_method_compile+0x11d8>
+  12c6e5:	48 8d 3d e5 07 20 00 	lea    0x2007e5(%rip),%rdi        # 32ced1 <__func__.29097+0x991>
+  12c6ec:	b9 14 00 00 00       	mov    $0x14,%ecx
+  12c6f1:	48 89 c6             	mov    %rax,%rsi
+  12c6f4:	41 8b 97 88 00 00 00 	mov    0x88(%r15),%edx
+  12c6fb:	f3 a6                	repz cmpsb %es:(%rdi),%ds:(%rsi)
+  12c6fd:	40 0f 97 c6          	seta   %sil
+  12c701:	0f 92 c1             	setb   %cl
+  12c704:	44 8d 04 d5 08 00 00 	lea    0x8(,%rdx,8),%r8d
+  12c70b:	00 
+  12c70c:	40 38 ce             	cmp    %cl,%sil
+  12c70f:	49 8b 57 10          	mov    0x10(%r15),%rdx
+  12c713:	0f 85 cf 09 00 00    	jne    12d0e8 <mini_method_compile+0x17e8>
+  12c719:	44 89 c6             	mov    %r8d,%esi
+  12c71c:	48 89 d7             	mov    %rdx,%rdi
+  12c71f:	e8 cc 36 0c 00       	callq  1efdf0 <mono_mempool_alloc>
+  12c724:	49 89 47 48          	mov    %rax,0x48(%r15)
+  12c728:	41 8b 87 88 00 00 00 	mov    0x88(%r15),%eax
+  12c72f:	41 b8 00 00 00 30    	mov    $0x30000000,%r8d
+  12c735:	41 89 87 8c 00 00 00 	mov    %eax,0x8c(%r15)
+  12c73c:	31 c9                	xor    %ecx,%ecx
+  12c73e:	48 8d 5c 24 7c       	lea    0x7c(%rsp),%rbx
+  12c743:	eb 0f                	jmp    12c754 <mini_method_compile+0xe54>
+  12c745:	0f 1f 00             	nopl   (%rax)
+  12c748:	83 c1 01             	add    $0x1,%ecx
+  12c74b:	44 39 c1             	cmp    %r8d,%ecx
+  12c74e:	0f 84 9c 03 00 00    	je     12caf0 <mini_method_compile+0x11f0>
+  12c754:	49 8b 7f 30          	mov    0x30(%r15),%rdi
+  12c758:	e8 f3 c3 ff ff       	callq  128b50 <clear_bb_stuff.isra.9>
+  12c75d:	c7 44 24 7c 00 00 00 	movl   $0x0,0x7c(%rsp)
+  12c764:	00 
+  12c765:	49 8b 57 48          	mov    0x48(%r15),%rdx
+  12c769:	48 89 de             	mov    %rbx,%rsi
+  12c76c:	49 8b 7f 30          	mov    0x30(%r15),%rdi
+  12c770:	e8 eb b3 ff ff       	callq  127b60 <df_visit>
+  12c775:	0f ae f0             	mfence 
+  12c778:	41 8b 87 88 00 00 00 	mov    0x88(%r15),%eax
+  12c77f:	8b 74 24 7c          	mov    0x7c(%rsp),%esi
+  12c783:	39 f0                	cmp    %esi,%eax
+  12c785:	73 c1                	jae    12c748 <mini_method_compile+0xe48>
+  12c787:	4d 89 fe             	mov    %r15,%r14
+  12c78a:	48 8b 5c 24 7c       	mov    0x7c(%rsp),%rbx
+  12c78f:	89 f5                	mov    %esi,%ebp
+  12c791:	49 8b 3e             	mov    (%r14),%rdi
+  12c794:	41 89 c7             	mov    %eax,%r15d
+  12c797:	be 01 00 00 00       	mov    $0x1,%esi
+  12c79c:	41 89 cd             	mov    %ecx,%r13d
+  12c79f:	e8 3c 45 09 00       	callq  1c0ce0 <mono_method_full_name>
+  12c7a4:	53                   	push   %rbx
+  12c7a5:	4c 8d 05 f4 0b 20 00 	lea    0x200bf4(%rip),%r8        # 32d3a0 <__func__.30510>
+  12c7ac:	55                   	push   %rbp
+  12c7ad:	48 8d 0d 58 07 20 00 	lea    0x200758(%rip),%rcx        # 32cf0c <__func__.29097+0x9cc>
+  12c7b4:	55                   	push   %rbp
+  12c7b5:	48 8d 35 90 03 1f 00 	lea    0x1f0390(%rip),%rsi        # 31cb4c <opstr+0x4ac>
+  12c7bc:	41 57                	push   %r15
+  12c7be:	48 8d 3d c3 01 20 00 	lea    0x2001c3(%rip),%rdi        # 32c988 <__func__.29097+0x448>
+  12c7c5:	41 57                	push   %r15
+  12c7c7:	50                   	push   %rax
+  12c7c8:	45 89 e9             	mov    %r13d,%r9d
+  12c7cb:	ba 8c 09 00 00       	mov    $0x98c,%edx
+  12c7d0:	31 c0                	xor    %eax,%eax
+  12c7d2:	e8 39 ba 1d 00       	callq  308210 <monoeg_assertion_message>
+  12c7d7:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+  12c7de:	00 00 
+  12c7e0:	45 8b 44 24 48       	mov    0x48(%r12),%r8d
+  12c7e5:	ba 01 00 00 00       	mov    $0x1,%edx
+  12c7ea:	45 85 c0             	test   %r8d,%r8d
+  12c7ed:	75 0a                	jne    12c7f9 <mini_method_compile+0xef9>
+  12c7ef:	8b 54 24 20          	mov    0x20(%rsp),%edx
+  12c7f3:	c1 ea 05             	shr    $0x5,%edx
+  12c7f6:	83 e2 01             	and    $0x1,%edx
+  12c7f9:	41 0f b6 86 c5 02 00 	movzbl 0x2c5(%r14),%eax
+  12c800:	00 
+  12c801:	83 e0 fe             	and    $0xfffffffe,%eax
+  12c804:	09 d0                	or     %edx,%eax
+  12c806:	41 88 86 c5 02 00 00 	mov    %al,0x2c5(%r14)
+  12c80d:	e9 d4 f3 ff ff       	jmpq   12bbe6 <mini_method_compile+0x2e6>
+  12c812:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  12c818:	41 0f b6 86 c2 02 00 	movzbl 0x2c2(%r14),%eax
+  12c81f:	00 
+  12c820:	41 80 8e c1 02 00 00 	orb    $0xc0,0x2c1(%r14)
+  12c827:	c0 
+  12c828:	41 80 8e c3 02 00 00 	orb    $0x80,0x2c3(%r14)
+  12c82f:	80 
+  12c830:	41 83 a6 a0 02 00 00 	andl   $0xffffff8b,0x2a0(%r14)
+  12c837:	8b 
+  12c838:	83 c8 e4             	or     $0xffffffe4,%eax
+  12c83b:	41 88 86 c2 02 00 00 	mov    %al,0x2c2(%r14)
+  12c842:	e9 22 f7 ff ff       	jmpq   12bf69 <mini_method_compile+0x669>
+  12c847:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+  12c84e:	00 00 
+  12c850:	e8 9b 4e 1d 00       	callq  3016f0 <mono_threads_is_hybrid_suspension_enabled>
+  12c855:	85 c0                	test   %eax,%eax
+  12c857:	0f 85 5b f3 ff ff    	jne    12bbb8 <mini_method_compile+0x2b8>
+  12c85d:	e9 61 f3 ff ff       	jmpq   12bbc3 <mini_method_compile+0x2c3>
+  12c862:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  12c868:	e8 03 ec 1d 00       	callq  30b470 <monoeg_g_ptr_array_new>
+  12c86d:	41 0f b6 8e c0 02 00 	movzbl 0x2c0(%r14),%ecx
+  12c874:	00 
+  12c875:	49 89 86 18 04 00 00 	mov    %rax,0x418(%r14)
+  12c87c:	83 e1 40             	and    $0x40,%ecx
+  12c87f:	e9 5b f4 ff ff       	jmpq   12bcdf <mini_method_compile+0x3df>
+  12c884:	0f 1f 40 00          	nopl   0x0(%rax)
+  12c888:	e8 03 2d fd ff       	callq  ff590 <mono_arch_create_vars>
+  12c88d:	e9 e7 fa ff ff       	jmpq   12c379 <mini_method_compile+0xa79>
+  12c892:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  12c898:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+  12c89d:	f6 40 21 08          	testb  $0x8,0x21(%rax)
+  12c8a1:	75 1b                	jne    12c8be <mini_method_compile+0xfbe>
+  12c8a3:	48 8b 40 08          	mov    0x8(%rax),%rax
+  12c8a7:	0f b6 40 24          	movzbl 0x24(%rax),%eax
+  12c8ab:	83 e0 07             	and    $0x7,%eax
+  12c8ae:	3c 02                	cmp    $0x2,%al
+  12c8b0:	74 0c                	je     12c8be <mini_method_compile+0xfbe>
+  12c8b2:	8b 74 24 50          	mov    0x50(%rsp),%esi
+  12c8b6:	85 f6                	test   %esi,%esi
+  12c8b8:	0f 84 3b f4 ff ff    	je     12bcf9 <mini_method_compile+0x3f9>
+  12c8be:	41 c7 86 6c 03 00 00 	movl   $0xb,0x36c(%r14)
+  12c8c5:	0b 00 00 00 
+  12c8c9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+  12c8d0:	48 8b 8c 24 58 01 00 	mov    0x158(%rsp),%rcx
+  12c8d7:	00 
+  12c8d8:	64 48 33 0c 25 28 00 	xor    %fs:0x28,%rcx
+  12c8df:	00 00 
+  12c8e1:	4c 89 f0             	mov    %r14,%rax
+  12c8e4:	0f 85 36 1f 00 00    	jne    12e820 <mini_method_compile+0x2f20>
+  12c8ea:	48 81 c4 68 01 00 00 	add    $0x168,%rsp
+  12c8f1:	5b                   	pop    %rbx
+  12c8f2:	5d                   	pop    %rbp
+  12c8f3:	41 5c                	pop    %r12
+  12c8f5:	41 5d                	pop    %r13
+  12c8f7:	41 5e                	pop    %r14
+  12c8f9:	41 5f                	pop    %r15
+  12c8fb:	c3                   	retq   
+  12c8fc:	0f 1f 40 00          	nopl   0x0(%rax)
+  12c900:	48 8d 9c 24 f0 00 00 	lea    0xf0(%rsp),%rbx
+  12c907:	00 
+  12c908:	31 f6                	xor    %esi,%esi
+  12c90a:	c7 84 24 f0 00 00 00 	movl   $0x0,0xf0(%rsp)
+  12c911:	00 00 00 00 
+  12c915:	48 89 da             	mov    %rbx,%rdx
+  12c918:	e8 63 13 fa ff       	callq  cdc80 <mini_get_shared_method_full>
+  12c91d:	66 83 bc 24 f0 00 00 	cmpw   $0x0,0xf0(%rsp)
+  12c924:	00 00 
+  12c926:	48 89 44 24 10       	mov    %rax,0x10(%rsp)
+  12c92b:	0f 84 fa f0 ff ff    	je     12ba2b <mini_method_compile+0x12b>
+  12c931:	48 89 df             	mov    %rbx,%rdi
+  12c934:	e8 37 b1 1c 00       	callq  2f7a70 <mono_error_get_message>
+  12c939:	4c 8d 05 80 0a 20 00 	lea    0x200a80(%rip),%r8        # 32d3c0 <__func__.30703>
+  12c940:	48 8d 0d 1e 8c 21 00 	lea    0x218c1e(%rip),%rcx        # 345565 <__func__.17520+0x245>
+  12c947:	48 8d 35 fe 01 1f 00 	lea    0x1f01fe(%rip),%rsi        # 31cb4c <opstr+0x4ac>
+  12c94e:	48 8d 3d c3 4c 1e 00 	lea    0x1e4cc3(%rip),%rdi        # 311618 <_IO_stdin_used+0x218>
+  12c955:	49 89 c1             	mov    %rax,%r9
+  12c958:	ba 5a 0c 00 00       	mov    $0xc5a,%edx
+  12c95d:	31 c0                	xor    %eax,%eax
+  12c95f:	e8 ac b8 1d 00       	callq  308210 <monoeg_assertion_message>
+  12c964:	0f 1f 40 00          	nopl   0x0(%rax)
+  12c968:	8b 6c 24 1c          	mov    0x1c(%rsp),%ebp
+  12c96c:	41 8b 86 6c 03 00 00 	mov    0x36c(%r14),%eax
+  12c973:	85 ed                	test   %ebp,%ebp
+  12c975:	0f 84 db 1b 00 00    	je     12e556 <mini_method_compile+0x2c56>
+  12c97b:	83 f8 0b             	cmp    $0xb,%eax
+  12c97e:	0f 85 4c ff ff ff    	jne    12c8d0 <mini_method_compile+0xfd0>
+  12c984:	8b 5c 24 4c          	mov    0x4c(%rsp),%ebx
+  12c988:	85 db                	test   %ebx,%ebx
+  12c98a:	0f 85 40 ff ff ff    	jne    12c8d0 <mini_method_compile+0xfd0>
+  12c990:	4c 89 f7             	mov    %r14,%rdi
+  12c993:	e8 a8 d9 ff ff       	callq  12a340 <mono_destroy_compile>
+  12c998:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+  12c99d:	c7 44 24 1c 00 00 00 	movl   $0x0,0x1c(%rsp)
+  12c9a4:	00 
+  12c9a5:	48 89 44 24 10       	mov    %rax,0x10(%rsp)
+  12c9aa:	e9 cd f0 ff ff       	jmpq   12ba7c <mini_method_compile+0x17c>
+  12c9af:	90                   	nop
+  12c9b0:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
+  12c9b5:	e8 a6 43 09 00       	callq  1c0d60 <mono_method_get_full_name>
+  12c9ba:	48 89 c3             	mov    %rax,%rbx
+  12c9bd:	41 0f b6 86 c6 02 00 	movzbl 0x2c6(%r14),%eax
+  12c9c4:	00 
+  12c9c5:	48 8d 35 80 6e 1f 00 	lea    0x1f6e80(%rip),%rsi        # 32384c <__func__.24675+0x9c>
+  12c9cc:	48 8d 0d 04 62 1e 00 	lea    0x1e6204(%rip),%rcx        # 312bd7 <_IO_stdin_used+0x17d7>
+  12c9d3:	48 8d 3d 92 03 20 00 	lea    0x200392(%rip),%rdi        # 32cd6c <__func__.29097+0x82c>
+  12c9da:	49 89 d8             	mov    %rbx,%r8
+  12c9dd:	89 c2                	mov    %eax,%edx
+  12c9df:	83 e2 60             	and    $0x60,%edx
+  12c9e2:	80 fa 20             	cmp    $0x20,%dl
+  12c9e5:	48 8d 15 e0 61 1e 00 	lea    0x1e61e0(%rip),%rdx        # 312bcc <_IO_stdin_used+0x17cc>
+  12c9ec:	48 0f 45 ce          	cmovne %rsi,%rcx
+  12c9f0:	a8 40                	test   $0x40,%al
+  12c9f2:	48 8d 05 fc 02 20 00 	lea    0x2002fc(%rip),%rax        # 32ccf5 <__func__.29097+0x7b5>
+  12c9f9:	48 0f 44 d6          	cmove  %rsi,%rdx
+  12c9fd:	41 f6 86 c1 02 00 00 	testb  $0x1,0x2c1(%r14)
+  12ca04:	01 
+  12ca05:	48 0f 45 f0          	cmovne %rax,%rsi
+  12ca09:	31 c0                	xor    %eax,%eax
+  12ca0b:	e8 40 b5 1d 00       	callq  307f50 <monoeg_g_print>
+  12ca10:	48 89 df             	mov    %rbx,%rdi
+  12ca13:	e8 e8 b1 1d 00       	callq  307c00 <monoeg_g_free>
+  12ca18:	e9 95 f6 ff ff       	jmpq   12c0b2 <mini_method_compile+0x7b2>
+  12ca1d:	0f 1f 00             	nopl   (%rax)
+  12ca20:	48 8d 3d 31 03 20 00 	lea    0x200331(%rip),%rdi        # 32cd58 <__func__.29097+0x818>
+  12ca27:	e8 b4 39 1e 00       	callq  3103e0 <monoeg_g_getenv>
+  12ca2c:	48 85 c0             	test   %rax,%rax
+  12ca2f:	0f 84 6b 0c 00 00    	je     12d6a0 <mini_method_compile+0x1da0>
+  12ca35:	48 8d 35 98 da 1e 00 	lea    0x1eda98(%rip),%rsi        # 31a4d4 <__func__.30657+0x8c4>
+  12ca3c:	ba ff ff ff ff       	mov    $0xffffffff,%edx
+  12ca41:	48 89 c7             	mov    %rax,%rdi
+  12ca44:	e8 47 c0 1d 00       	callq  308a90 <monoeg_g_strsplit>
+  12ca49:	48 89 05 10 77 51 00 	mov    %rax,0x517710(%rip)        # 644160 <verbose_method_names.30699>
+  12ca50:	c7 05 0e 77 51 00 01 	movl   $0x1,0x51770e(%rip)        # 644168 <verbose_method_inited.30698>
+  12ca57:	00 00 00 
+  12ca5a:	e9 76 f5 ff ff       	jmpq   12bfd5 <mini_method_compile+0x6d5>
+  12ca5f:	90                   	nop
+  12ca60:	48 8d 3d 21 03 20 00 	lea    0x200321(%rip),%rdi        # 32cd88 <__func__.29097+0x848>
+  12ca67:	31 c0                	xor    %eax,%eax
+  12ca69:	e8 e2 b4 1d 00       	callq  307f50 <monoeg_g_print>
+  12ca6e:	e9 c5 f6 ff ff       	jmpq   12c138 <mini_method_compile+0x838>
+  12ca73:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+  12ca78:	49 8b 75 00          	mov    0x0(%r13),%rsi
+  12ca7c:	ba 56 01 00 00       	mov    $0x156,%edx
+  12ca81:	4c 89 f7             	mov    %r14,%rdi
+  12ca84:	e8 07 ee ff ff       	callq  12b890 <mono_compile_create_var>
+  12ca89:	49 89 46 28          	mov    %rax,0x28(%r14)
+  12ca8d:	80 48 03 04          	orb    $0x4,0x3(%rax)
+  12ca91:	e9 94 f6 ff ff       	jmpq   12c12a <mini_method_compile+0x82a>
+  12ca96:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+  12ca9d:	00 00 00 
+  12caa0:	49 8b 06             	mov    (%r14),%rax
+  12caa3:	ba 56 01 00 00       	mov    $0x156,%edx
+  12caa8:	4c 89 f7             	mov    %r14,%rdi
+  12caab:	48 8b 70 08          	mov    0x8(%rax),%rsi
+  12caaf:	48 81 c6 a0 00 00 00 	add    $0xa0,%rsi
+  12cab6:	e8 d5 ed ff ff       	callq  12b890 <mono_compile_create_var>
+  12cabb:	48 89 03             	mov    %rax,(%rbx)
+  12cabe:	49 8b 86 a0 01 00 00 	mov    0x1a0(%r14),%rax
+  12cac5:	48 8b 00             	mov    (%rax),%rax
+  12cac8:	49 89 86 c8 01 00 00 	mov    %rax,0x1c8(%r14)
+  12cacf:	e9 98 f6 ff ff       	jmpq   12c16c <mini_method_compile+0x86c>
+  12cad4:	0f 1f 40 00          	nopl   0x0(%rax)
+  12cad8:	41 8b 87 88 00 00 00 	mov    0x88(%r15),%eax
+  12cadf:	49 8b 57 10          	mov    0x10(%r15),%rdx
+  12cae3:	44 8d 04 c5 08 00 00 	lea    0x8(,%rax,8),%r8d
+  12caea:	00 
+  12caeb:	e9 29 fc ff ff       	jmpq   12c719 <mini_method_compile+0xe19>
+  12caf0:	8d 56 01             	lea    0x1(%rsi),%edx
+  12caf3:	39 d0                	cmp    %edx,%eax
+  12caf5:	74 08                	je     12caff <mini_method_compile+0x11ff>
+  12caf7:	4c 89 ff             	mov    %r15,%rdi
+  12cafa:	e8 c1 db ff ff       	callq  12a6c0 <call_something_else>
+  12caff:	48 8d 05 3a 67 51 00 	lea    0x51673a(%rip),%rax        # 643240 <mono_jit_stats>
+  12cb06:	4c 89 e6             	mov    %r12,%rsi
+  12cb09:	48 8d b8 d8 00 00 00 	lea    0xd8(%rax),%rdi
+  12cb10:	e8 4b e6 ff ff       	callq  12b160 <mono_time_track_end>
+  12cb15:	48 8d 35 08 04 20 00 	lea    0x200408(%rip),%rsi        # 32cf24 <__func__.29097+0x9e4>
+  12cb1c:	4c 89 ff             	mov    %r15,%rdi
+  12cb1f:	e8 6c 4e 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12cb24:	41 8b 87 94 00 00 00 	mov    0x94(%r15),%eax
+  12cb2b:	3d d0 07 00 00       	cmp    $0x7d0,%eax
+  12cb30:	0f 86 9a 06 00 00    	jbe    12d1d0 <mini_method_compile+0x18d0>
+  12cb36:	41 0f b6 97 c0 02 00 	movzbl 0x2c0(%r15),%edx
+  12cb3d:	00 
+  12cb3e:	f6 c2 40             	test   $0x40,%dl
+  12cb41:	75 15                	jne    12cb58 <mini_method_compile+0x1258>
+  12cb43:	41 81 a7 a0 02 00 00 	andl   $0xffffff4f,0x2a0(%r15)
+  12cb4a:	4f ff ff ff 
+  12cb4e:	83 ca 02             	or     $0x2,%edx
+  12cb51:	41 88 97 c0 02 00 00 	mov    %dl,0x2c0(%r15)
+  12cb58:	3d 10 27 00 00       	cmp    $0x2710,%eax
+  12cb5d:	76 12                	jbe    12cb71 <mini_method_compile+0x1271>
+  12cb5f:	41 f6 87 c7 02 00 00 	testb  $0x1,0x2c7(%r15)
+  12cb66:	01 
+  12cb67:	75 08                	jne    12cb71 <mini_method_compile+0x1271>
+  12cb69:	41 80 8f c0 02 00 00 	orb    $0x2,0x2c0(%r15)
+  12cb70:	02 
+  12cb71:	41 f6 87 a1 02 00 00 	testb  $0x20,0x2a1(%r15)
+  12cb78:	20 
+  12cb79:	0f 85 89 0d 00 00    	jne    12d908 <mini_method_compile+0x2008>
+  12cb7f:	e8 ac 3c 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12cb84:	48 89 44 24 30       	mov    %rax,0x30(%rsp)
+  12cb89:	e8 32 42 1d 00       	callq  300dc0 <mono_threads_is_cooperative_suspension_enabled>
+  12cb8e:	85 c0                	test   %eax,%eax
+  12cb90:	0f 84 2a 0d 00 00    	je     12d8c0 <mini_method_compile+0x1fc0>
+  12cb96:	49 8b 3f             	mov    (%r15),%rdi
+  12cb99:	0f b6 47 20          	movzbl 0x20(%rdi),%eax
+  12cb9d:	83 e0 7c             	and    $0x7c,%eax
+  12cba0:	3c 18                	cmp    $0x18,%al
+  12cba2:	0f 84 97 13 00 00    	je     12df3f <mini_method_compile+0x263f>
+  12cba8:	3c 14                	cmp    $0x14,%al
+  12cbaa:	41 8b 97 ac 02 00 00 	mov    0x2ac(%r15),%edx
+  12cbb1:	0f 84 79 06 00 00    	je     12d230 <mini_method_compile+0x1930>
+  12cbb7:	83 fa 01             	cmp    $0x1,%edx
+  12cbba:	0f 87 f0 0d 00 00    	ja     12d9b0 <mini_method_compile+0x20b0>
+  12cbc0:	4d 8b 77 30          	mov    0x30(%r15),%r14
+  12cbc4:	4d 89 f4             	mov    %r14,%r12
+  12cbc7:	4d 85 f6             	test   %r14,%r14
+  12cbca:	0f 84 78 06 00 00    	je     12d248 <mini_method_compile+0x1948>
+  12cbd0:	49 bd 63 04 00 00 ff 	movabs $0xffffffff00000463,%r13
+  12cbd7:	ff ff ff 
+  12cbda:	48 c7 c5 ff ff ff ff 	mov    $0xffffffffffffffff,%rbp
+  12cbe1:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+  12cbe8:	41 80 bc 24 b9 00 00 	cmpb   $0x0,0xb9(%r12)
+  12cbef:	00 00 
+  12cbf1:	75 12                	jne    12cc05 <mini_method_compile+0x1305>
+  12cbf3:	4d 3b 67 30          	cmp    0x30(%r15),%r12
+  12cbf7:	74 0c                	je     12cc05 <mini_method_compile+0x1305>
+  12cbf9:	41 f6 44 24 58 10    	testb  $0x10,0x58(%r12)
+  12cbff:	0f 84 86 01 00 00    	je     12cd8b <mini_method_compile+0x148b>
+  12cc05:	41 f6 87 c3 02 00 00 	testb  $0x2,0x2c3(%r15)
+  12cc0c:	02 
+  12cc0d:	0f 85 78 01 00 00    	jne    12cd8b <mini_method_compile+0x148b>
+  12cc13:	83 fa 01             	cmp    $0x1,%edx
+  12cc16:	76 18                	jbe    12cc30 <mini_method_compile+0x1330>
+  12cc18:	41 8b 54 24 18       	mov    0x18(%r12),%edx
+  12cc1d:	48 8d 35 33 03 20 00 	lea    0x200333(%rip),%rsi        # 32cf57 <__func__.29097+0xa17>
+  12cc24:	bf 01 00 00 00       	mov    $0x1,%edi
+  12cc29:	31 c0                	xor    %eax,%eax
+  12cc2b:	e8 f0 dd ef ff       	callq  2aa20 <__printf_chk@plt>
+  12cc30:	e8 8b 41 1d 00       	callq  300dc0 <mono_threads_is_cooperative_suspension_enabled>
+  12cc35:	85 c0                	test   %eax,%eax
+  12cc37:	0f 84 9b 0c 00 00    	je     12d8d8 <mini_method_compile+0x1fd8>
+  12cc3d:	49 8b 87 d0 01 00 00 	mov    0x1d0(%r15),%rax
+  12cc44:	49 8b 7f 10          	mov    0x10(%r15),%rdi
+  12cc48:	be 50 00 00 00       	mov    $0x50,%esi
+  12cc4d:	f6 40 01 20          	testb  $0x20,0x1(%rax)
+  12cc51:	74 0e                	je     12cc61 <mini_method_compile+0x1361>
+  12cc53:	41 f6 87 c7 02 00 00 	testb  $0x1,0x2c7(%r15)
+  12cc5a:	01 
+  12cc5b:	0f 84 af 11 00 00    	je     12de10 <mini_method_compile+0x2510>
+  12cc61:	e8 8a 31 0c 00       	callq  1efdf0 <mono_mempool_alloc>
+  12cc66:	48 c7 40 30 00 00 00 	movq   $0x0,0x30(%rax)
+  12cc6d:	00 
+  12cc6e:	48 c7 40 28 00 00 00 	movq   $0x0,0x28(%rax)
+  12cc75:	00 
+  12cc76:	49 89 c6             	mov    %rax,%r14
+  12cc79:	48 c7 40 20 00 00 00 	movq   $0x0,0x20(%rax)
+  12cc80:	00 
+  12cc81:	48 c7 40 18 00 00 00 	movq   $0x0,0x18(%rax)
+  12cc88:	00 
+  12cc89:	41 0f b6 87 c0 02 00 	movzbl 0x2c0(%r15),%eax
+  12cc90:	00 
+  12cc91:	49 c7 46 02 00 00 ff 	movq   $0xffffffffffff0000,0x2(%r14)
+  12cc98:	ff 
+  12cc99:	49 89 6e 0a          	mov    %rbp,0xa(%r14)
+  12cc9d:	66 41 89 6e 12       	mov    %bp,0x12(%r14)
+  12cca2:	83 e0 40             	and    $0x40,%eax
+  12cca5:	3c 01                	cmp    $0x1,%al
+  12cca7:	19 c0                	sbb    %eax,%eax
+  12cca9:	66 25 3f fe          	and    $0xfe3f,%ax
+  12ccad:	66 05 3f 03          	add    $0x33f,%ax
+  12ccb1:	66 41 89 06          	mov    %ax,(%r14)
+  12ccb5:	49 8b 87 e0 01 00 00 	mov    0x1e0(%r15),%rax
+  12ccbc:	49 89 46 38          	mov    %rax,0x38(%r14)
+  12ccc0:	48 8d 05 41 cf 52 00 	lea    0x52cf41(%rip),%rax        # 659c08 <mono_polling_required>
+  12ccc7:	49 c7 46 30 30 00 00 	movq   $0x30,0x30(%r14)
+  12ccce:	00 
+  12cccf:	49 89 46 28          	mov    %rax,0x28(%r14)
+  12ccd3:	41 c6 46 02 03       	movb   $0x3,0x2(%r14)
+  12ccd8:	41 8b 87 20 02 00 00 	mov    0x220(%r15),%eax
+  12ccdf:	be 50 00 00 00       	mov    $0x50,%esi
+  12cce4:	8d 50 01             	lea    0x1(%rax),%edx
+  12cce7:	41 89 97 20 02 00 00 	mov    %edx,0x220(%r15)
+  12ccee:	41 89 46 04          	mov    %eax,0x4(%r14)
+  12ccf2:	49 8b 7f 10          	mov    0x10(%r15),%rdi
+  12ccf6:	e8 f5 30 0c 00       	callq  1efdf0 <mono_mempool_alloc>
+  12ccfb:	48 c7 40 30 00 00 00 	movq   $0x0,0x30(%rax)
+  12cd02:	00 
+  12cd03:	48 c7 40 28 00 00 00 	movq   $0x0,0x28(%rax)
+  12cd0a:	00 
+  12cd0b:	48 89 c1             	mov    %rax,%rcx
+  12cd0e:	48 c7 40 20 00 00 00 	movq   $0x0,0x20(%rax)
+  12cd15:	00 
+  12cd16:	48 c7 40 18 00 00 00 	movq   $0x0,0x18(%rax)
+  12cd1d:	00 
+  12cd1e:	4c 89 28             	mov    %r13,(%rax)
+  12cd21:	48 89 68 08          	mov    %rbp,0x8(%rax)
+  12cd25:	89 68 10             	mov    %ebp,0x10(%rax)
+  12cd28:	49 8b 87 e0 01 00 00 	mov    0x1e0(%r15),%rax
+  12cd2f:	48 89 41 38          	mov    %rax,0x38(%rcx)
+  12cd33:	41 8b 46 04          	mov    0x4(%r14),%eax
+  12cd37:	89 41 08             	mov    %eax,0x8(%rcx)
+  12cd3a:	41 f6 44 24 58 10    	testb  $0x10,0x58(%r12)
+  12cd40:	0f 84 0a 0b 00 00    	je     12d850 <mini_method_compile+0x1f50>
+  12cd46:	49 8b 44 24 10       	mov    0x10(%r12),%rax
+  12cd4b:	31 f6                	xor    %esi,%esi
+  12cd4d:	48 85 c0             	test   %rax,%rax
+  12cd50:	74 19                	je     12cd6b <mini_method_compile+0x146b>
+  12cd52:	0f b7 10             	movzwl (%rax),%edx
+  12cd55:	66 81 fa 43 03       	cmp    $0x343,%dx
+  12cd5a:	0f 84 2d 08 00 00    	je     12d58d <mini_method_compile+0x1c8d>
+  12cd60:	66 81 fa 46 03       	cmp    $0x346,%dx
+  12cd65:	0f 84 22 08 00 00    	je     12d58d <mini_method_compile+0x1c8d>
+  12cd6b:	4c 89 f2             	mov    %r14,%rdx
+  12cd6e:	4c 89 e7             	mov    %r12,%rdi
+  12cd71:	e8 ca d0 ff ff       	callq  129e40 <mono_bblock_insert_after_ins>
+  12cd76:	48 89 ca             	mov    %rcx,%rdx
+  12cd79:	4c 89 f6             	mov    %r14,%rsi
+  12cd7c:	4c 89 e7             	mov    %r12,%rdi
+  12cd7f:	e8 bc d0 ff ff       	callq  129e40 <mono_bblock_insert_after_ins>
+  12cd84:	41 8b 97 ac 02 00 00 	mov    0x2ac(%r15),%edx
+  12cd8b:	4d 8b 64 24 08       	mov    0x8(%r12),%r12
+  12cd90:	4d 85 e4             	test   %r12,%r12
+  12cd93:	0f 85 4f fe ff ff    	jne    12cbe8 <mini_method_compile+0x12e8>
+  12cd99:	83 fa 02             	cmp    $0x2,%edx
+  12cd9c:	0f 86 a6 04 00 00    	jbe    12d248 <mini_method_compile+0x1948>
+  12cda2:	4d 8b 77 30          	mov    0x30(%r15),%r14
+  12cda6:	4d 85 f6             	test   %r14,%r14
+  12cda9:	0f 84 99 04 00 00    	je     12d248 <mini_method_compile+0x1948>
+  12cdaf:	48 8d 2d bd 01 20 00 	lea    0x2001bd(%rip),%rbp        # 32cf73 <__func__.29097+0xa33>
+  12cdb6:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+  12cdbd:	00 00 00 
+  12cdc0:	4c 89 f7             	mov    %r14,%rdi
+  12cdc3:	48 89 ee             	mov    %rbp,%rsi
+  12cdc6:	e8 15 81 f1 ff       	callq  44ee0 <mono_print_bb>
+  12cdcb:	4d 8b 76 08          	mov    0x8(%r14),%r14
+  12cdcf:	4d 85 f6             	test   %r14,%r14
+  12cdd2:	75 ec                	jne    12cdc0 <mini_method_compile+0x14c0>
+  12cdd4:	e9 6f 04 00 00       	jmpq   12d248 <mini_method_compile+0x1948>
+  12cdd9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+  12cde0:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
+  12cde5:	e8 f6 10 fa ff       	callq  cdee0 <mini_is_gsharedvt_sharable_method>
+  12cdea:	85 c0                	test   %eax,%eax
+  12cdec:	0f 84 77 ef ff ff    	je     12bd69 <mini_method_compile+0x469>
+  12cdf2:	48 8b 44 24 10       	mov    0x10(%rsp),%rax
+  12cdf7:	f6 40 21 10          	testb  $0x10,0x21(%rax)
+  12cdfb:	0f 84 e5 15 00 00    	je     12e3e6 <mini_method_compile+0x2ae6>
+  12ce01:	48 8b 44 24 10       	mov    0x10(%rsp),%rax
+  12ce06:	48 8d 58 40          	lea    0x40(%rax),%rbx
+  12ce0a:	e9 28 ef ff ff       	jmpq   12bd37 <mini_method_compile+0x437>
+  12ce0f:	90                   	nop
+  12ce10:	e8 1b 3a 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12ce15:	4c 89 ff             	mov    %r15,%rdi
+  12ce18:	48 89 c3             	mov    %rax,%rbx
+  12ce1b:	e8 d0 59 f5 ff       	callq  827f0 <mono_local_emulate_ops>
+  12ce20:	48 8d 05 19 64 51 00 	lea    0x516419(%rip),%rax        # 643240 <mono_jit_stats>
+  12ce27:	48 89 de             	mov    %rbx,%rsi
+  12ce2a:	48 8d b8 a8 00 00 00 	lea    0xa8(%rax),%rdi
+  12ce31:	e8 2a e3 ff ff       	callq  12b160 <mono_time_track_end>
+  12ce36:	48 8d 35 1d 00 20 00 	lea    0x20001d(%rip),%rsi        # 32ce5a <__func__.29097+0x91a>
+  12ce3d:	4c 89 ff             	mov    %r15,%rdi
+  12ce40:	e8 4b 4b 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12ce45:	41 f6 87 a0 02 00 00 	testb  $0x2,0x2a0(%r15)
+  12ce4c:	02 
+  12ce4d:	0f 84 f4 f7 ff ff    	je     12c647 <mini_method_compile+0xd47>
+  12ce53:	e8 d8 39 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12ce58:	4c 89 ff             	mov    %r15,%rdi
+  12ce5b:	48 89 c3             	mov    %rax,%rbx
+  12ce5e:	e8 3d 8f f9 ff       	callq  c5da0 <mono_optimize_branches>
+  12ce63:	48 8d 05 d6 63 51 00 	lea    0x5163d6(%rip),%rax        # 643240 <mono_jit_stats>
+  12ce6a:	48 89 de             	mov    %rbx,%rsi
+  12ce6d:	48 8d b8 b0 00 00 00 	lea    0xb0(%rax),%rdi
+  12ce74:	e8 e7 e2 ff ff       	callq  12b160 <mono_time_track_end>
+  12ce79:	48 8d 35 ec ff 1f 00 	lea    0x1fffec(%rip),%rsi        # 32ce6c <__func__.29097+0x92c>
+  12ce80:	4c 89 ff             	mov    %r15,%rdi
+  12ce83:	e8 08 4b 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12ce88:	e9 ba f7 ff ff       	jmpq   12c647 <mini_method_compile+0xd47>
+  12ce8d:	0f 1f 00             	nopl   (%rax)
+  12ce90:	e8 9b 39 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12ce95:	4c 89 ff             	mov    %r15,%rdi
+  12ce98:	48 89 c3             	mov    %rax,%rbx
+  12ce9b:	e8 90 a7 fb ff       	callq  e7630 <mono_decompose_typechecks>
+  12cea0:	48 8d 05 99 63 51 00 	lea    0x516399(%rip),%rax        # 643240 <mono_jit_stats>
+  12cea7:	48 89 de             	mov    %rbx,%rsi
+  12ceaa:	48 8d b8 98 00 00 00 	lea    0x98(%rax),%rdi
+  12ceb1:	e8 aa e2 ff ff       	callq  12b160 <mono_time_track_end>
+  12ceb6:	49 83 bf 38 05 00 00 	cmpq   $0x0,0x538(%r15)
+  12cebd:	00 
+  12cebe:	74 08                	je     12cec8 <mini_method_compile+0x15c8>
+  12cec0:	4c 89 ff             	mov    %r15,%rdi
+  12cec3:	e8 78 ad ff ff       	callq  127c40 <mono_insert_nop_in_empty_bb>
+  12cec8:	48 8d 35 76 ff 1f 00 	lea    0x1fff76(%rip),%rsi        # 32ce45 <__func__.29097+0x905>
+  12cecf:	4c 89 ff             	mov    %r15,%rdi
+  12ced2:	e8 b9 4a 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12ced7:	e9 4f f7 ff ff       	jmpq   12c62b <mini_method_compile+0xd2b>
+  12cedc:	0f 1f 40 00          	nopl   0x0(%rax)
+  12cee0:	e8 4b 39 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12cee5:	4c 89 ff             	mov    %r15,%rdi
+  12cee8:	48 89 c3             	mov    %rax,%rbx
+  12ceeb:	e8 00 9d f5 ff       	callq  86bf0 <mono_local_cprop>
+  12cef0:	48 8d 05 49 63 51 00 	lea    0x516349(%rip),%rax        # 643240 <mono_jit_stats>
+  12cef7:	48 89 de             	mov    %rbx,%rsi
+  12cefa:	48 8d b8 a0 00 00 00 	lea    0xa0(%rax),%rdi
+  12cf01:	e8 5a e2 ff ff       	callq  12b160 <mono_time_track_end>
+  12cf06:	48 8d 35 2c ff 1f 00 	lea    0x1fff2c(%rip),%rsi        # 32ce39 <__func__.29097+0x8f9>
+  12cf0d:	4c 89 ff             	mov    %r15,%rdi
+  12cf10:	e8 7b 4a 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12cf15:	e9 03 f7 ff ff       	jmpq   12c61d <mini_method_compile+0xd1d>
+  12cf1a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  12cf20:	e8 0b 39 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12cf25:	4c 89 ff             	mov    %r15,%rdi
+  12cf28:	48 89 c3             	mov    %rax,%rbx
+  12cf2b:	e8 40 20 f5 ff       	callq  7ef70 <mono_decompose_long_opts>
+  12cf30:	48 8d 05 09 63 51 00 	lea    0x516309(%rip),%rax        # 643240 <mono_jit_stats>
+  12cf37:	48 89 de             	mov    %rbx,%rsi
+  12cf3a:	48 8d b8 90 00 00 00 	lea    0x90(%rax),%rdi
+  12cf41:	e8 1a e2 ff ff       	callq  12b160 <mono_time_track_end>
+  12cf46:	48 8d 35 d8 fe 1f 00 	lea    0x1ffed8(%rip),%rsi        # 32ce25 <__func__.29097+0x8e5>
+  12cf4d:	4c 89 ff             	mov    %r15,%rdi
+  12cf50:	e8 3b 4a 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12cf55:	e9 b5 f6 ff ff       	jmpq   12c60f <mini_method_compile+0xd0f>
+  12cf5a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  12cf60:	e8 cb 38 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12cf65:	4c 89 ff             	mov    %r15,%rdi
+  12cf68:	48 89 c3             	mov    %rax,%rbx
+  12cf6b:	e8 00 9d f9 ff       	callq  c6c70 <mono_if_conversion>
+  12cf70:	48 8d 05 c9 62 51 00 	lea    0x5162c9(%rip),%rax        # 643240 <mono_jit_stats>
+  12cf77:	48 89 de             	mov    %rbx,%rsi
+  12cf7a:	48 8d b8 d0 00 00 00 	lea    0xd0(%rax),%rdi
+  12cf81:	e8 da e1 ff ff       	callq  12b160 <mono_time_track_end>
+  12cf86:	48 8d 35 27 ff 1f 00 	lea    0x1fff27(%rip),%rsi        # 32ceb4 <__func__.29097+0x974>
+  12cf8d:	4c 89 ff             	mov    %r15,%rdi
+  12cf90:	e8 fb 49 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12cf95:	e9 0a f7 ff ff       	jmpq   12c6a4 <mini_method_compile+0xda4>
+  12cf9a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  12cfa0:	e8 8b 38 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12cfa5:	4c 89 ff             	mov    %r15,%rdi
+  12cfa8:	48 89 c3             	mov    %rax,%rbx
+  12cfab:	e8 f0 14 01 00       	callq  13e4a0 <mono_local_alias_analysis>
+  12cfb0:	48 8d 05 89 62 51 00 	lea    0x516289(%rip),%rax        # 643240 <mono_jit_stats>
+  12cfb7:	48 89 de             	mov    %rbx,%rsi
+  12cfba:	48 8d b8 c8 00 00 00 	lea    0xc8(%rax),%rdi
+  12cfc1:	e8 9a e1 ff ff       	callq  12b160 <mono_time_track_end>
+  12cfc6:	48 8d 35 d2 fe 1f 00 	lea    0x1ffed2(%rip),%rsi        # 32ce9f <__func__.29097+0x95f>
+  12cfcd:	4c 89 ff             	mov    %r15,%rdi
+  12cfd0:	e8 bb 49 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12cfd5:	e9 bc f6 ff ff       	jmpq   12c696 <mini_method_compile+0xd96>
+  12cfda:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  12cfe0:	e8 4b 38 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12cfe5:	4c 89 ff             	mov    %r15,%rdi
+  12cfe8:	48 89 c3             	mov    %rax,%rbx
+  12cfeb:	e8 80 c2 f5 ff       	callq  89270 <mono_local_deadce>
+  12cff0:	48 8d 05 49 62 51 00 	lea    0x516249(%rip),%rax        # 643240 <mono_jit_stats>
+  12cff7:	48 89 de             	mov    %rbx,%rsi
+  12cffa:	48 8d b8 c0 00 00 00 	lea    0xc0(%rax),%rdi
+  12d001:	e8 5a e1 ff ff       	callq  12b160 <mono_time_track_end>
+  12d006:	48 8d 35 85 fe 1f 00 	lea    0x1ffe85(%rip),%rsi        # 32ce92 <__func__.29097+0x952>
+  12d00d:	4c 89 ff             	mov    %r15,%rdi
+  12d010:	e8 7b 49 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12d015:	41 8b 87 a0 02 00 00 	mov    0x2a0(%r15),%eax
+  12d01c:	e9 6a f6 ff ff       	jmpq   12c68b <mini_method_compile+0xd8b>
+  12d021:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+  12d028:	4d 8b 6c 24 08       	mov    0x8(%r12),%r13
+  12d02d:	4d 85 ed             	test   %r13,%r13
+  12d030:	0f 84 4a 05 00 00    	je     12d580 <mini_method_compile+0x1c80>
+  12d036:	41 f7 45 04 ff ff 3f 	testl  $0x3fffff,0x4(%r13)
+  12d03d:	00 
+  12d03e:	0f 84 3c 05 00 00    	je     12d580 <mini_method_compile+0x1c80>
+  12d044:	45 31 e4             	xor    %r12d,%r12d
+  12d047:	eb 1d                	jmp    12d066 <mini_method_compile+0x1766>
+  12d049:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+  12d050:	41 8b 45 04          	mov    0x4(%r13),%eax
+  12d054:	41 83 c4 01          	add    $0x1,%r12d
+  12d058:	25 ff ff 3f 00       	and    $0x3fffff,%eax
+  12d05d:	41 39 c4             	cmp    %eax,%r12d
+  12d060:	0f 8d 1a 05 00 00    	jge    12d580 <mini_method_compile+0x1c80>
+  12d066:	49 63 c4             	movslq %r12d,%rax
+  12d069:	49 8b 7c c5 08       	mov    0x8(%r13,%rax,8),%rdi
+  12d06e:	e8 ad fb f9 ff       	callq  ccc20 <mini_is_gsharedvt_gparam>
+  12d073:	85 c0                	test   %eax,%eax
+  12d075:	74 d9                	je     12d050 <mini_method_compile+0x1750>
+  12d077:	e9 33 ee ff ff       	jmpq   12beaf <mini_method_compile+0x5af>
+  12d07c:	0f 1f 40 00          	nopl   0x0(%rax)
+  12d080:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
+  12d085:	e8 76 9c 0b 00       	callq  1e6d00 <mono_marshal_get_wrapper_info>
+  12d08a:	48 85 c0             	test   %rax,%rax
+  12d08d:	0f 84 18 ef ff ff    	je     12bfab <mini_method_compile+0x6ab>
+  12d093:	8b 00                	mov    (%rax),%eax
+  12d095:	83 e8 19             	sub    $0x19,%eax
+  12d098:	83 f8 01             	cmp    $0x1,%eax
+  12d09b:	0f 87 0a ef ff ff    	ja     12bfab <mini_method_compile+0x6ab>
+  12d0a1:	41 0f b6 86 c3 02 00 	movzbl 0x2c3(%r14),%eax
+  12d0a8:	00 
+  12d0a9:	83 c8 02             	or     $0x2,%eax
+  12d0ac:	83 e0 df             	and    $0xffffffdf,%eax
+  12d0af:	41 88 86 c3 02 00 00 	mov    %al,0x2c3(%r14)
+  12d0b6:	e9 f0 ee ff ff       	jmpq   12bfab <mini_method_compile+0x6ab>
+  12d0bb:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+  12d0c0:	41 80 8e c0 02 00 00 	orb    $0x4,0x2c0(%r14)
+  12d0c7:	04 
+  12d0c8:	48 8d 3d 7d 7b 1e 00 	lea    0x1e7b7d(%rip),%rdi        # 314c4c <__func__.12880+0x1bc>
+  12d0cf:	be 0a 00 00 00       	mov    $0xa,%esi
+  12d0d4:	e8 c7 ab 1d 00       	callq  307ca0 <monoeg_g_memdup>
+  12d0d9:	49 89 86 78 03 00 00 	mov    %rax,0x378(%r14)
+  12d0e0:	e9 84 ec ff ff       	jmpq   12bd69 <mini_method_compile+0x469>
+  12d0e5:	0f 1f 00             	nopl   (%rax)
+  12d0e8:	48 8d 3d f6 fd 1f 00 	lea    0x1ffdf6(%rip),%rdi        # 32cee5 <__func__.29097+0x9a5>
+  12d0ef:	b9 0d 00 00 00       	mov    $0xd,%ecx
+  12d0f4:	48 89 c6             	mov    %rax,%rsi
+  12d0f7:	f3 a6                	repz cmpsb %es:(%rdi),%ds:(%rsi)
+  12d0f9:	0f 84 1a f6 ff ff    	je     12c719 <mini_method_compile+0xe19>
+  12d0ff:	48 8d 3d ec fd 1f 00 	lea    0x1ffdec(%rip),%rdi        # 32cef2 <__func__.29097+0x9b2>
+  12d106:	b9 0c 00 00 00       	mov    $0xc,%ecx
+  12d10b:	48 89 c6             	mov    %rax,%rsi
+  12d10e:	f3 a6                	repz cmpsb %es:(%rdi),%ds:(%rsi)
+  12d110:	0f 84 03 f6 ff ff    	je     12c719 <mini_method_compile+0xe19>
+  12d116:	48 8d 3d e1 fd 1f 00 	lea    0x1ffde1(%rip),%rdi        # 32cefe <__func__.29097+0x9be>
+  12d11d:	b9 0e 00 00 00       	mov    $0xe,%ecx
+  12d122:	48 89 c6             	mov    %rax,%rsi
+  12d125:	f3 a6                	repz cmpsb %es:(%rdi),%ds:(%rsi)
+  12d127:	0f 84 ec f5 ff ff    	je     12c719 <mini_method_compile+0xe19>
+  12d12d:	44 89 c6             	mov    %r8d,%esi
+  12d130:	48 89 d7             	mov    %rdx,%rdi
+  12d133:	e8 b8 2c 0c 00       	callq  1efdf0 <mono_mempool_alloc>
+  12d138:	49 89 47 48          	mov    %rax,0x48(%r15)
+  12d13c:	41 8b 87 88 00 00 00 	mov    0x88(%r15),%eax
+  12d143:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+  12d149:	41 89 87 8c 00 00 00 	mov    %eax,0x8c(%r15)
+  12d150:	e9 e7 f5 ff ff       	jmpq   12c73c <mini_method_compile+0xe3c>
+  12d155:	0f 1f 00             	nopl   (%rax)
+  12d158:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+  12d15d:	f6 40 21 10          	testb  $0x10,0x21(%rax)
+  12d161:	0f 84 5a e8 ff ff    	je     12b9c1 <mini_method_compile+0xc1>
+  12d167:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
+  12d16c:	e8 5f 73 07 00       	callq  1a44d0 <mono_method_get_context>
+  12d171:	48 8b 10             	mov    (%rax),%rdx
+  12d174:	48 85 d2             	test   %rdx,%rdx
+  12d177:	74 0a                	je     12d183 <mini_method_compile+0x1883>
+  12d179:	f6 42 06 40          	testb  $0x40,0x6(%rdx)
+  12d17d:	0f 85 93 0d 00 00    	jne    12df16 <mini_method_compile+0x2616>
+  12d183:	48 8b 40 08          	mov    0x8(%rax),%rax
+  12d187:	48 85 c0             	test   %rax,%rax
+  12d18a:	0f 84 31 e8 ff ff    	je     12b9c1 <mini_method_compile+0xc1>
+  12d190:	0f b6 40 06          	movzbl 0x6(%rax),%eax
+  12d194:	83 e0 40             	and    $0x40,%eax
+  12d197:	85 ed                	test   %ebp,%ebp
+  12d199:	0f 84 7f 0d 00 00    	je     12df1e <mini_method_compile+0x261e>
+  12d19f:	84 c0                	test   %al,%al
+  12d1a1:	0f 84 22 e8 ff ff    	je     12b9c9 <mini_method_compile+0xc9>
+  12d1a7:	c7 44 24 50 01 00 00 	movl   $0x1,0x50(%rsp)
+  12d1ae:	00 
+  12d1af:	48 8d 05 8a c1 52 00 	lea    0x52c18a(%rip),%rax        # 659340 <mono_stats>
+  12d1b6:	f0 83 40 54 01       	lock addl $0x1,0x54(%rax)
+  12d1bb:	c7 44 24 1c 01 00 00 	movl   $0x1,0x1c(%rsp)
+  12d1c2:	00 
+  12d1c3:	e9 1f e8 ff ff       	jmpq   12b9e7 <mini_method_compile+0xe7>
+  12d1c8:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+  12d1cf:	00 
+  12d1d0:	41 81 bf 88 00 00 00 	cmpl   $0x3e8,0x88(%r15)
+  12d1d7:	e8 03 00 00 
+  12d1db:	0f 86 90 f9 ff ff    	jbe    12cb71 <mini_method_compile+0x1271>
+  12d1e1:	e9 50 f9 ff ff       	jmpq   12cb36 <mini_method_compile+0x1236>
+  12d1e6:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+  12d1ed:	00 00 00 
+  12d1f0:	4c 8b 7c 24 08       	mov    0x8(%rsp),%r15
+  12d1f5:	31 c9                	xor    %ecx,%ecx
+  12d1f7:	31 d2                	xor    %edx,%edx
+  12d1f9:	31 f6                	xor    %esi,%esi
+  12d1fb:	4c 89 ff             	mov    %r15,%rdi
+  12d1fe:	e8 bd 07 fa ff       	callq  cd9c0 <mono_method_is_generic_sharable_full>
+  12d203:	85 c0                	test   %eax,%eax
+  12d205:	0f 84 62 0e 00 00    	je     12e06d <mini_method_compile+0x276d>
+  12d20b:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
+  12d210:	e8 cb 0c fa ff       	callq  cdee0 <mini_is_gsharedvt_sharable_method>
+  12d215:	c7 44 24 50 00 00 00 	movl   $0x0,0x50(%rsp)
+  12d21c:	00 
+  12d21d:	eb 90                	jmp    12d1af <mini_method_compile+0x18af>
+  12d21f:	41 8b 97 ac 02 00 00 	mov    0x2ac(%r15),%edx
+  12d226:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+  12d22d:	00 00 00 
+  12d230:	83 fa 01             	cmp    $0x1,%edx
+  12d233:	76 13                	jbe    12d248 <mini_method_compile+0x1948>
+  12d235:	48 8d 3d 1c f8 1f 00 	lea    0x1ff81c(%rip),%rdi        # 32ca58 <__func__.29097+0x518>
+  12d23c:	e8 1f d7 ef ff       	callq  2a960 <puts@plt>
+  12d241:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+  12d248:	48 8d 05 f1 5f 51 00 	lea    0x515ff1(%rip),%rax        # 643240 <mono_jit_stats>
+  12d24f:	48 8b 74 24 30       	mov    0x30(%rsp),%rsi
+  12d254:	48 8d b8 f0 00 00 00 	lea    0xf0(%rax),%rdi
+  12d25b:	e8 00 df ff ff       	callq  12b160 <mono_time_track_end>
+  12d260:	48 8d 35 1d fd 1f 00 	lea    0x1ffd1d(%rip),%rsi        # 32cf84 <__func__.29097+0xa44>
+  12d267:	4c 89 ff             	mov    %r15,%rdi
+  12d26a:	e8 21 47 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12d26f:	83 7c 24 6c 01       	cmpl   $0x1,0x6c(%rsp)
+  12d274:	0f 84 6d 12 00 00    	je     12e4e7 <mini_method_compile+0x2be7>
+  12d27a:	41 f6 87 a2 02 00 00 	testb  $0x20,0x2a2(%r15)
+  12d281:	20 
+  12d282:	74 1c                	je     12d2a0 <mini_method_compile+0x19a0>
+  12d284:	41 f6 87 a8 02 00 00 	testb  $0x20,0x2a8(%r15)
+  12d28b:	20 
+  12d28c:	75 12                	jne    12d2a0 <mini_method_compile+0x19a0>
+  12d28e:	41 f6 87 c0 02 00 00 	testb  $0x2,0x2c0(%r15)
+  12d295:	02 
+  12d296:	0f 84 de 0d 00 00    	je     12e07a <mini_method_compile+0x277a>
+  12d29c:	0f 1f 40 00          	nopl   0x0(%rax)
+  12d2a0:	83 7c 24 6c 02       	cmpl   $0x2,0x6c(%rsp)
+  12d2a5:	0f 84 3c 12 00 00    	je     12e4e7 <mini_method_compile+0x2be7>
+  12d2ab:	41 8b 87 a8 02 00 00 	mov    0x2a8(%r15),%eax
+  12d2b2:	83 e0 20             	and    $0x20,%eax
+  12d2b5:	41 f6 87 a0 02 00 00 	testb  $0x30,0x2a0(%r15)
+  12d2bc:	30 
+  12d2bd:	0f 84 3d 04 00 00    	je     12d700 <mini_method_compile+0x1e00>
+  12d2c3:	85 c0                	test   %eax,%eax
+  12d2c5:	74 49                	je     12d310 <mini_method_compile+0x1a10>
+  12d2c7:	41 f6 87 c1 02 00 00 	testb  $0x1,0x2c1(%r15)
+  12d2ce:	01 
+  12d2cf:	0f 84 eb 03 00 00    	je     12d6c0 <mini_method_compile+0x1dc0>
+  12d2d5:	4c 89 ff             	mov    %r15,%rdi
+  12d2d8:	e8 63 df 00 00       	callq  13b240 <mono_ssa_loop_invariant_code_motion>
+  12d2dd:	48 8d 35 9f fd 1f 00 	lea    0x1ffd9f(%rip),%rsi        # 32d083 <__func__.29097+0xb43>
+  12d2e4:	4c 89 ff             	mov    %r15,%rdi
+  12d2e7:	e8 a4 46 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12d2ec:	41 f6 87 a2 02 00 00 	testb  $0x4,0x2a2(%r15)
+  12d2f3:	04 
+  12d2f4:	74 1a                	je     12d310 <mini_method_compile+0x1a10>
+  12d2f6:	4c 89 ff             	mov    %r15,%rdi
+  12d2f9:	e8 d2 fe 00 00       	callq  13d1d0 <mono_perform_abc_removal>
+  12d2fe:	48 8d 35 24 fd 1f 00 	lea    0x1ffd24(%rip),%rsi        # 32d029 <__func__.29097+0xae9>
+  12d305:	4c 89 ff             	mov    %r15,%rdi
+  12d308:	e8 83 46 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12d30d:	0f 1f 00             	nopl   (%rax)
+  12d310:	83 7c 24 6c 03       	cmpl   $0x3,0x6c(%rsp)
+  12d315:	0f 84 cc 11 00 00    	je     12e4e7 <mini_method_compile+0x2be7>
+  12d31b:	41 0f b7 87 c6 02 00 	movzwl 0x2c6(%r15),%eax
+  12d322:	00 
+  12d323:	66 25 40 01          	and    $0x140,%ax
+  12d327:	66 3d 40 01          	cmp    $0x140,%ax
+  12d32b:	0f 84 2f 0d 00 00    	je     12e060 <mini_method_compile+0x2760>
+  12d331:	e8 fa 34 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12d336:	4c 89 ff             	mov    %r15,%rdi
+  12d339:	48 89 c5             	mov    %rax,%rbp
+  12d33c:	e8 3f 1c f5 ff       	callq  7ef80 <mono_decompose_vtype_opts>
+  12d341:	48 8d 05 f8 5e 51 00 	lea    0x515ef8(%rip),%rax        # 643240 <mono_jit_stats>
+  12d348:	48 89 ee             	mov    %rbp,%rsi
+  12d34b:	48 8d b8 40 01 00 00 	lea    0x140(%rax),%rdi
+  12d352:	e8 09 de ff ff       	callq  12b160 <mono_time_track_end>
+  12d357:	41 f6 87 a5 02 00 00 	testb  $0x1,0x2a5(%r15)
+  12d35e:	01 
+  12d35f:	0f 85 0b 06 00 00    	jne    12d970 <mini_method_compile+0x2070>
+  12d365:	49 83 bf 88 01 00 00 	cmpq   $0x0,0x188(%r15)
+  12d36c:	00 
+  12d36d:	74 5e                	je     12d3cd <mini_method_compile+0x1acd>
+  12d36f:	41 f6 87 c1 02 00 00 	testb  $0x2,0x2c1(%r15)
+  12d376:	02 
+  12d377:	0f 84 2a 11 00 00    	je     12e4a7 <mini_method_compile+0x2ba7>
+  12d37d:	4c 89 ff             	mov    %r15,%rdi
+  12d380:	e8 8b 17 fd ff       	callq  feb10 <mono_arch_get_global_int_regs>
+  12d385:	48 85 c0             	test   %rax,%rax
+  12d388:	0f 84 3a 11 00 00    	je     12e4c8 <mini_method_compile+0x2bc8>
+  12d38e:	48 89 c7             	mov    %rax,%rdi
+  12d391:	48 8b 28             	mov    (%rax),%rbp
+  12d394:	e8 57 e9 1d 00       	callq  30bcf0 <monoeg_g_list_free>
+  12d399:	49 8b 87 88 01 00 00 	mov    0x188(%r15),%rax
+  12d3a0:	41 ba 86 01 00 00    	mov    $0x186,%r10d
+  12d3a6:	66 44 89 10          	mov    %r10w,(%rax)
+  12d3aa:	49 8b 87 88 01 00 00 	mov    0x188(%r15),%rax
+  12d3b1:	89 68 04             	mov    %ebp,0x4(%rax)
+  12d3b4:	49 8b 87 88 01 00 00 	mov    0x188(%r15),%rax
+  12d3bb:	8b 48 04             	mov    0x4(%rax),%ecx
+  12d3be:	b8 01 00 00 00       	mov    $0x1,%eax
+  12d3c3:	48 d3 e0             	shl    %cl,%rax
+  12d3c6:	49 09 87 98 02 00 00 	or     %rax,0x298(%r15)
+  12d3cd:	e8 5e 34 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12d3d2:	4c 89 ff             	mov    %r15,%rdi
+  12d3d5:	48 89 c5             	mov    %rax,%rbp
+  12d3d8:	e8 43 75 00 00       	callq  134920 <mono_liveness_handle_exception_clauses>
+  12d3dd:	48 8d 05 5c 5e 51 00 	lea    0x515e5c(%rip),%rax        # 643240 <mono_jit_stats>
+  12d3e4:	48 89 ee             	mov    %rbp,%rsi
+  12d3e7:	48 8d b8 50 01 00 00 	lea    0x150(%rax),%rdi
+  12d3ee:	e8 6d dd ff ff       	callq  12b160 <mono_time_track_end>
+  12d3f3:	41 f6 87 a0 02 00 00 	testb  $0x80,0x2a0(%r15)
+  12d3fa:	80 
+  12d3fb:	0f 85 0f 07 00 00    	jne    12db10 <mini_method_compile+0x2210>
+  12d401:	41 f6 87 c1 02 00 00 	testb  $0x1,0x2c1(%r15)
+  12d408:	01 
+  12d409:	0f 84 01 06 00 00    	je     12da10 <mini_method_compile+0x2110>
+  12d40f:	41 f6 87 c6 02 00 00 	testb  $0x40,0x2c6(%r15)
+  12d416:	40 
+  12d417:	0f 85 c3 07 00 00    	jne    12dbe0 <mini_method_compile+0x22e0>
+  12d41d:	49 8b 5f 30          	mov    0x30(%r15),%rbx
+  12d421:	48 85 db             	test   %rbx,%rbx
+  12d424:	75 0d                	jne    12d433 <mini_method_compile+0x1b33>
+  12d426:	e9 ce 01 00 00       	jmpq   12d5f9 <mini_method_compile+0x1cf9>
+  12d42b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+  12d430:	48 89 c3             	mov    %rax,%rbx
+  12d433:	48 8b 13             	mov    (%rbx),%rdx
+  12d436:	48 8b 43 08          	mov    0x8(%rbx),%rax
+  12d43a:	48 85 d2             	test   %rdx,%rdx
+  12d43d:	0f 84 a6 00 00 00    	je     12d4e9 <mini_method_compile+0x1be9>
+  12d443:	0f b7 32             	movzwl (%rdx),%esi
+  12d446:	8d 8e b6 fd ff ff    	lea    -0x24a(%rsi),%ecx
+  12d44c:	44 8d 86 4b fd ff ff 	lea    -0x2b5(%rsi),%r8d
+  12d453:	66 83 f9 09          	cmp    $0x9,%cx
+  12d457:	0f 96 c1             	setbe  %cl
+  12d45a:	66 41 83 f8 09       	cmp    $0x9,%r8w
+  12d45f:	40 0f 96 c7          	setbe  %dil
+  12d463:	40 08 f9             	or     %dil,%cl
+  12d466:	75 0c                	jne    12d474 <mini_method_compile+0x1b74>
+  12d468:	8d be 55 fd ff ff    	lea    -0x2ab(%rsi),%edi
+  12d46e:	66 83 ff 09          	cmp    $0x9,%di
+  12d472:	77 75                	ja     12d4e9 <mini_method_compile+0x1be9>
+  12d474:	4c 8b 4a 30          	mov    0x30(%rdx),%r9
+  12d478:	49 8b 79 08          	mov    0x8(%r9),%rdi
+  12d47c:	48 85 ff             	test   %rdi,%rdi
+  12d47f:	74 68                	je     12d4e9 <mini_method_compile+0x1be9>
+  12d481:	48 39 c7             	cmp    %rax,%rdi
+  12d484:	74 aa                	je     12d430 <mini_method_compile+0x1b30>
+  12d486:	84 c9                	test   %cl,%cl
+  12d488:	0f 85 22 02 00 00    	jne    12d6b0 <mini_method_compile+0x1db0>
+  12d48e:	66 81 ee ab 02       	sub    $0x2ab,%si
+  12d493:	66 83 fe 09          	cmp    $0x9,%si
+  12d497:	77 1c                	ja     12d4b5 <mini_method_compile+0x1bb5>
+  12d499:	48 8b 52 28          	mov    0x28(%rdx),%rdx
+  12d49d:	48 85 d2             	test   %rdx,%rdx
+  12d4a0:	74 0a                	je     12d4ac <mini_method_compile+0x1bac>
+  12d4a2:	48 8b 52 28          	mov    0x28(%rdx),%rdx
+  12d4a6:	80 7a 02 04          	cmpb   $0x4,0x2(%rdx)
+  12d4aa:	74 09                	je     12d4b5 <mini_method_compile+0x1bb5>
+  12d4ac:	49 39 01             	cmp    %rax,(%r9)
+  12d4af:	0f 84 3a 10 00 00    	je     12e4ef <mini_method_compile+0x2bef>
+  12d4b5:	49 8b 7f 10          	mov    0x10(%r15),%rdi
+  12d4b9:	be 50 00 00 00       	mov    $0x50,%esi
+  12d4be:	e8 6d 2a 0c 00       	callq  1eff30 <mono_mempool_alloc0>
+  12d4c3:	bf db 01 00 00       	mov    $0x1db,%edi
+  12d4c8:	48 89 c6             	mov    %rax,%rsi
+  12d4cb:	66 89 38             	mov    %di,(%rax)
+  12d4ce:	48 8b 13             	mov    (%rbx),%rdx
+  12d4d1:	48 89 df             	mov    %rbx,%rdi
+  12d4d4:	48 8b 52 30          	mov    0x30(%rdx),%rdx
+  12d4d8:	48 8b 52 08          	mov    0x8(%rdx),%rdx
+  12d4dc:	48 89 50 28          	mov    %rdx,0x28(%rax)
+  12d4e0:	e8 2b c9 ff ff       	callq  129e10 <mono_bblock_add_inst>
+  12d4e5:	48 8b 43 08          	mov    0x8(%rbx),%rax
+  12d4e9:	48 85 c0             	test   %rax,%rax
+  12d4ec:	0f 85 3e ff ff ff    	jne    12d430 <mini_method_compile+0x1b30>
+  12d4f2:	41 83 bf ac 02 00 00 	cmpl   $0x3,0x2ac(%r15)
+  12d4f9:	03 
+  12d4fa:	4d 8b 67 30          	mov    0x30(%r15),%r12
+  12d4fe:	0f 86 f0 00 00 00    	jbe    12d5f4 <mini_method_compile+0x1cf4>
+  12d504:	4d 85 e4             	test   %r12,%r12
+  12d507:	0f 84 ec 00 00 00    	je     12d5f9 <mini_method_compile+0x1cf9>
+  12d50d:	bb ff ff ff ff       	mov    $0xffffffff,%ebx
+  12d512:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  12d518:	49 8b 6c 24 10       	mov    0x10(%r12),%rbp
+  12d51d:	41 8b 74 24 18       	mov    0x18(%r12),%esi
+  12d522:	48 8d 3d ea fb 1f 00 	lea    0x1ffbea(%rip),%rdi        # 32d113 <__func__.29097+0xbd3>
+  12d529:	31 c0                	xor    %eax,%eax
+  12d52b:	e8 20 aa 1d 00       	callq  307f50 <monoeg_g_print>
+  12d530:	48 85 ed             	test   %rbp,%rbp
+  12d533:	74 16                	je     12d54b <mini_method_compile+0x1c4b>
+  12d535:	0f 1f 00             	nopl   (%rax)
+  12d538:	48 89 ee             	mov    %rbp,%rsi
+  12d53b:	89 df                	mov    %ebx,%edi
+  12d53d:	e8 1e a9 f8 ff       	callq  b7e60 <mono_print_ins_index>
+  12d542:	48 8b 6d 18          	mov    0x18(%rbp),%rbp
+  12d546:	48 85 ed             	test   %rbp,%rbp
+  12d549:	75 ed                	jne    12d538 <mini_method_compile+0x1c38>
+  12d54b:	4d 8b 64 24 08       	mov    0x8(%r12),%r12
+  12d550:	4d 85 e4             	test   %r12,%r12
+  12d553:	75 c3                	jne    12d518 <mini_method_compile+0x1c18>
+  12d555:	4d 8b 67 30          	mov    0x30(%r15),%r12
+  12d559:	e9 96 00 00 00       	jmpq   12d5f4 <mini_method_compile+0x1cf4>
+  12d55e:	66 90                	xchg   %ax,%ax
+  12d560:	48 8d 05 d9 bd 52 00 	lea    0x52bdd9(%rip),%rax        # 659340 <mono_stats>
+  12d567:	f0 83 40 58 01       	lock addl $0x1,0x58(%rax)
+  12d56c:	c7 44 24 1c 00 00 00 	movl   $0x0,0x1c(%rsp)
+  12d573:	00 
+  12d574:	e9 6e e4 ff ff       	jmpq   12b9e7 <mini_method_compile+0xe7>
+  12d579:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+  12d580:	c7 44 24 68 00 00 00 	movl   $0x0,0x68(%rsp)
+  12d587:	00 
+  12d588:	e9 2a e9 ff ff       	jmpq   12beb7 <mini_method_compile+0x5b7>
+  12d58d:	48 8b 70 18          	mov    0x18(%rax),%rsi
+  12d591:	48 85 f6             	test   %rsi,%rsi
+  12d594:	74 11                	je     12d5a7 <mini_method_compile+0x1ca7>
+  12d596:	0f b7 16             	movzwl (%rsi),%edx
+  12d599:	66 81 fa 43 03       	cmp    $0x343,%dx
+  12d59e:	74 13                	je     12d5b3 <mini_method_compile+0x1cb3>
+  12d5a0:	66 81 fa 46 03       	cmp    $0x346,%dx
+  12d5a5:	74 0c                	je     12d5b3 <mini_method_compile+0x1cb3>
+  12d5a7:	48 89 c6             	mov    %rax,%rsi
+  12d5aa:	e9 bc f7 ff ff       	jmpq   12cd6b <mini_method_compile+0x146b>
+  12d5af:	90                   	nop
+  12d5b0:	48 89 c6             	mov    %rax,%rsi
+  12d5b3:	48 8b 46 18          	mov    0x18(%rsi),%rax
+  12d5b7:	48 85 c0             	test   %rax,%rax
+  12d5ba:	0f 84 ab f7 ff ff    	je     12cd6b <mini_method_compile+0x146b>
+  12d5c0:	0f b7 10             	movzwl (%rax),%edx
+  12d5c3:	66 81 fa 43 03       	cmp    $0x343,%dx
+  12d5c8:	74 e6                	je     12d5b0 <mini_method_compile+0x1cb0>
+  12d5ca:	66 81 fa 46 03       	cmp    $0x346,%dx
+  12d5cf:	74 df                	je     12d5b0 <mini_method_compile+0x1cb0>
+  12d5d1:	e9 95 f7 ff ff       	jmpq   12cd6b <mini_method_compile+0x146b>
+  12d5d6:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+  12d5dd:	00 00 00 
+  12d5e0:	41 8b 87 20 02 00 00 	mov    0x220(%r15),%eax
+  12d5e7:	41 89 84 24 4c 01 00 	mov    %eax,0x14c(%r12)
+  12d5ee:	00 
+  12d5ef:	4d 8b 64 24 08       	mov    0x8(%r12),%r12
+  12d5f4:	4d 85 e4             	test   %r12,%r12
+  12d5f7:	75 e7                	jne    12d5e0 <mini_method_compile+0x1ce0>
+  12d5f9:	41 f6 87 c1 02 00 00 	testb  $0x1,0x2c1(%r15)
+  12d600:	01 
+  12d601:	0f 84 b6 0f 00 00    	je     12e5bd <mini_method_compile+0x2cbd>
+  12d607:	41 f6 87 a8 02 00 00 	testb  $0x20,0x2a8(%r15)
+  12d60e:	20 
+  12d60f:	0f 84 93 07 00 00    	je     12dda8 <mini_method_compile+0x24a8>
+  12d615:	41 f6 87 a5 02 00 00 	testb  $0x1,0x2a5(%r15)
+  12d61c:	01 
+  12d61d:	0f 85 75 07 00 00    	jne    12dd98 <mini_method_compile+0x2498>
+  12d623:	41 f6 87 c0 02 00 00 	testb  $0x4,0x2c0(%r15)
+  12d62a:	04 
+  12d62b:	0f 84 cf 05 00 00    	je     12dc00 <mini_method_compile+0x2300>
+  12d631:	41 0f b6 87 c7 02 00 	movzbl 0x2c7(%r15),%eax
+  12d638:	00 
+  12d639:	89 c2                	mov    %eax,%edx
+  12d63b:	f7 d2                	not    %edx
+  12d63d:	83 e2 01             	and    $0x1,%edx
+  12d640:	41 39 97 ac 02 00 00 	cmp    %edx,0x2ac(%r15)
+  12d647:	0f 83 83 07 00 00    	jae    12ddd0 <mini_method_compile+0x24d0>
+  12d64d:	83 e0 01             	and    $0x1,%eax
+  12d650:	84 c0                	test   %al,%al
+  12d652:	0f 84 d5 e7 ff ff    	je     12be2d <mini_method_compile+0x52d>
+  12d658:	4d 89 fe             	mov    %r15,%r14
+  12d65b:	41 80 8f c0 02 00 00 	orb    $0x1,0x2c0(%r15)
+  12d662:	01 
+  12d663:	e9 68 f2 ff ff       	jmpq   12c8d0 <mini_method_compile+0xfd0>
+  12d668:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+  12d66f:	00 
+  12d670:	48 8d 35 2b f7 1f 00 	lea    0x1ff72b(%rip),%rsi        # 32cda2 <__func__.29097+0x862>
+  12d677:	bf 01 00 00 00       	mov    $0x1,%edi
+  12d67c:	31 c0                	xor    %eax,%eax
+  12d67e:	e8 9d d3 ef ff       	callq  2aa20 <__printf_chk@plt>
+  12d683:	49 8b 86 a0 01 00 00 	mov    0x1a0(%r14),%rax
+  12d68a:	48 8b 38             	mov    (%rax),%rdi
+  12d68d:	e8 ee a7 f8 ff       	callq  b7e80 <mono_print_ins>
+  12d692:	e9 63 eb ff ff       	jmpq   12c1fa <mini_method_compile+0x8fa>
+  12d697:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+  12d69e:	00 00 
+  12d6a0:	48 8b 05 b9 6a 51 00 	mov    0x516ab9(%rip),%rax        # 644160 <verbose_method_names.30699>
+  12d6a7:	e9 a4 f3 ff ff       	jmpq   12ca50 <mini_method_compile+0x1150>
+  12d6ac:	0f 1f 40 00          	nopl   0x0(%rax)
+  12d6b0:	66 41 83 f8 09       	cmp    $0x9,%r8w
+  12d6b5:	0f 86 fa fd ff ff    	jbe    12d4b5 <mini_method_compile+0x1bb5>
+  12d6bb:	e9 d9 fd ff ff       	jmpq   12d499 <mini_method_compile+0x1b99>
+  12d6c0:	e8 6b 31 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12d6c5:	4c 89 ff             	mov    %r15,%rdi
+  12d6c8:	48 89 c5             	mov    %rax,%rbp
+  12d6cb:	e8 90 c9 00 00       	callq  13a060 <mono_ssa_cprop>
+  12d6d0:	48 8d 05 69 5b 51 00 	lea    0x515b69(%rip),%rax        # 643240 <mono_jit_stats>
+  12d6d7:	48 89 ee             	mov    %rbp,%rsi
+  12d6da:	48 8d b8 00 01 00 00 	lea    0x100(%rax),%rdi
+  12d6e1:	e8 7a da ff ff       	callq  12b160 <mono_time_track_end>
+  12d6e6:	48 8d 35 1f f9 1f 00 	lea    0x1ff91f(%rip),%rsi        # 32d00c <__func__.29097+0xacc>
+  12d6ed:	4c 89 ff             	mov    %r15,%rdi
+  12d6f0:	e8 9b 42 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12d6f5:	41 8b 87 a8 02 00 00 	mov    0x2a8(%r15),%eax
+  12d6fc:	83 e0 20             	and    $0x20,%eax
+  12d6ff:	90                   	nop
+  12d700:	85 c0                	test   %eax,%eax
+  12d702:	0f 84 08 fc ff ff    	je     12d310 <mini_method_compile+0x1a10>
+  12d708:	41 f6 87 c1 02 00 00 	testb  $0x1,0x2c1(%r15)
+  12d70f:	01 
+  12d710:	0f 85 bf fb ff ff    	jne    12d2d5 <mini_method_compile+0x19d5>
+  12d716:	41 f6 87 a0 02 00 00 	testb  $0x40,0x2a0(%r15)
+  12d71d:	40 
+  12d71e:	0f 85 75 0b 00 00    	jne    12e299 <mini_method_compile+0x2999>
+  12d724:	41 f6 87 a4 02 00 00 	testb  $0x84,0x2a4(%r15)
+  12d72b:	84 
+  12d72c:	74 42                	je     12d770 <mini_method_compile+0x1e70>
+  12d72e:	41 f6 87 a2 02 00 00 	testb  $0x4,0x2a2(%r15)
+  12d735:	04 
+  12d736:	74 38                	je     12d770 <mini_method_compile+0x1e70>
+  12d738:	e8 f3 30 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12d73d:	4c 89 ff             	mov    %r15,%rdi
+  12d740:	48 89 c5             	mov    %rax,%rbp
+  12d743:	e8 88 fa 00 00       	callq  13d1d0 <mono_perform_abc_removal>
+  12d748:	48 8d 05 f1 5a 51 00 	lea    0x515af1(%rip),%rax        # 643240 <mono_jit_stats>
+  12d74f:	48 89 ee             	mov    %rbp,%rsi
+  12d752:	48 8d b8 10 01 00 00 	lea    0x110(%rax),%rdi
+  12d759:	e8 02 da ff ff       	callq  12b160 <mono_time_track_end>
+  12d75e:	48 8d 35 bc f8 1f 00 	lea    0x1ff8bc(%rip),%rsi        # 32d021 <__func__.29097+0xae1>
+  12d765:	4c 89 ff             	mov    %r15,%rdi
+  12d768:	e8 23 42 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12d76d:	0f 1f 00             	nopl   (%rax)
+  12d770:	e8 bb 30 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12d775:	4c 89 ff             	mov    %r15,%rdi
+  12d778:	48 89 c5             	mov    %rax,%rbp
+  12d77b:	e8 60 c0 00 00       	callq  1397e0 <mono_ssa_remove>
+  12d780:	48 8d 05 b9 5a 51 00 	lea    0x515ab9(%rip),%rax        # 643240 <mono_jit_stats>
+  12d787:	48 89 ee             	mov    %rbp,%rsi
+  12d78a:	48 8d b8 18 01 00 00 	lea    0x118(%rax),%rdi
+  12d791:	e8 ca d9 ff ff       	callq  12b160 <mono_time_track_end>
+  12d796:	48 8d 35 98 f8 1f 00 	lea    0x1ff898(%rip),%rsi        # 32d035 <__func__.29097+0xaf5>
+  12d79d:	4c 89 ff             	mov    %r15,%rdi
+  12d7a0:	e8 eb 41 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12d7a5:	e8 86 30 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12d7aa:	4c 89 ff             	mov    %r15,%rdi
+  12d7ad:	48 89 c5             	mov    %rax,%rbp
+  12d7b0:	e8 3b 94 f5 ff       	callq  86bf0 <mono_local_cprop>
+  12d7b5:	48 8d 05 84 5a 51 00 	lea    0x515a84(%rip),%rax        # 643240 <mono_jit_stats>
+  12d7bc:	48 89 ee             	mov    %rbp,%rsi
+  12d7bf:	48 8d b8 20 01 00 00 	lea    0x120(%rax),%rdi
+  12d7c6:	e8 95 d9 ff ff       	callq  12b160 <mono_time_track_end>
+  12d7cb:	48 8d 35 6e f8 1f 00 	lea    0x1ff86e(%rip),%rsi        # 32d040 <__func__.29097+0xb00>
+  12d7d2:	4c 89 ff             	mov    %r15,%rdi
+  12d7d5:	e8 b6 41 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12d7da:	e8 51 30 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12d7df:	4c 89 ff             	mov    %r15,%rdi
+  12d7e2:	48 89 c5             	mov    %rax,%rbp
+  12d7e5:	e8 06 b3 f4 ff       	callq  78af0 <mono_handle_global_vregs>
+  12d7ea:	48 8d 05 4f 5a 51 00 	lea    0x515a4f(%rip),%rax        # 643240 <mono_jit_stats>
+  12d7f1:	48 89 ee             	mov    %rbp,%rsi
+  12d7f4:	48 8d b8 28 01 00 00 	lea    0x128(%rax),%rdi
+  12d7fb:	e8 60 d9 ff ff       	callq  12b160 <mono_time_track_end>
+  12d800:	48 8d 35 46 f8 1f 00 	lea    0x1ff846(%rip),%rsi        # 32d04d <__func__.29097+0xb0d>
+  12d807:	4c 89 ff             	mov    %r15,%rdi
+  12d80a:	e8 81 41 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12d80f:	41 8b 87 a0 02 00 00 	mov    0x2a0(%r15),%eax
+  12d816:	a8 40                	test   $0x40,%al
+  12d818:	0f 85 b5 0a 00 00    	jne    12e2d3 <mini_method_compile+0x29d3>
+  12d81e:	a8 02                	test   $0x2,%al
+  12d820:	0f 85 ee 0a 00 00    	jne    12e314 <mini_method_compile+0x2a14>
+  12d826:	41 8b 87 a8 02 00 00 	mov    0x2a8(%r15),%eax
+  12d82d:	83 e0 20             	and    $0x20,%eax
+  12d830:	85 c0                	test   %eax,%eax
+  12d832:	0f 84 d8 fa ff ff    	je     12d310 <mini_method_compile+0x1a10>
+  12d838:	41 f6 87 c1 02 00 00 	testb  $0x1,0x2c1(%r15)
+  12d83f:	01 
+  12d840:	0f 84 ca fa ff ff    	je     12d310 <mini_method_compile+0x1a10>
+  12d846:	e9 8a fa ff ff       	jmpq   12d2d5 <mini_method_compile+0x19d5>
+  12d84b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+  12d850:	4d 3b 67 30          	cmp    0x30(%r15),%r12
+  12d854:	0f 84 57 0b 00 00    	je     12e3b1 <mini_method_compile+0x2ab1>
+  12d85a:	49 8b 44 24 10       	mov    0x10(%r12),%rax
+  12d85f:	48 85 c0             	test   %rax,%rax
+  12d862:	74 04                	je     12d868 <mini_method_compile+0x1f68>
+  12d864:	4c 89 70 20          	mov    %r14,0x20(%rax)
+  12d868:	4d 89 74 24 10       	mov    %r14,0x10(%r12)
+  12d86d:	49 89 46 18          	mov    %rax,0x18(%r14)
+  12d871:	49 83 3c 24 00       	cmpq   $0x0,(%r12)
+  12d876:	0f 85 fa f4 ff ff    	jne    12cd76 <mini_method_compile+0x1476>
+  12d87c:	4d 89 34 24          	mov    %r14,(%r12)
+  12d880:	e9 f1 f4 ff ff       	jmpq   12cd76 <mini_method_compile+0x1476>
+  12d885:	0f 1f 00             	nopl   (%rax)
+  12d888:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+  12d88d:	4d 8b 86 78 03 00 00 	mov    0x378(%r14),%r8
+  12d894:	48 8d 35 a0 f4 1f 00 	lea    0x1ff4a0(%rip),%rsi        # 32cd3b <__func__.29097+0x7fb>
+  12d89b:	bf 01 00 00 00       	mov    $0x1,%edi
+  12d8a0:	48 8b 48 18          	mov    0x18(%rax),%rcx
+  12d8a4:	48 8b 40 08          	mov    0x8(%rax),%rax
+  12d8a8:	48 8b 50 40          	mov    0x40(%rax),%rdx
+  12d8ac:	31 c0                	xor    %eax,%eax
+  12d8ae:	e8 6d d1 ef ff       	callq  2aa20 <__printf_chk@plt>
+  12d8b3:	41 0f b6 86 c7 02 00 	movzbl 0x2c7(%r14),%eax
+  12d8ba:	00 
+  12d8bb:	e9 62 e5 ff ff       	jmpq   12be22 <mini_method_compile+0x522>
+  12d8c0:	e8 2b 3e 1d 00       	callq  3016f0 <mono_threads_is_hybrid_suspension_enabled>
+  12d8c5:	85 c0                	test   %eax,%eax
+  12d8c7:	0f 85 c9 f2 ff ff    	jne    12cb96 <mini_method_compile+0x1296>
+  12d8cd:	e9 76 f9 ff ff       	jmpq   12d248 <mini_method_compile+0x1948>
+  12d8d2:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  12d8d8:	e8 13 3e 1d 00       	callq  3016f0 <mono_threads_is_hybrid_suspension_enabled>
+  12d8dd:	85 c0                	test   %eax,%eax
+  12d8df:	0f 85 58 f3 ff ff    	jne    12cc3d <mini_method_compile+0x133d>
+  12d8e5:	48 8d 0d e4 40 1e 00 	lea    0x1e40e4(%rip),%rcx        # 3119d0 <_IO_stdin_used+0x5d0>
+  12d8ec:	48 8d 35 59 f2 1e 00 	lea    0x1ef259(%rip),%rsi        # 31cb4c <opstr+0x4ac>
+  12d8f3:	48 8d 3d be 3b 1e 00 	lea    0x1e3bbe(%rip),%rdi        # 3114b8 <_IO_stdin_used+0xb8>
+  12d8fa:	ba 2f 0b 00 00       	mov    $0xb2f,%edx
+  12d8ff:	e8 0c a9 1d 00       	callq  308210 <monoeg_assertion_message>
+  12d904:	0f 1f 40 00          	nopl   0x0(%rax)
+  12d908:	e8 23 2f 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12d90d:	4c 89 ff             	mov    %r15,%rdi
+  12d910:	be 03 00 00 00       	mov    $0x3,%esi
+  12d915:	48 89 c5             	mov    %rax,%rbp
+  12d918:	e8 73 4a 00 00       	callq  132390 <mono_compile_dominator_info>
+  12d91d:	48 8d 05 1c 59 51 00 	lea    0x51591c(%rip),%rax        # 643240 <mono_jit_stats>
+  12d924:	48 89 ee             	mov    %rbp,%rsi
+  12d927:	48 8d b8 e0 00 00 00 	lea    0xe0(%rax),%rdi
+  12d92e:	e8 2d d8 ff ff       	callq  12b160 <mono_time_track_end>
+  12d933:	e8 f8 2e 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12d938:	4c 89 ff             	mov    %r15,%rdi
+  12d93b:	48 89 c5             	mov    %rax,%rbp
+  12d93e:	e8 5d 50 00 00       	callq  1329a0 <mono_compute_natural_loops>
+  12d943:	48 8d 05 f6 58 51 00 	lea    0x5158f6(%rip),%rax        # 643240 <mono_jit_stats>
+  12d94a:	48 89 ee             	mov    %rbp,%rsi
+  12d94d:	48 8d b8 e8 00 00 00 	lea    0xe8(%rax),%rdi
+  12d954:	e8 07 d8 ff ff       	callq  12b160 <mono_time_track_end>
+  12d959:	e9 21 f2 ff ff       	jmpq   12cb7f <mini_method_compile+0x127f>
+  12d95e:	66 90                	xchg   %ax,%ax
+  12d960:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
+  12d965:	e8 16 a0 0f 00       	callq  227980 <mono_profiler_raise_jit_begin>
+  12d96a:	e9 25 e0 ff ff       	jmpq   12b994 <mini_method_compile+0x94>
+  12d96f:	90                   	nop
+  12d970:	e8 bb 2e 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12d975:	4c 89 ff             	mov    %r15,%rdi
+  12d978:	48 89 c5             	mov    %rax,%rbp
+  12d97b:	e8 60 39 f5 ff       	callq  812e0 <mono_decompose_array_access_opts>
+  12d980:	48 8d 05 b9 58 51 00 	lea    0x5158b9(%rip),%rax        # 643240 <mono_jit_stats>
+  12d987:	48 89 ee             	mov    %rbp,%rsi
+  12d98a:	48 8d b8 48 01 00 00 	lea    0x148(%rax),%rdi
+  12d991:	e8 ca d7 ff ff       	callq  12b160 <mono_time_track_end>
+  12d996:	48 8d 35 01 f7 1f 00 	lea    0x1ff701(%rip),%rsi        # 32d09e <__func__.29097+0xb5e>
+  12d99d:	4c 89 ff             	mov    %r15,%rdi
+  12d9a0:	e8 eb 3f 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12d9a5:	e9 bb f9 ff ff       	jmpq   12d365 <mini_method_compile+0x1a65>
+  12d9aa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  12d9b0:	48 8d 3d 79 f5 1f 00 	lea    0x1ff579(%rip),%rdi        # 32cf30 <__func__.29097+0x9f0>
+  12d9b7:	e8 a4 cf ef ff       	callq  2a960 <puts@plt>
+  12d9bc:	41 8b 97 ac 02 00 00 	mov    0x2ac(%r15),%edx
+  12d9c3:	4d 8b 67 30          	mov    0x30(%r15),%r12
+  12d9c7:	83 fa 02             	cmp    $0x2,%edx
+  12d9ca:	4d 89 e6             	mov    %r12,%r14
+  12d9cd:	0f 86 f4 f1 ff ff    	jbe    12cbc7 <mini_method_compile+0x12c7>
+  12d9d3:	4d 85 e4             	test   %r12,%r12
+  12d9d6:	0f 84 ca f3 ff ff    	je     12cda6 <mini_method_compile+0x14a6>
+  12d9dc:	48 8d 2d 62 f5 1f 00 	lea    0x1ff562(%rip),%rbp        # 32cf45 <__func__.29097+0xa05>
+  12d9e3:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+  12d9e8:	4c 89 e7             	mov    %r12,%rdi
+  12d9eb:	48 89 ee             	mov    %rbp,%rsi
+  12d9ee:	e8 ed 74 f1 ff       	callq  44ee0 <mono_print_bb>
+  12d9f3:	4d 8b 64 24 08       	mov    0x8(%r12),%r12
+  12d9f8:	4d 85 e4             	test   %r12,%r12
+  12d9fb:	75 eb                	jne    12d9e8 <mini_method_compile+0x20e8>
+  12d9fd:	4d 8b 67 30          	mov    0x30(%r15),%r12
+  12da01:	41 8b 97 ac 02 00 00 	mov    0x2ac(%r15),%edx
+  12da08:	4d 89 e6             	mov    %r12,%r14
+  12da0b:	e9 b7 f1 ff ff       	jmpq   12cbc7 <mini_method_compile+0x12c7>
+  12da10:	e8 1b 2e 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12da15:	4c 89 ff             	mov    %r15,%rdi
+  12da18:	48 89 c5             	mov    %rax,%rbp
+  12da1b:	e8 20 13 fd ff       	callq  fed40 <mono_arch_allocate_vars>
+  12da20:	48 8d 05 19 58 51 00 	lea    0x515819(%rip),%rax        # 643240 <mono_jit_stats>
+  12da27:	48 89 ee             	mov    %rbp,%rsi
+  12da2a:	48 8d b8 68 01 00 00 	lea    0x168(%rax),%rdi
+  12da31:	e8 2a d7 ff ff       	callq  12b160 <mono_time_track_end>
+  12da36:	48 8d 35 a0 f6 1f 00 	lea    0x1ff6a0(%rip),%rsi        # 32d0dd <__func__.29097+0xb9d>
+  12da3d:	4c 89 ff             	mov    %r15,%rdi
+  12da40:	e8 4b 3f 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12da45:	45 8b 8f 6c 03 00 00 	mov    0x36c(%r15),%r9d
+  12da4c:	45 85 c9             	test   %r9d,%r9d
+  12da4f:	0f 85 92 0a 00 00    	jne    12e4e7 <mini_method_compile+0x2be7>
+  12da55:	41 f6 87 c6 02 00 00 	testb  $0x40,0x2c6(%r15)
+  12da5c:	40 
+  12da5d:	0f 85 7d 01 00 00    	jne    12dbe0 <mini_method_compile+0x22e0>
+  12da63:	41 f6 87 c1 02 00 00 	testb  $0x1,0x2c1(%r15)
+  12da6a:	01 
+  12da6b:	0f 85 ac f9 ff ff    	jne    12d41d <mini_method_compile+0x1b1d>
+  12da71:	e8 ba 2d 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12da76:	48 89 de             	mov    %rbx,%rsi
+  12da79:	4c 89 ff             	mov    %r15,%rdi
+  12da7c:	48 89 c5             	mov    %rax,%rbp
+  12da7f:	e8 5c b7 f4 ff       	callq  791e0 <mono_spill_global_vars>
+  12da84:	48 8d 05 b5 57 51 00 	lea    0x5157b5(%rip),%rax        # 643240 <mono_jit_stats>
+  12da8b:	48 89 ee             	mov    %rbp,%rsi
+  12da8e:	48 8d b8 70 01 00 00 	lea    0x170(%rax),%rdi
+  12da95:	e8 c6 d6 ff ff       	callq  12b160 <mono_time_track_end>
+  12da9a:	48 8d 35 4f f6 1f 00 	lea    0x1ff64f(%rip),%rsi        # 32d0f0 <__func__.29097+0xbb0>
+  12daa1:	4c 89 ff             	mov    %r15,%rdi
+  12daa4:	e8 e7 3e 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12daa9:	44 8b 44 24 7c       	mov    0x7c(%rsp),%r8d
+  12daae:	45 85 c0             	test   %r8d,%r8d
+  12dab1:	75 0e                	jne    12dac1 <mini_method_compile+0x21c1>
+  12dab3:	41 f6 87 c0 02 00 00 	testb  $0x40,0x2c0(%r15)
+  12daba:	40 
+  12dabb:	0f 84 5c f9 ff ff    	je     12d41d <mini_method_compile+0x1b1d>
+  12dac1:	e8 6a 2d 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12dac6:	4c 89 ff             	mov    %r15,%rdi
+  12dac9:	48 89 c3             	mov    %rax,%rbx
+  12dacc:	e8 1f 91 f5 ff       	callq  86bf0 <mono_local_cprop>
+  12dad1:	48 8d 05 68 57 51 00 	lea    0x515768(%rip),%rax        # 643240 <mono_jit_stats>
+  12dad8:	48 89 de             	mov    %rbx,%rsi
+  12dadb:	48 8d b8 78 01 00 00 	lea    0x178(%rax),%rdi
+  12dae2:	e8 79 d6 ff ff       	callq  12b160 <mono_time_track_end>
+  12dae7:	41 f6 87 a0 02 00 00 	testb  $0x40,0x2a0(%r15)
+  12daee:	40 
+  12daef:	0f 85 85 08 00 00    	jne    12e37a <mini_method_compile+0x2a7a>
+  12daf5:	48 8d 35 06 f6 1f 00 	lea    0x1ff606(%rip),%rsi        # 32d102 <__func__.29097+0xbc2>
+  12dafc:	4c 89 ff             	mov    %r15,%rdi
+  12daff:	e8 8c 3e 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12db04:	e9 14 f9 ff ff       	jmpq   12d41d <mini_method_compile+0x1b1d>
+  12db09:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+  12db10:	41 83 a7 a8 02 00 00 	andl   $0xffffffef,0x2a8(%r15)
+  12db17:	ef 
+  12db18:	e8 13 2d 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12db1d:	4c 89 ff             	mov    %r15,%rdi
+  12db20:	48 89 c5             	mov    %rax,%rbp
+  12db23:	e8 78 71 00 00       	callq  134ca0 <mono_analyze_liveness>
+  12db28:	48 8d 05 11 57 51 00 	lea    0x515711(%rip),%rax        # 643240 <mono_jit_stats>
+  12db2f:	48 89 ee             	mov    %rbp,%rsi
+  12db32:	48 8d b8 58 01 00 00 	lea    0x158(%rax),%rdi
+  12db39:	e8 22 d6 ff ff       	callq  12b160 <mono_time_track_end>
+  12db3e:	4c 89 ff             	mov    %r15,%rdi
+  12db41:	e8 ca 0e fd ff       	callq  fea10 <mono_arch_get_allocatable_int_vars>
+  12db46:	48 85 c0             	test   %rax,%rax
+  12db49:	48 89 c5             	mov    %rax,%rbp
+  12db4c:	0f 84 af f8 ff ff    	je     12d401 <mini_method_compile+0x1b01>
+  12db52:	4c 89 ff             	mov    %r15,%rdi
+  12db55:	e8 b6 0f fd ff       	callq  feb10 <mono_arch_get_global_int_regs>
+  12db5a:	49 89 c6             	mov    %rax,%r14
+  12db5d:	49 8b 87 88 01 00 00 	mov    0x188(%r15),%rax
+  12db64:	48 85 c0             	test   %rax,%rax
+  12db67:	74 28                	je     12db91 <mini_method_compile+0x2291>
+  12db69:	4d 85 f6             	test   %r14,%r14
+  12db6c:	74 23                	je     12db91 <mini_method_compile+0x2291>
+  12db6e:	8b 40 04             	mov    0x4(%rax),%eax
+  12db71:	41 39 06             	cmp    %eax,(%r14)
+  12db74:	4c 89 f6             	mov    %r14,%rsi
+  12db77:	75 0f                	jne    12db88 <mini_method_compile+0x2288>
+  12db79:	e9 c8 09 00 00       	jmpq   12e546 <mini_method_compile+0x2c46>
+  12db7e:	66 90                	xchg   %ax,%ax
+  12db80:	39 06                	cmp    %eax,(%rsi)
+  12db82:	0f 84 be 09 00 00    	je     12e546 <mini_method_compile+0x2c46>
+  12db88:	48 8b 76 08          	mov    0x8(%rsi),%rsi
+  12db8c:	48 85 f6             	test   %rsi,%rsi
+  12db8f:	75 ef                	jne    12db80 <mini_method_compile+0x2280>
+  12db91:	e8 9a 2c 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12db96:	49 8d 8f 98 02 00 00 	lea    0x298(%r15),%rcx
+  12db9d:	4c 89 f2             	mov    %r14,%rdx
+  12dba0:	48 89 ee             	mov    %rbp,%rsi
+  12dba3:	4c 89 ff             	mov    %r15,%rdi
+  12dba6:	49 89 c4             	mov    %rax,%r12
+  12dba9:	e8 02 ff 00 00       	callq  13dab0 <mono_linear_scan>
+  12dbae:	48 8d 05 8b 56 51 00 	lea    0x51568b(%rip),%rax        # 643240 <mono_jit_stats>
+  12dbb5:	4c 89 e6             	mov    %r12,%rsi
+  12dbb8:	48 8d b8 60 01 00 00 	lea    0x160(%rax),%rdi
+  12dbbf:	e8 9c d5 ff ff       	callq  12b160 <mono_time_track_end>
+  12dbc4:	48 8d 35 06 f5 1f 00 	lea    0x1ff506(%rip),%rsi        # 32d0d1 <__func__.29097+0xb91>
+  12dbcb:	4c 89 ff             	mov    %r15,%rdi
+  12dbce:	e8 bd 3d 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12dbd3:	e9 29 f8 ff ff       	jmpq   12d401 <mini_method_compile+0x1b01>
+  12dbd8:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+  12dbdf:	00 
+  12dbe0:	4c 89 ff             	mov    %r15,%rdi
+  12dbe3:	e8 18 b5 f4 ff       	callq  79100 <mono_allocate_gsharedvt_vars>
+  12dbe8:	e9 76 fe ff ff       	jmpq   12da63 <mini_method_compile+0x2163>
+  12dbed:	0f 1f 00             	nopl   (%rax)
+  12dbf0:	e8 6b 33 1d 00       	callq  300f60 <mono_threads_state_poll>
+  12dbf5:	e9 bd ea ff ff       	jmpq   12c6b7 <mini_method_compile+0xdb7>
+  12dbfa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  12dc00:	4c 89 ff             	mov    %r15,%rdi
+  12dc03:	e8 d8 d5 fc ff       	callq  fb1e0 <mono_llvm_emit_method>
+  12dc08:	41 0f b6 87 c0 02 00 	movzbl 0x2c0(%r15),%eax
+  12dc0f:	00 
+  12dc10:	a8 04                	test   $0x4,%al
+  12dc12:	0f 85 19 fa ff ff    	jne    12d631 <mini_method_compile+0x1d31>
+  12dc18:	41 8b b7 ac 02 00 00 	mov    0x2ac(%r15),%esi
+  12dc1f:	4d 89 fe             	mov    %r15,%r14
+  12dc22:	85 f6                	test   %esi,%esi
+  12dc24:	74 4f                	je     12dc75 <mini_method_compile+0x2375>
+  12dc26:	a8 40                	test   $0x40,%al
+  12dc28:	75 4b                	jne    12dc75 <mini_method_compile+0x2375>
+  12dc2a:	49 8b 3f             	mov    (%r15),%rdi
+  12dc2d:	be 01 00 00 00       	mov    $0x1,%esi
+  12dc32:	e8 a9 30 09 00       	callq  1c0ce0 <mono_method_full_name>
+  12dc37:	48 89 c3             	mov    %rax,%rbx
+  12dc3a:	49 8b 87 08 02 00 00 	mov    0x208(%r15),%rax
+  12dc41:	41 8b 8f 84 02 00 00 	mov    0x284(%r15),%ecx
+  12dc48:	49 8b 97 78 02 00 00 	mov    0x278(%r15),%rdx
+  12dc4f:	48 8d 3d 9a ee 1f 00 	lea    0x1fee9a(%rip),%rdi        # 32caf0 <__func__.29097+0x5b0>
+  12dc56:	48 89 de             	mov    %rbx,%rsi
+  12dc59:	4c 8b 88 d8 00 00 00 	mov    0xd8(%rax),%r9
+  12dc60:	31 c0                	xor    %eax,%eax
+  12dc62:	49 89 c8             	mov    %rcx,%r8
+  12dc65:	48 01 d1             	add    %rdx,%rcx
+  12dc68:	e8 e3 a2 1d 00       	callq  307f50 <monoeg_g_print>
+  12dc6d:	48 89 df             	mov    %rbx,%rdi
+  12dc70:	e8 8b 9f 1d 00       	callq  307c00 <monoeg_g_free>
+  12dc75:	41 f6 86 c1 02 00 00 	testb  $0x1,0x2c1(%r14)
+  12dc7c:	01 
+  12dc7d:	48 8d 05 bc 55 51 00 	lea    0x5155bc(%rip),%rax        # 643240 <mono_jit_stats>
+  12dc84:	0f 84 41 0a 00 00    	je     12e6cb <mini_method_compile+0x2dcb>
+  12dc8a:	f0 83 40 5c 01       	lock addl $0x1,0x5c(%rax)
+  12dc8f:	e8 9c 2b 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12dc94:	48 8b 74 24 10       	mov    0x10(%rsp),%rsi
+  12dc99:	4c 89 f7             	mov    %r14,%rdi
+  12dc9c:	48 89 c3             	mov    %rax,%rbx
+  12dc9f:	e8 5c a0 ff ff       	callq  127d00 <create_jit_info>
+  12dca4:	49 89 46 78          	mov    %rax,0x78(%r14)
+  12dca8:	48 8d 05 91 55 51 00 	lea    0x515591(%rip),%rax        # 643240 <mono_jit_stats>
+  12dcaf:	48 89 de             	mov    %rbx,%rsi
+  12dcb2:	48 8d b8 90 01 00 00 	lea    0x190(%rax),%rdi
+  12dcb9:	e8 a2 d4 ff ff       	callq  12b160 <mono_time_track_end>
+  12dcbe:	41 80 be c3 02 00 00 	cmpb   $0x0,0x2c3(%r14)
+  12dcc5:	00 
+  12dcc6:	0f 88 09 0a 00 00    	js     12e6d5 <mini_method_compile+0x2dd5>
+  12dccc:	e8 5f 2b 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12dcd1:	4c 89 f7             	mov    %r14,%rdi
+  12dcd4:	48 89 c3             	mov    %rax,%rbx
+  12dcd7:	e8 d4 2e fb ff       	callq  e0bb0 <mini_gc_create_gc_map>
+  12dcdc:	48 8d 05 5d 55 51 00 	lea    0x51555d(%rip),%rax        # 643240 <mono_jit_stats>
+  12dce3:	48 89 de             	mov    %rbx,%rsi
+  12dce6:	48 8d b8 98 01 00 00 	lea    0x198(%rax),%rdi
+  12dced:	e8 6e d4 ff ff       	callq  12b160 <mono_time_track_end>
+  12dcf2:	e8 39 2b 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12dcf7:	4c 89 f7             	mov    %r14,%rdi
+  12dcfa:	48 89 c3             	mov    %rax,%rbx
+  12dcfd:	e8 6e 25 00 00       	callq  130270 <mono_save_seq_point_info>
+  12dd02:	48 8d 05 37 55 51 00 	lea    0x515537(%rip),%rax        # 643240 <mono_jit_stats>
+  12dd09:	48 89 de             	mov    %rbx,%rsi
+  12dd0c:	48 8d b8 a0 01 00 00 	lea    0x1a0(%rax),%rdi
+  12dd13:	e8 48 d4 ff ff       	callq  12b160 <mono_time_track_end>
+  12dd18:	41 f6 86 c0 02 00 00 	testb  $0x40,0x2c0(%r14)
+  12dd1f:	40 
+  12dd20:	0f 84 e3 08 00 00    	je     12e609 <mini_method_compile+0x2d09>
+  12dd26:	41 83 be ac 02 00 00 	cmpl   $0x1,0x2ac(%r14)
+  12dd2d:	01 
+  12dd2e:	0f 87 ef 08 00 00    	ja     12e623 <mini_method_compile+0x2d23>
+  12dd34:	48 8d 05 a5 a5 51 00 	lea    0x51a5a5(%rip),%rax        # 6482e0 <mono_perfcounters>
+  12dd3b:	48 8b 10             	mov    (%rax),%rdx
+  12dd3e:	f0 83 02 01          	lock addl $0x1,(%rdx)
+  12dd42:	48 8b 5c 24 28       	mov    0x28(%rsp),%rbx
+  12dd47:	48 8b 00             	mov    (%rax),%rax
+  12dd4a:	8b 53 08             	mov    0x8(%rbx),%edx
+  12dd4d:	f0 01 50 04          	lock add %edx,0x4(%rax)
+  12dd51:	48 8d 05 e8 54 51 00 	lea    0x5154e8(%rip),%rax        # 643240 <mono_jit_stats>
+  12dd58:	41 8b 9e 84 02 00 00 	mov    0x284(%r14),%ebx
+  12dd5f:	f0 01 58 24          	lock add %ebx,0x24(%rax)
+  12dd63:	48 8d 05 d6 54 51 00 	lea    0x5154d6(%rip),%rax        # 643240 <mono_jit_stats>
+  12dd6a:	f0 01 58 14          	lock add %ebx,0x14(%rax)
+  12dd6e:	48 8d 0d cb 54 51 00 	lea    0x5154cb(%rip),%rcx        # 643240 <mono_jit_stats>
+  12dd75:	31 c0                	xor    %eax,%eax
+  12dd77:	f0 0f c1 81 b0 01 00 	lock xadd %eax,0x1b0(%rcx)
+  12dd7e:	00 
+  12dd7f:	85 c0                	test   %eax,%eax
+  12dd81:	0f 85 90 09 00 00    	jne    12e717 <mini_method_compile+0x2e17>
+  12dd87:	4c 89 f7             	mov    %r14,%rdi
+  12dd8a:	e8 51 39 00 00       	callq  1316e0 <mono_cfg_dump_close_group>
+  12dd8f:	e9 3c eb ff ff       	jmpq   12c8d0 <mini_method_compile+0xfd0>
+  12dd94:	0f 1f 40 00          	nopl   0x0(%rax)
+  12dd98:	4c 89 ff             	mov    %r15,%rdi
+  12dd9b:	e8 40 35 f5 ff       	callq  812e0 <mono_decompose_array_access_opts>
+  12dda0:	e9 7e f8 ff ff       	jmpq   12d623 <mini_method_compile+0x1d23>
+  12dda5:	0f 1f 00             	nopl   (%rax)
+  12dda8:	48 8d 3d 74 f3 1f 00 	lea    0x1ff374(%rip),%rdi        # 32d123 <__func__.29097+0xbe3>
+  12ddaf:	be 0e 00 00 00       	mov    $0xe,%esi
+  12ddb4:	e8 e7 9e 1d 00       	callq  307ca0 <monoeg_g_memdup>
+  12ddb9:	41 80 8f c0 02 00 00 	orb    $0x4,0x2c0(%r15)
+  12ddc0:	04 
+  12ddc1:	49 89 87 78 03 00 00 	mov    %rax,0x378(%r15)
+  12ddc8:	e9 48 f8 ff ff       	jmpq   12d615 <mini_method_compile+0x1d15>
+  12ddcd:	0f 1f 00             	nopl   (%rax)
+  12ddd0:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+  12ddd5:	4d 8b 87 78 03 00 00 	mov    0x378(%r15),%r8
+  12dddc:	48 8d 35 58 ef 1f 00 	lea    0x1fef58(%rip),%rsi        # 32cd3b <__func__.29097+0x7fb>
+  12dde3:	bf 01 00 00 00       	mov    $0x1,%edi
+  12dde8:	48 8b 48 18          	mov    0x18(%rax),%rcx
+  12ddec:	48 8b 40 08          	mov    0x8(%rax),%rax
+  12ddf0:	48 8b 50 40          	mov    0x40(%rax),%rdx
+  12ddf4:	31 c0                	xor    %eax,%eax
+  12ddf6:	e8 25 cc ef ff       	callq  2aa20 <__printf_chk@plt>
+  12ddfb:	41 0f b6 87 c7 02 00 	movzbl 0x2c7(%r15),%eax
+  12de02:	00 
+  12de03:	e9 45 f8 ff ff       	jmpq   12d64d <mini_method_compile+0x1d4d>
+  12de08:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+  12de0f:	00 
+  12de10:	e8 db 1f 0c 00       	callq  1efdf0 <mono_mempool_alloc>
+  12de15:	48 c7 40 30 00 00 00 	movq   $0x0,0x30(%rax)
+  12de1c:	00 
+  12de1d:	48 c7 40 28 00 00 00 	movq   $0x0,0x28(%rax)
+  12de24:	00 
+  12de25:	49 89 c6             	mov    %rax,%r14
+  12de28:	48 c7 40 20 00 00 00 	movq   $0x0,0x20(%rax)
+  12de2f:	00 
+  12de30:	48 c7 40 18 00 00 00 	movq   $0x0,0x18(%rax)
+  12de37:	00 
+  12de38:	41 0f b6 87 c0 02 00 	movzbl 0x2c0(%r15),%eax
+  12de3f:	00 
+  12de40:	49 c7 46 02 00 00 ff 	movq   $0xffffffffffff0000,0x2(%r14)
+  12de47:	ff 
+  12de48:	49 89 6e 0a          	mov    %rbp,0xa(%r14)
+  12de4c:	66 41 89 6e 12       	mov    %bp,0x12(%r14)
+  12de51:	83 e0 40             	and    $0x40,%eax
+  12de54:	3c 01                	cmp    $0x1,%al
+  12de56:	19 c0                	sbb    %eax,%eax
+  12de58:	66 25 3d fe          	and    $0xfe3d,%ax
+  12de5c:	66 05 41 03          	add    $0x341,%ax
+  12de60:	66 41 89 06          	mov    %ax,(%r14)
+  12de64:	49 8b 87 e0 01 00 00 	mov    0x1e0(%r15),%rax
+  12de6b:	49 89 46 38          	mov    %rax,0x38(%r14)
+  12de6f:	41 f6 87 c0 02 00 00 	testb  $0x40,0x2c0(%r15)
+  12de76:	40 
+  12de77:	0f 84 43 ee ff ff    	je     12ccc0 <mini_method_compile+0x13c0>
+  12de7d:	4c 89 ff             	mov    %r15,%rdi
+  12de80:	e8 db 81 f1 ff       	callq  46060 <mono_get_got_var>
+  12de85:	49 8b 7f 10          	mov    0x10(%r15),%rdi
+  12de89:	be 50 00 00 00       	mov    $0x50,%esi
+  12de8e:	48 89 44 24 38       	mov    %rax,0x38(%rsp)
+  12de93:	e8 58 1f 0c 00       	callq  1efdf0 <mono_mempool_alloc>
+  12de98:	48 b9 40 03 00 00 ff 	movabs $0xffffffff00000340,%rcx
+  12de9f:	ff ff ff 
+  12dea2:	48 c7 40 30 00 00 00 	movq   $0x0,0x30(%rax)
+  12dea9:	00 
+  12deaa:	48 c7 40 28 00 00 00 	movq   $0x0,0x28(%rax)
+  12deb1:	00 
+  12deb2:	48 c7 40 20 00 00 00 	movq   $0x0,0x20(%rax)
+  12deb9:	00 
+  12deba:	48 c7 40 18 00 00 00 	movq   $0x0,0x18(%rax)
+  12dec1:	00 
+  12dec2:	48 89 08             	mov    %rcx,(%rax)
+  12dec5:	48 89 68 08          	mov    %rbp,0x8(%rax)
+  12dec9:	89 68 10             	mov    %ebp,0x10(%rax)
+  12decc:	49 8b 8f e0 01 00 00 	mov    0x1e0(%r15),%rcx
+  12ded3:	48 8b 54 24 38       	mov    0x38(%rsp),%rdx
+  12ded8:	48 c7 40 30 30 00 00 	movq   $0x30,0x30(%rax)
+  12dedf:	00 
+  12dee0:	48 89 48 38          	mov    %rcx,0x38(%rax)
+  12dee4:	48 8d 0d 1d bd 52 00 	lea    0x52bd1d(%rip),%rcx        # 659c08 <mono_polling_required>
+  12deeb:	48 89 48 28          	mov    %rcx,0x28(%rax)
+  12deef:	8b 52 04             	mov    0x4(%rdx),%edx
+  12def2:	49 89 46 30          	mov    %rax,0x30(%r14)
+  12def6:	41 89 56 08          	mov    %edx,0x8(%r14)
+  12defa:	e9 d4 ed ff ff       	jmpq   12ccd3 <mini_method_compile+0x13d3>
+  12deff:	48 89 01             	mov    %rax,(%rcx)
+  12df02:	49 8b 56 38          	mov    0x38(%r14),%rdx
+  12df06:	48 89 42 10          	mov    %rax,0x10(%rdx)
+  12df0a:	41 8b 86 a0 02 00 00 	mov    0x2a0(%r14),%eax
+  12df11:	e9 fc e5 ff ff       	jmpq   12c512 <mini_method_compile+0xc12>
+  12df16:	85 ed                	test   %ebp,%ebp
+  12df18:	0f 85 89 f2 ff ff    	jne    12d1a7 <mini_method_compile+0x18a7>
+  12df1e:	48 8d 0d d6 ed 1f 00 	lea    0x1fedd6(%rip),%rcx        # 32ccfb <__func__.29097+0x7bb>
+  12df25:	48 8d 35 20 ec 1e 00 	lea    0x1eec20(%rip),%rsi        # 31cb4c <opstr+0x4ac>
+  12df2c:	48 8d 3d 85 35 1e 00 	lea    0x1e3585(%rip),%rdi        # 3114b8 <_IO_stdin_used+0xb8>
+  12df33:	ba 33 0c 00 00       	mov    $0xc33,%edx
+  12df38:	31 c0                	xor    %eax,%eax
+  12df3a:	e8 d1 a2 1d 00       	callq  308210 <monoeg_assertion_message>
+  12df3f:	e8 bc 8d 0b 00       	callq  1e6d00 <mono_marshal_get_wrapper_info>
+  12df44:	48 89 c5             	mov    %rax,%rbp
+  12df47:	e8 74 2e 1d 00       	callq  300dc0 <mono_threads_is_cooperative_suspension_enabled>
+  12df4c:	85 c0                	test   %eax,%eax
+  12df4e:	0f 84 fa 03 00 00    	je     12e34e <mini_method_compile+0x2a4e>
+  12df54:	48 85 ed             	test   %rbp,%rbp
+  12df57:	74 0a                	je     12df63 <mini_method_compile+0x2663>
+  12df59:	83 7d 00 0f          	cmpl   $0xf,0x0(%rbp)
+  12df5d:	0f 84 b3 05 00 00    	je     12e516 <mini_method_compile+0x2c16>
+  12df63:	49 8b 3f             	mov    (%r15),%rdi
+  12df66:	0f b6 47 20          	movzbl 0x20(%rdi),%eax
+  12df6a:	83 e0 7c             	and    $0x7c,%eax
+  12df6d:	3c 14                	cmp    $0x14,%al
+  12df6f:	0f 84 aa f2 ff ff    	je     12d21f <mini_method_compile+0x191f>
+  12df75:	3c 18                	cmp    $0x18,%al
+  12df77:	0f 85 a8 08 00 00    	jne    12e825 <mini_method_compile+0x2f25>
+  12df7d:	e8 7e 8d 0b 00       	callq  1e6d00 <mono_marshal_get_wrapper_info>
+  12df82:	48 85 c0             	test   %rax,%rax
+  12df85:	41 8b 97 ac 02 00 00 	mov    0x2ac(%r15),%edx
+  12df8c:	0f 84 25 ec ff ff    	je     12cbb7 <mini_method_compile+0x12b7>
+  12df92:	83 38 0f             	cmpl   $0xf,(%rax)
+  12df95:	0f 85 1c ec ff ff    	jne    12cbb7 <mini_method_compile+0x12b7>
+  12df9b:	48 8b 40 08          	mov    0x8(%rax),%rax
+  12df9f:	48 3b 05 3a 20 51 00 	cmp    0x51203a(%rip),%rax        # 63ffe0 <_GLOBAL_OFFSET_TABLE_+0x9c8>
+  12dfa6:	74 0d                	je     12dfb5 <mini_method_compile+0x26b5>
+  12dfa8:	48 3b 05 21 20 51 00 	cmp    0x512021(%rip),%rax        # 63ffd0 <_GLOBAL_OFFSET_TABLE_+0x9b8>
+  12dfaf:	0f 85 02 ec ff ff    	jne    12cbb7 <mini_method_compile+0x12b7>
+  12dfb5:	83 fa 01             	cmp    $0x1,%edx
+  12dfb8:	0f 86 8a f2 ff ff    	jbe    12d248 <mini_method_compile+0x1948>
+  12dfbe:	49 8b 07             	mov    (%r15),%rax
+  12dfc1:	48 8d 35 c8 ea 1f 00 	lea    0x1feac8(%rip),%rsi        # 32ca90 <__func__.29097+0x550>
+  12dfc8:	bf 01 00 00 00       	mov    $0x1,%edi
+  12dfcd:	48 8b 50 18          	mov    0x18(%rax),%rdx
+  12dfd1:	31 c0                	xor    %eax,%eax
+  12dfd3:	e8 48 ca ef ff       	callq  2aa20 <__printf_chk@plt>
+  12dfd8:	e9 6b f2 ff ff       	jmpq   12d248 <mini_method_compile+0x1948>
+  12dfdd:	0f 1f 00             	nopl   (%rax)
+  12dfe0:	49 8b 7f 10          	mov    0x10(%r15),%rdi
+  12dfe4:	be 50 00 00 00       	mov    $0x50,%esi
+  12dfe9:	e8 02 1e 0c 00       	callq  1efdf0 <mono_mempool_alloc>
+  12dfee:	48 c7 40 30 00 00 00 	movq   $0x0,0x30(%rax)
+  12dff5:	00 
+  12dff6:	48 c7 40 28 00 00 00 	movq   $0x0,0x28(%rax)
+  12dffd:	00 
+  12dffe:	48 c7 40 20 00 00 00 	movq   $0x0,0x20(%rax)
+  12e005:	00 
+  12e006:	48 c7 40 18 00 00 00 	movq   $0x0,0x18(%rax)
+  12e00d:	00 
+  12e00e:	4c 89 30             	mov    %r14,(%rax)
+  12e011:	4c 89 60 08          	mov    %r12,0x8(%rax)
+  12e015:	44 89 60 10          	mov    %r12d,0x10(%rax)
+  12e019:	49 8b 97 e0 01 00 00 	mov    0x1e0(%r15),%rdx
+  12e020:	48 89 50 38          	mov    %rdx,0x38(%rax)
+  12e024:	48 8b 13             	mov    (%rbx),%rdx
+  12e027:	48 85 d2             	test   %rdx,%rdx
+  12e02a:	0f 84 75 03 00 00    	je     12e3a5 <mini_method_compile+0x2aa5>
+  12e030:	48 89 42 18          	mov    %rax,0x18(%rdx)
+  12e034:	48 8b 13             	mov    (%rbx),%rdx
+  12e037:	48 89 50 20          	mov    %rdx,0x20(%rax)
+  12e03b:	48 89 03             	mov    %rax,(%rbx)
+  12e03e:	48 8b 53 08          	mov    0x8(%rbx),%rdx
+  12e042:	48 89 50 28          	mov    %rdx,0x28(%rax)
+  12e046:	48 8b 43 08          	mov    0x8(%rbx),%rax
+  12e04a:	48 85 c0             	test   %rax,%rax
+  12e04d:	0f 85 7d e5 ff ff    	jne    12c5d0 <mini_method_compile+0xcd0>
+  12e053:	e9 84 e5 ff ff       	jmpq   12c5dc <mini_method_compile+0xcdc>
+  12e058:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+  12e05f:	00 
+  12e060:	4c 89 ff             	mov    %r15,%rdi
+  12e063:	e8 38 b3 00 00       	callq  1393a0 <mono_ssa_remove_gsharedvt>
+  12e068:	e9 c4 f2 ff ff       	jmpq   12d331 <mini_method_compile+0x1a31>
+  12e06d:	4c 89 ff             	mov    %r15,%rdi
+  12e070:	e8 6b fe f9 ff       	callq  cdee0 <mini_is_gsharedvt_sharable_method>
+  12e075:	e9 4f d9 ff ff       	jmpq   12b9c9 <mini_method_compile+0xc9>
+  12e07a:	e8 b1 27 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12e07f:	4c 89 ff             	mov    %r15,%rdi
+  12e082:	48 89 c5             	mov    %rax,%rbp
+  12e085:	e8 66 ac 00 00       	callq  138cf0 <mono_ssa_compute>
+  12e08a:	48 8d 05 af 51 51 00 	lea    0x5151af(%rip),%rax        # 643240 <mono_jit_stats>
+  12e091:	48 89 ee             	mov    %rbp,%rsi
+  12e094:	48 8d b8 f8 00 00 00 	lea    0xf8(%rax),%rdi
+  12e09b:	e8 c0 d0 ff ff       	callq  12b160 <mono_time_track_end>
+  12e0a0:	48 8d 35 ef ee 1f 00 	lea    0x1feeef(%rip),%rsi        # 32cf96 <__func__.29097+0xa56>
+  12e0a7:	4c 89 ff             	mov    %r15,%rdi
+  12e0aa:	e8 e1 38 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12e0af:	41 83 bf ac 02 00 00 	cmpl   $0x1,0x2ac(%r15)
+  12e0b6:	01 
+  12e0b7:	0f 86 e3 f1 ff ff    	jbe    12d2a0 <mini_method_compile+0x19a0>
+  12e0bd:	49 8b 3f             	mov    (%r15),%rdi
+  12e0c0:	be 01 00 00 00       	mov    $0x1,%esi
+  12e0c5:	e8 16 2c 09 00       	callq  1c0ce0 <mono_method_full_name>
+  12e0ca:	48 8d 3d d1 ee 1f 00 	lea    0x1feed1(%rip),%rdi        # 32cfa2 <__func__.29097+0xa62>
+  12e0d1:	48 89 c6             	mov    %rax,%rsi
+  12e0d4:	48 89 c5             	mov    %rax,%rbp
+  12e0d7:	31 c0                	xor    %eax,%eax
+  12e0d9:	e8 72 9e 1d 00       	callq  307f50 <monoeg_g_print>
+  12e0de:	48 89 ef             	mov    %rbp,%rdi
+  12e0e1:	e8 1a 9b 1d 00       	callq  307c00 <monoeg_g_free>
+  12e0e6:	45 8b 9f 88 00 00 00 	mov    0x88(%r15),%r11d
+  12e0ed:	45 85 db             	test   %r11d,%r11d
+  12e0f0:	0f 84 90 01 00 00    	je     12e286 <mini_method_compile+0x2986>
+  12e0f6:	45 31 ed             	xor    %r13d,%r13d
+  12e0f9:	48 89 5c 24 30       	mov    %rbx,0x30(%rsp)
+  12e0fe:	66 90                	xchg   %ax,%ax
+  12e100:	49 8b 57 48          	mov    0x48(%r15),%rdx
+  12e104:	49 63 c5             	movslq %r13d,%rax
+  12e107:	48 8d 3d 77 2e 20 00 	lea    0x202e77(%rip),%rdi        # 330f85 <opstr+0x2fe5>
+  12e10e:	be 02 00 00 00       	mov    $0x2,%esi
+  12e113:	48 8b 2c c2          	mov    (%rdx,%rax,8),%rbp
+  12e117:	e8 84 9b 1d 00       	callq  307ca0 <monoeg_g_memdup>
+  12e11c:	48 8d 3d 96 ee 1f 00 	lea    0x1fee96(%rip),%rdi        # 32cfb9 <__func__.29097+0xa79>
+  12e123:	49 89 c0             	mov    %rax,%r8
+  12e126:	49 89 c6             	mov    %rax,%r14
+  12e129:	8b 4d 40             	mov    0x40(%rbp),%ecx
+  12e12c:	8b 75 18             	mov    0x18(%rbp),%esi
+  12e12f:	31 c0                	xor    %eax,%eax
+  12e131:	44 89 ea             	mov    %r13d,%edx
+  12e134:	e8 17 9e 1d 00       	callq  307f50 <monoeg_g_print>
+  12e139:	4c 8b 65 10          	mov    0x10(%rbp),%r12
+  12e13d:	4d 85 e4             	test   %r12,%r12
+  12e140:	74 1d                	je     12e15f <mini_method_compile+0x285f>
+  12e142:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+  12e148:	4c 89 e6             	mov    %r12,%rsi
+  12e14b:	bf ff ff ff ff       	mov    $0xffffffff,%edi
+  12e150:	e8 0b 9d f8 ff       	callq  b7e60 <mono_print_ins_index>
+  12e155:	4d 8b 64 24 18       	mov    0x18(%r12),%r12
+  12e15a:	4d 85 e4             	test   %r12,%r12
+  12e15d:	75 e9                	jne    12e148 <mini_method_compile+0x2848>
+  12e15f:	48 8d 3d 6c ee 1f 00 	lea    0x1fee6c(%rip),%rdi        # 32cfd2 <__func__.29097+0xa92>
+  12e166:	31 c0                	xor    %eax,%eax
+  12e168:	e8 e3 9d 1d 00       	callq  307f50 <monoeg_g_print>
+  12e16d:	66 83 7d 22 00       	cmpw   $0x0,0x22(%rbp)
+  12e172:	7e 36                	jle    12e1aa <mini_method_compile+0x28aa>
+  12e174:	31 db                	xor    %ebx,%ebx
+  12e176:	45 31 e4             	xor    %r12d,%r12d
+  12e179:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+  12e180:	48 8b 45 28          	mov    0x28(%rbp),%rax
+  12e184:	48 8d 3d 4e ee 1f 00 	lea    0x1fee4e(%rip),%rdi        # 32cfd9 <__func__.29097+0xa99>
+  12e18b:	41 83 c4 01          	add    $0x1,%r12d
+  12e18f:	48 8b 04 18          	mov    (%rax,%rbx,1),%rax
+  12e193:	48 83 c3 08          	add    $0x8,%rbx
+  12e197:	8b 70 18             	mov    0x18(%rax),%esi
+  12e19a:	31 c0                	xor    %eax,%eax
+  12e19c:	e8 af 9d 1d 00       	callq  307f50 <monoeg_g_print>
+  12e1a1:	0f bf 45 22          	movswl 0x22(%rbp),%eax
+  12e1a5:	41 39 c4             	cmp    %eax,%r12d
+  12e1a8:	7c d6                	jl     12e180 <mini_method_compile+0x2880>
+  12e1aa:	48 8d 3d 2e ee 1f 00 	lea    0x1fee2e(%rip),%rdi        # 32cfdf <__func__.29097+0xa9f>
+  12e1b1:	31 c0                	xor    %eax,%eax
+  12e1b3:	e8 98 9d 1d 00       	callq  307f50 <monoeg_g_print>
+  12e1b8:	66 83 7d 20 00       	cmpw   $0x0,0x20(%rbp)
+  12e1bd:	7e 33                	jle    12e1f2 <mini_method_compile+0x28f2>
+  12e1bf:	31 db                	xor    %ebx,%ebx
+  12e1c1:	45 31 e4             	xor    %r12d,%r12d
+  12e1c4:	0f 1f 40 00          	nopl   0x0(%rax)
+  12e1c8:	48 8b 45 30          	mov    0x30(%rbp),%rax
+  12e1cc:	48 8d 3d 06 ee 1f 00 	lea    0x1fee06(%rip),%rdi        # 32cfd9 <__func__.29097+0xa99>
+  12e1d3:	41 83 c4 01          	add    $0x1,%r12d
+  12e1d7:	48 8b 04 18          	mov    (%rax,%rbx,1),%rax
+  12e1db:	48 83 c3 08          	add    $0x8,%rbx
+  12e1df:	8b 70 18             	mov    0x18(%rax),%esi
+  12e1e2:	31 c0                	xor    %eax,%eax
+  12e1e4:	e8 67 9d 1d 00       	callq  307f50 <monoeg_g_print>
+  12e1e9:	0f bf 45 20          	movswl 0x20(%rbp),%eax
+  12e1ed:	41 39 c4             	cmp    %eax,%r12d
+  12e1f0:	7c d6                	jl     12e1c8 <mini_method_compile+0x28c8>
+  12e1f2:	48 8b 45 70          	mov    0x70(%rbp),%rax
+  12e1f6:	be ff ff ff ff       	mov    $0xffffffff,%esi
+  12e1fb:	48 85 c0             	test   %rax,%rax
+  12e1fe:	74 03                	je     12e203 <mini_method_compile+0x2903>
+  12e200:	8b 70 18             	mov    0x18(%rax),%esi
+  12e203:	48 8d 3d dd ed 1f 00 	lea    0x1feddd(%rip),%rdi        # 32cfe7 <__func__.29097+0xaa7>
+  12e20a:	31 c0                	xor    %eax,%eax
+  12e20c:	e8 3f 9d 1d 00       	callq  307f50 <monoeg_g_print>
+  12e211:	48 8b 45 70          	mov    0x70(%rbp),%rax
+  12e215:	48 8b 75 60          	mov    0x60(%rbp),%rsi
+  12e219:	48 85 c0             	test   %rax,%rax
+  12e21c:	0f 84 72 02 00 00    	je     12e494 <mini_method_compile+0x2b94>
+  12e222:	48 63 40 1c          	movslq 0x1c(%rax),%rax
+  12e226:	48 89 c1             	mov    %rax,%rcx
+  12e229:	48 c1 e8 06          	shr    $0x6,%rax
+  12e22d:	48 8b 44 c6 10       	mov    0x10(%rsi,%rax,8),%rax
+  12e232:	48 0f a3 c8          	bt     %rcx,%rax
+  12e236:	0f 83 60 03 00 00    	jae    12e59c <mini_method_compile+0x2c9c>
+  12e23c:	48 8d 15 b2 ed 1f 00 	lea    0x1fedb2(%rip),%rdx        # 32cff5 <__func__.29097+0xab5>
+  12e243:	4c 89 ff             	mov    %r15,%rdi
+  12e246:	e8 35 5f 00 00       	callq  134180 <mono_blockset_print>
+  12e24b:	48 8b 75 68          	mov    0x68(%rbp),%rsi
+  12e24f:	48 85 f6             	test   %rsi,%rsi
+  12e252:	74 14                	je     12e268 <mini_method_compile+0x2968>
+  12e254:	48 8d 15 a6 ed 1f 00 	lea    0x1feda6(%rip),%rdx        # 32d001 <__func__.29097+0xac1>
+  12e25b:	b9 ff ff ff ff       	mov    $0xffffffff,%ecx
+  12e260:	4c 89 ff             	mov    %r15,%rdi
+  12e263:	e8 18 5f 00 00       	callq  134180 <mono_blockset_print>
+  12e268:	4c 89 f7             	mov    %r14,%rdi
+  12e26b:	41 83 c5 01          	add    $0x1,%r13d
+  12e26f:	e8 8c 99 1d 00       	callq  307c00 <monoeg_g_free>
+  12e274:	45 39 af 88 00 00 00 	cmp    %r13d,0x88(%r15)
+  12e27b:	0f 87 7f fe ff ff    	ja     12e100 <mini_method_compile+0x2800>
+  12e281:	48 8b 5c 24 30       	mov    0x30(%rsp),%rbx
+  12e286:	48 8d 3d f8 2c 20 00 	lea    0x202cf8(%rip),%rdi        # 330f85 <opstr+0x2fe5>
+  12e28d:	31 c0                	xor    %eax,%eax
+  12e28f:	e8 bc 9c 1d 00       	callq  307f50 <monoeg_g_print>
+  12e294:	e9 07 f0 ff ff       	jmpq   12d2a0 <mini_method_compile+0x19a0>
+  12e299:	e8 92 25 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12e29e:	4c 89 ff             	mov    %r15,%rdi
+  12e2a1:	48 89 c5             	mov    %rax,%rbp
+  12e2a4:	e8 97 c7 00 00       	callq  13aa40 <mono_ssa_deadce>
+  12e2a9:	48 8d 05 90 4f 51 00 	lea    0x514f90(%rip),%rax        # 643240 <mono_jit_stats>
+  12e2b0:	48 89 ee             	mov    %rbp,%rsi
+  12e2b3:	48 8d b8 08 01 00 00 	lea    0x108(%rax),%rdi
+  12e2ba:	e8 a1 ce ff ff       	callq  12b160 <mono_time_track_end>
+  12e2bf:	48 8d 35 50 ed 1f 00 	lea    0x1fed50(%rip),%rsi        # 32d016 <__func__.29097+0xad6>
+  12e2c6:	4c 89 ff             	mov    %r15,%rdi
+  12e2c9:	e8 c2 36 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12e2ce:	e9 51 f4 ff ff       	jmpq   12d724 <mini_method_compile+0x1e24>
+  12e2d3:	e8 58 25 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12e2d8:	4c 89 ff             	mov    %r15,%rdi
+  12e2db:	48 89 c5             	mov    %rax,%rbp
+  12e2de:	e8 8d af f5 ff       	callq  89270 <mono_local_deadce>
+  12e2e3:	48 8d 05 56 4f 51 00 	lea    0x514f56(%rip),%rax        # 643240 <mono_jit_stats>
+  12e2ea:	48 89 ee             	mov    %rbp,%rsi
+  12e2ed:	48 8d b8 30 01 00 00 	lea    0x130(%rax),%rdi
+  12e2f4:	e8 67 ce ff ff       	callq  12b160 <mono_time_track_end>
+  12e2f9:	48 8d 35 62 ed 1f 00 	lea    0x1fed62(%rip),%rsi        # 32d062 <__func__.29097+0xb22>
+  12e300:	4c 89 ff             	mov    %r15,%rdi
+  12e303:	e8 88 36 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12e308:	41 8b 87 a0 02 00 00 	mov    0x2a0(%r15),%eax
+  12e30f:	e9 0a f5 ff ff       	jmpq   12d81e <mini_method_compile+0x1f1e>
+  12e314:	e8 17 25 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12e319:	4c 89 ff             	mov    %r15,%rdi
+  12e31c:	48 89 c5             	mov    %rax,%rbp
+  12e31f:	e8 7c 7a f9 ff       	callq  c5da0 <mono_optimize_branches>
+  12e324:	48 8d 05 15 4f 51 00 	lea    0x514f15(%rip),%rax        # 643240 <mono_jit_stats>
+  12e32b:	48 89 ee             	mov    %rbp,%rsi
+  12e32e:	48 8d b8 38 01 00 00 	lea    0x138(%rax),%rdi
+  12e335:	e8 26 ce ff ff       	callq  12b160 <mono_time_track_end>
+  12e33a:	48 8d 35 2f ed 1f 00 	lea    0x1fed2f(%rip),%rsi        # 32d070 <__func__.29097+0xb30>
+  12e341:	4c 89 ff             	mov    %r15,%rdi
+  12e344:	e8 47 36 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12e349:	e9 d8 f4 ff ff       	jmpq   12d826 <mini_method_compile+0x1f26>
+  12e34e:	e8 9d 33 1d 00       	callq  3016f0 <mono_threads_is_hybrid_suspension_enabled>
+  12e353:	85 c0                	test   %eax,%eax
+  12e355:	0f 85 f9 fb ff ff    	jne    12df54 <mini_method_compile+0x2654>
+  12e35b:	48 8d 0d 6e 36 1e 00 	lea    0x1e366e(%rip),%rcx        # 3119d0 <_IO_stdin_used+0x5d0>
+  12e362:	48 8d 35 e3 e7 1e 00 	lea    0x1ee7e3(%rip),%rsi        # 31cb4c <opstr+0x4ac>
+  12e369:	48 8d 3d 48 31 1e 00 	lea    0x1e3148(%rip),%rdi        # 3114b8 <_IO_stdin_used+0xb8>
+  12e370:	ba 62 0b 00 00       	mov    $0xb62,%edx
+  12e375:	e8 96 9e 1d 00       	callq  308210 <monoeg_assertion_message>
+  12e37a:	e8 b1 24 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12e37f:	4c 89 ff             	mov    %r15,%rdi
+  12e382:	48 89 c3             	mov    %rax,%rbx
+  12e385:	e8 e6 ae f5 ff       	callq  89270 <mono_local_deadce>
+  12e38a:	48 8d 05 af 4e 51 00 	lea    0x514eaf(%rip),%rax        # 643240 <mono_jit_stats>
+  12e391:	48 89 de             	mov    %rbx,%rsi
+  12e394:	48 8d b8 80 01 00 00 	lea    0x180(%rax),%rdi
+  12e39b:	e8 c0 cd ff ff       	callq  12b160 <mono_time_track_end>
+  12e3a0:	e9 50 f7 ff ff       	jmpq   12daf5 <mini_method_compile+0x21f5>
+  12e3a5:	48 89 03             	mov    %rax,(%rbx)
+  12e3a8:	48 89 43 10          	mov    %rax,0x10(%rbx)
+  12e3ac:	e9 8d fc ff ff       	jmpq   12e03e <mini_method_compile+0x273e>
+  12e3b1:	49 8b 34 24          	mov    (%r12),%rsi
+  12e3b5:	4c 89 f2             	mov    %r14,%rdx
+  12e3b8:	4c 89 e7             	mov    %r12,%rdi
+  12e3bb:	e8 80 ba ff ff       	callq  129e40 <mono_bblock_insert_after_ins>
+  12e3c0:	e9 b1 e9 ff ff       	jmpq   12cd76 <mini_method_compile+0x1476>
+  12e3c5:	48 8d 0d 47 20 22 00 	lea    0x222047(%rip),%rcx        # 350413 <__func__.8260+0x1063>
+  12e3cc:	48 8d 35 79 e7 1e 00 	lea    0x1ee779(%rip),%rsi        # 31cb4c <opstr+0x4ac>
+  12e3d3:	48 8d 3d de 30 1e 00 	lea    0x1e30de(%rip),%rdi        # 3114b8 <_IO_stdin_used+0xb8>
+  12e3da:	ba a8 0c 00 00       	mov    $0xca8,%edx
+  12e3df:	31 c0                	xor    %eax,%eax
+  12e3e1:	e8 2a 9e 1d 00       	callq  308210 <monoeg_assertion_message>
+  12e3e6:	48 8d 0d 13 e5 1f 00 	lea    0x1fe513(%rip),%rcx        # 32c900 <__func__.29097+0x3c0>
+  12e3ed:	48 8d 35 58 e7 1e 00 	lea    0x1ee758(%rip),%rsi        # 31cb4c <opstr+0x4ac>
+  12e3f4:	48 8d 3d bd 30 1e 00 	lea    0x1e30bd(%rip),%rdi        # 3114b8 <_IO_stdin_used+0xb8>
+  12e3fb:	ba af 0c 00 00       	mov    $0xcaf,%edx
+  12e400:	31 c0                	xor    %eax,%eax
+  12e402:	e8 09 9e 1d 00       	callq  308210 <monoeg_assertion_message>
+  12e407:	48 8d 0d 05 e9 1f 00 	lea    0x1fe905(%rip),%rcx        # 32cd13 <__func__.29097+0x7d3>
+  12e40e:	48 8d 35 37 e7 1e 00 	lea    0x1ee737(%rip),%rsi        # 31cb4c <opstr+0x4ac>
+  12e415:	48 8d 3d 9c 30 1e 00 	lea    0x1e309c(%rip),%rdi        # 3114b8 <_IO_stdin_used+0xb8>
+  12e41c:	ba ad 0c 00 00       	mov    $0xcad,%edx
+  12e421:	31 c0                	xor    %eax,%eax
+  12e423:	e8 e8 9d 1d 00       	callq  308210 <monoeg_assertion_message>
+  12e428:	41 c7 86 6c 03 00 00 	movl   $0x10,0x36c(%r14)
+  12e42f:	10 00 00 00 
+  12e433:	e9 98 e4 ff ff       	jmpq   12c8d0 <mini_method_compile+0xfd0>
+  12e438:	41 c7 86 6c 03 00 00 	movl   $0x7,0x36c(%r14)
+  12e43f:	07 00 00 00 
+  12e443:	48 89 df             	mov    %rbx,%rdi
+  12e446:	e8 25 96 1c 00       	callq  2f7a70 <mono_error_get_message>
+  12e44b:	48 85 c0             	test   %rax,%rax
+  12e44e:	48 89 c5             	mov    %rax,%rbp
+  12e451:	0f 84 b9 02 00 00    	je     12e710 <mini_method_compile+0x2e10>
+  12e457:	48 89 c7             	mov    %rax,%rdi
+  12e45a:	e8 d1 c8 ef ff       	callq  2ad30 <strlen@plt>
+  12e45f:	8d 70 01             	lea    0x1(%rax),%esi
+  12e462:	48 89 ef             	mov    %rbp,%rdi
+  12e465:	e8 36 98 1d 00       	callq  307ca0 <monoeg_g_memdup>
+  12e46a:	49 89 86 78 03 00 00 	mov    %rax,0x378(%r14)
+  12e471:	48 89 df             	mov    %rbx,%rdi
+  12e474:	e8 47 94 1c 00       	callq  2f78c0 <mono_error_cleanup>
+  12e479:	e9 52 e4 ff ff       	jmpq   12c8d0 <mini_method_compile+0xfd0>
+  12e47e:	e8 fd 2c f1 ff       	callq  41180 <mini_get_debug_options>
+  12e483:	8b 40 10             	mov    0x10(%rax),%eax
+  12e486:	85 c0                	test   %eax,%eax
+  12e488:	0f 84 42 e4 ff ff    	je     12c8d0 <mini_method_compile+0xfd0>
+  12e48e:	cc                   	int3   
+  12e48f:	e9 3c e4 ff ff       	jmpq   12c8d0 <mini_method_compile+0xfd0>
+  12e494:	48 85 f6             	test   %rsi,%rsi
+  12e497:	b9 ff ff ff ff       	mov    $0xffffffff,%ecx
+  12e49c:	0f 85 9a fd ff ff    	jne    12e23c <mini_method_compile+0x293c>
+  12e4a2:	e9 a4 fd ff ff       	jmpq   12e24b <mini_method_compile+0x294b>
+  12e4a7:	48 8d 0d 0c ec 1f 00 	lea    0x1fec0c(%rip),%rcx        # 32d0ba <__func__.29097+0xb7a>
+  12e4ae:	48 8d 35 97 e6 1e 00 	lea    0x1ee697(%rip),%rsi        # 31cb4c <opstr+0x4ac>
+  12e4b5:	48 8d 3d fc 2f 1e 00 	lea    0x1e2ffc(%rip),%rdi        # 3114b8 <_IO_stdin_used+0xb8>
+  12e4bc:	ba 9c 0e 00 00       	mov    $0xe9c,%edx
+  12e4c1:	31 c0                	xor    %eax,%eax
+  12e4c3:	e8 48 9d 1d 00       	callq  308210 <monoeg_assertion_message>
+  12e4c8:	48 8d 0d 37 95 1f 00 	lea    0x1f9537(%rip),%rcx        # 327a06 <__func__.24849+0x1e6>
+  12e4cf:	48 8d 35 76 e6 1e 00 	lea    0x1ee676(%rip),%rsi        # 31cb4c <opstr+0x4ac>
+  12e4d6:	48 8d 3d db 2f 1e 00 	lea    0x1e2fdb(%rip),%rdi        # 3114b8 <_IO_stdin_used+0xb8>
+  12e4dd:	ba a9 0e 00 00       	mov    $0xea9,%edx
+  12e4e2:	e8 29 9d 1d 00       	callq  308210 <monoeg_assertion_message>
+  12e4e7:	4d 89 fe             	mov    %r15,%r14
+  12e4ea:	e9 e1 e3 ff ff       	jmpq   12c8d0 <mini_method_compile+0xfd0>
+  12e4ef:	49 89 39             	mov    %rdi,(%r9)
+  12e4f2:	48 8b 13             	mov    (%rbx),%rdx
+  12e4f5:	48 8b 52 30          	mov    0x30(%rdx),%rdx
+  12e4f9:	48 89 42 08          	mov    %rax,0x8(%rdx)
+  12e4fd:	48 8b 2b             	mov    (%rbx),%rbp
+  12e500:	0f b7 7d 00          	movzwl 0x0(%rbp),%edi
+  12e504:	e8 e7 aa ff ff       	callq  128ff0 <mono_reverse_branch_op>
+  12e509:	66 89 45 00          	mov    %ax,0x0(%rbp)
+  12e50d:	48 8b 43 08          	mov    0x8(%rbx),%rax
+  12e511:	e9 d3 ef ff ff       	jmpq   12d4e9 <mini_method_compile+0x1be9>
+  12e516:	48 8d 05 43 2a 1d 00 	lea    0x1d2a43(%rip),%rax        # 300f60 <mono_threads_state_poll>
+  12e51d:	48 39 45 08          	cmp    %rax,0x8(%rbp)
+  12e521:	0f 85 3c fa ff ff    	jne    12df63 <mini_method_compile+0x2663>
+  12e527:	41 83 bf ac 02 00 00 	cmpl   $0x1,0x2ac(%r15)
+  12e52e:	01 
+  12e52f:	0f 86 13 ed ff ff    	jbe    12d248 <mini_method_compile+0x1948>
+  12e535:	48 8d 3d e4 e4 1f 00 	lea    0x1fe4e4(%rip),%rdi        # 32ca20 <__func__.29097+0x4e0>
+  12e53c:	e8 1f c4 ef ff       	callq  2a960 <puts@plt>
+  12e541:	e9 02 ed ff ff       	jmpq   12d248 <mini_method_compile+0x1948>
+  12e546:	4c 89 f7             	mov    %r14,%rdi
+  12e549:	e8 42 d8 1d 00       	callq  30bd90 <monoeg_g_list_delete_link>
+  12e54e:	49 89 c6             	mov    %rax,%r14
+  12e551:	e9 3b f6 ff ff       	jmpq   12db91 <mini_method_compile+0x2291>
+  12e556:	83 f8 0b             	cmp    $0xb,%eax
+  12e559:	0f 85 71 e3 ff ff    	jne    12c8d0 <mini_method_compile+0xfd0>
+  12e55f:	48 8d 0d ba e3 1f 00 	lea    0x1fe3ba(%rip),%rcx        # 32c920 <__func__.29097+0x3e0>
+  12e566:	48 8d 35 df e5 1e 00 	lea    0x1ee5df(%rip),%rsi        # 31cb4c <opstr+0x4ac>
+  12e56d:	48 8d 3d 44 2f 1e 00 	lea    0x1e2f44(%rip),%rdi        # 3114b8 <_IO_stdin_used+0xb8>
+  12e574:	ba 9c 0d 00 00       	mov    $0xd9c,%edx
+  12e579:	31 c0                	xor    %eax,%eax
+  12e57b:	e8 90 9c 1d 00       	callq  308210 <monoeg_assertion_message>
+  12e580:	49 8b bf 78 03 00 00 	mov    0x378(%r15),%rdi
+  12e587:	4d 89 fe             	mov    %r15,%r14
+  12e58a:	e8 71 96 1d 00       	callq  307c00 <monoeg_g_free>
+  12e58f:	41 80 8f c0 02 00 00 	orb    $0x1,0x2c0(%r15)
+  12e596:	01 
+  12e597:	e9 34 e3 ff ff       	jmpq   12c8d0 <mini_method_compile+0xfd0>
+  12e59c:	48 8d 0d 15 e5 1f 00 	lea    0x1fe515(%rip),%rcx        # 32cab8 <__func__.29097+0x578>
+  12e5a3:	48 8d 35 a2 e5 1e 00 	lea    0x1ee5a2(%rip),%rsi        # 31cb4c <opstr+0x4ac>
+  12e5aa:	48 8d 3d 07 2f 1e 00 	lea    0x1e2f07(%rip),%rdi        # 3114b8 <_IO_stdin_used+0xb8>
+  12e5b1:	ba f7 06 00 00       	mov    $0x6f7,%edx
+  12e5b6:	31 c0                	xor    %eax,%eax
+  12e5b8:	e8 53 9c 1d 00       	callq  308210 <monoeg_assertion_message>
+  12e5bd:	e8 6e 22 1e 00       	callq  310830 <monoeg_g_timer_new>
+  12e5c2:	4c 89 ff             	mov    %r15,%rdi
+  12e5c5:	48 89 c3             	mov    %rax,%rbx
+  12e5c8:	4d 89 fe             	mov    %r15,%r14
+  12e5cb:	e8 c0 c3 ff ff       	callq  12a990 <mono_codegen>
+  12e5d0:	48 8d 05 69 4c 51 00 	lea    0x514c69(%rip),%rax        # 643240 <mono_jit_stats>
+  12e5d7:	48 89 de             	mov    %rbx,%rsi
+  12e5da:	48 8d b8 88 01 00 00 	lea    0x188(%rax),%rdi
+  12e5e1:	e8 7a cb ff ff       	callq  12b160 <mono_time_track_end>
+  12e5e6:	48 8d 35 44 eb 1f 00 	lea    0x1feb44(%rip),%rsi        # 32d131 <__func__.29097+0xbf1>
+  12e5ed:	4c 89 ff             	mov    %r15,%rdi
+  12e5f0:	e8 9b 33 00 00       	callq  131990 <mono_cfg_dump_ir>
+  12e5f5:	41 8b 8f 6c 03 00 00 	mov    0x36c(%r15),%ecx
+  12e5fc:	85 c9                	test   %ecx,%ecx
+  12e5fe:	0f 84 71 f6 ff ff    	je     12dc75 <mini_method_compile+0x2375>
+  12e604:	e9 c7 e2 ff ff       	jmpq   12c8d0 <mini_method_compile+0xfd0>
+  12e609:	4c 89 f7             	mov    %r14,%rdi
+  12e60c:	e8 ff 2a fb ff       	callq  e1110 <mono_save_xdebug_info>
+  12e611:	4c 89 f7             	mov    %r14,%rdi
+  12e614:	e8 c7 ed fb ff       	callq  ed3e0 <mono_lldb_save_method_info>
+  12e619:	41 83 be ac 02 00 00 	cmpl   $0x1,0x2ac(%r14)
+  12e620:	01 
+  12e621:	76 2f                	jbe    12e652 <mini_method_compile+0x2d52>
+  12e623:	49 8b 3e             	mov    (%r14),%rdi
+  12e626:	31 f6                	xor    %esi,%esi
+  12e628:	e8 b3 26 09 00       	callq  1c0ce0 <mono_method_full_name>
+  12e62d:	41 8b 96 84 02 00 00 	mov    0x284(%r14),%edx
+  12e634:	49 8b b6 78 02 00 00 	mov    0x278(%r14),%rsi
+  12e63b:	48 8d 48 03          	lea    0x3(%rax),%rcx
+  12e63f:	48 89 c3             	mov    %rax,%rbx
+  12e642:	4c 89 f7             	mov    %r14,%rdi
+  12e645:	e8 e6 5b 00 00       	callq  134230 <mono_disassemble_code>
+  12e64a:	48 89 df             	mov    %rbx,%rdi
+  12e64d:	e8 ae 95 1d 00       	callq  307c00 <monoeg_g_free>
+  12e652:	41 f6 86 c0 02 00 00 	testb  $0x40,0x2c0(%r14)
+  12e659:	40 
+  12e65a:	0f 85 d4 f6 ff ff    	jne    12dd34 <mini_method_compile+0x2434>
+  12e660:	f7 44 24 20 00 01 00 	testl  $0x100,0x20(%rsp)
+  12e667:	00 
+  12e668:	0f 85 c6 f6 ff ff    	jne    12dd34 <mini_method_compile+0x2434>
+  12e66e:	49 8b be 08 02 00 00 	mov    0x208(%r14),%rdi
+  12e675:	e8 56 d2 06 00       	callq  19b8d0 <mono_domain_lock>
+  12e67a:	49 8b 76 78          	mov    0x78(%r14),%rsi
+  12e67e:	49 8b be 08 02 00 00 	mov    0x208(%r14),%rdi
+  12e685:	e8 76 f1 0a 00       	callq  1dd800 <mono_jit_info_table_add>
+  12e68a:	49 8b 36             	mov    (%r14),%rsi
+  12e68d:	f6 46 21 02          	testb  $0x2,0x21(%rsi)
+  12e691:	74 27                	je     12e6ba <mini_method_compile+0x2dba>
+  12e693:	49 8b 86 08 02 00 00 	mov    0x208(%r14),%rax
+  12e69a:	48 8b 80 f0 01 00 00 	mov    0x1f0(%rax),%rax
+  12e6a1:	48 8b 78 40          	mov    0x40(%rax),%rdi
+  12e6a5:	48 85 ff             	test   %rdi,%rdi
+  12e6a8:	0f 84 64 01 00 00    	je     12e812 <mini_method_compile+0x2f12>
+  12e6ae:	e8 9d 69 1d 00       	callq  305050 <monoeg_g_hash_table_lookup>
+  12e6b3:	49 8b 56 78          	mov    0x78(%r14),%rdx
+  12e6b7:	48 89 10             	mov    %rdx,(%rax)
+  12e6ba:	49 8b be 08 02 00 00 	mov    0x208(%r14),%rdi
+  12e6c1:	e8 fa d2 06 00       	callq  19b9c0 <mono_domain_unlock>
+  12e6c6:	e9 69 f6 ff ff       	jmpq   12dd34 <mini_method_compile+0x2434>
+  12e6cb:	f0 83 40 60 01       	lock addl $0x1,0x60(%rax)
+  12e6d0:	e9 ba f5 ff ff       	jmpq   12dc8f <mini_method_compile+0x238f>
+  12e6d5:	41 8b 96 94 00 00 00 	mov    0x94(%r14),%edx
+  12e6dc:	85 d2                	test   %edx,%edx
+  12e6de:	0f 84 e8 f5 ff ff    	je     12dccc <mini_method_compile+0x23cc>
+  12e6e4:	31 d2                	xor    %edx,%edx
+  12e6e6:	48 63 c2             	movslq %edx,%rax
+  12e6e9:	41 8b 8e 84 02 00 00 	mov    0x284(%r14),%ecx
+  12e6f0:	83 c2 01             	add    $0x1,%edx
+  12e6f3:	48 8d 04 80          	lea    (%rax,%rax,4),%rax
+  12e6f7:	48 c1 e0 04          	shl    $0x4,%rax
+  12e6fb:	49 03 46 20          	add    0x20(%r14),%rax
+  12e6ff:	89 48 48             	mov    %ecx,0x48(%rax)
+  12e702:	41 39 96 94 00 00 00 	cmp    %edx,0x94(%r14)
+  12e709:	77 db                	ja     12e6e6 <mini_method_compile+0x2de6>
+  12e70b:	e9 bc f5 ff ff       	jmpq   12dccc <mini_method_compile+0x23cc>
+  12e710:	31 c0                	xor    %eax,%eax
+  12e712:	e9 53 fd ff ff       	jmpq   12e46a <mini_method_compile+0x2b6a>
+  12e717:	48 8d 0d 22 4b 51 00 	lea    0x514b22(%rip),%rcx        # 643240 <mono_jit_stats>
+  12e71e:	31 c0                	xor    %eax,%eax
+  12e720:	f0 0f c1 41 20       	lock xadd %eax,0x20(%rcx)
+  12e725:	39 c3                	cmp    %eax,%ebx
+  12e727:	0f 8f 85 00 00 00    	jg     12e7b2 <mini_method_compile+0x2eb2>
+  12e72d:	6b c3 64             	imul   $0x64,%ebx,%eax
+  12e730:	48 8b 5c 24 28       	mov    0x28(%rsp),%rbx
+  12e735:	31 d2                	xor    %edx,%edx
+  12e737:	f7 73 08             	divl   0x8(%rbx)
+  12e73a:	48 8d 1d ff 4a 51 00 	lea    0x514aff(%rip),%rbx        # 643240 <mono_jit_stats>
+  12e741:	89 c1                	mov    %eax,%ecx
+  12e743:	31 c0                	xor    %eax,%eax
+  12e745:	f0 0f c1 43 1c       	lock xadd %eax,0x1c(%rbx)
+  12e74a:	39 c1                	cmp    %eax,%ecx
+  12e74c:	0f 8e 35 f6 ff ff    	jle    12dd87 <mini_method_compile+0x2487>
+  12e752:	48 8d 05 e7 4a 51 00 	lea    0x514ae7(%rip),%rax        # 643240 <mono_jit_stats>
+  12e759:	8b 50 1c             	mov    0x1c(%rax),%edx
+  12e75c:	48 89 c3             	mov    %rax,%rbx
+  12e75f:	89 d0                	mov    %edx,%eax
+  12e761:	f0 0f b1 4b 1c       	lock cmpxchg %ecx,0x1c(%rbx)
+  12e766:	39 c2                	cmp    %eax,%edx
+  12e768:	75 e8                	jne    12e752 <mini_method_compile+0x2e52>
+  12e76a:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+  12e76f:	48 8d 3d c3 e9 1f 00 	lea    0x1fe9c3(%rip),%rdi        # 32d139 <__func__.29097+0xbf9>
+  12e776:	48 8b 50 18          	mov    0x18(%rax),%rdx
+  12e77a:	48 8b 40 08          	mov    0x8(%rax),%rax
+  12e77e:	48 8b 70 40          	mov    0x40(%rax),%rsi
+  12e782:	31 c0                	xor    %eax,%eax
+  12e784:	e8 c7 9f 1d 00       	callq  308750 <monoeg_g_strdup_printf>
+  12e789:	48 89 c2             	mov    %rax,%rdx
+  12e78c:	48 8d 05 ad 4a 51 00 	lea    0x514aad(%rip),%rax        # 643240 <mono_jit_stats>
+  12e793:	48 8b 78 68          	mov    0x68(%rax),%rdi
+  12e797:	48 89 c3             	mov    %rax,%rbx
+  12e79a:	48 89 f8             	mov    %rdi,%rax
+  12e79d:	f0 48 0f b1 53 68    	lock cmpxchg %rdx,0x68(%rbx)
+  12e7a3:	48 39 c7             	cmp    %rax,%rdi
+  12e7a6:	75 e4                	jne    12e78c <mini_method_compile+0x2e8c>
+  12e7a8:	e8 53 94 1d 00       	callq  307c00 <monoeg_g_free>
+  12e7ad:	e9 d5 f5 ff ff       	jmpq   12dd87 <mini_method_compile+0x2487>
+  12e7b2:	48 8d 05 87 4a 51 00 	lea    0x514a87(%rip),%rax        # 643240 <mono_jit_stats>
+  12e7b9:	8b 50 20             	mov    0x20(%rax),%edx
+  12e7bc:	48 89 c1             	mov    %rax,%rcx
+  12e7bf:	89 d0                	mov    %edx,%eax
+  12e7c1:	f0 0f b1 59 20       	lock cmpxchg %ebx,0x20(%rcx)
+  12e7c6:	39 c2                	cmp    %eax,%edx
+  12e7c8:	75 e8                	jne    12e7b2 <mini_method_compile+0x2eb2>
+  12e7ca:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+  12e7cf:	48 8d 3d 63 e9 1f 00 	lea    0x1fe963(%rip),%rdi        # 32d139 <__func__.29097+0xbf9>
+  12e7d6:	48 8b 50 18          	mov    0x18(%rax),%rdx
+  12e7da:	48 8b 40 08          	mov    0x8(%rax),%rax
+  12e7de:	48 8b 70 40          	mov    0x40(%rax),%rsi
+  12e7e2:	31 c0                	xor    %eax,%eax
+  12e7e4:	e8 67 9f 1d 00       	callq  308750 <monoeg_g_strdup_printf>
+  12e7e9:	48 89 c2             	mov    %rax,%rdx
+  12e7ec:	48 8d 05 4d 4a 51 00 	lea    0x514a4d(%rip),%rax        # 643240 <mono_jit_stats>
+  12e7f3:	48 8b 78 70          	mov    0x70(%rax),%rdi
+  12e7f7:	48 89 c1             	mov    %rax,%rcx
+  12e7fa:	48 89 f8             	mov    %rdi,%rax
+  12e7fd:	f0 48 0f b1 51 70    	lock cmpxchg %rdx,0x70(%rcx)
+  12e803:	48 39 c7             	cmp    %rax,%rdi
+  12e806:	75 e4                	jne    12e7ec <mini_method_compile+0x2eec>
+  12e808:	e8 f3 93 1d 00       	callq  307c00 <monoeg_g_free>
+  12e80d:	e9 1b ff ff ff       	jmpq   12e72d <mini_method_compile+0x2e2d>
+  12e812:	49 8b 46 78          	mov    0x78(%r14),%rax
+  12e816:	48 89 04 25 00 00 00 	mov    %rax,0x0
+  12e81d:	00 
+  12e81e:	0f 0b                	ud2    
+  12e820:	e8 2b cb ef ff       	callq  2b350 <__stack_chk_fail@plt>
+  12e825:	41 8b 97 ac 02 00 00 	mov    0x2ac(%r15),%edx
+  12e82c:	e9 86 e3 ff ff       	jmpq   12cbb7 <mini_method_compile+0x12b7>
+  12e831:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+  12e836:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+  12e83d:	00 00 00 
