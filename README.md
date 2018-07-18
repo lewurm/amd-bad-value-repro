@@ -1,14 +1,16 @@
 Repro for bad value issue on AMD Threadripper 1920X
 ===================================================
 
-run:
+clone and run:
 ```
+$ git clone https://github.com/lewurm/amd-bad-value-repro.git
+$ cd amd-bad-value-repro/
+$ cat repro.sh
 $ ./repro.sh
 ```
 
 it should crash with a message like this:
 ```
-
 * Assertion at mini.c:2443, condition `cfg->num_bblocks >= dfn' not met, function:mono_bb_ordering, at iteration=7485 via "System.Uri:PrivateParseMinimal ()": cfg->num_bblocks=115/0x73,  dfn=21944/0x55b8, *(guint64 *) &dfn=0x5a
 
 
